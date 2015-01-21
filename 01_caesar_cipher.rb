@@ -46,7 +46,7 @@ def caesar_cipher2(message, offset)
 	offset %= 26
 	cipher = ''
 
-	# Direction is relevant for checking A->Z, Z->A wrapping
+	# Direction is relevant
 	increment = true if offset > 0
 
 	if increment
@@ -80,7 +80,7 @@ end
 
 # Testing
 
-puts "Enter a string to cypher:"
+puts "Enter a string to cipher:"
 input = gets.chomp
 puts "Offset depth?"
 depth = gets.chomp.to_i
