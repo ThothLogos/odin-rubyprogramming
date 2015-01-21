@@ -18,17 +18,17 @@ def caesar_cipher(message, offset)
 		offset = -offset % 26
 		offset = -offset; end
 
-	words = message.split(" ")
-	words.each do |word|
-		chars.push(word.split("")); end
+	words = message.split(" ") #Make an array of words from the input, strip spaces
+	words.each do |word| #From each word....
+		chars.push(word.split("")); end #Construct a sub-array of its characters
 	
-	chars.each do |char|
-		nums.push(char.map(&:ord)); end
+	chars.each do |char| #On each character....
+		nums.push(char.map(&:ord)); end #Send the ASCII integer value to a new array
 
-	for i in 0...nums.length do
-		for j in 0...nums[i].length do
-			nums[i][j] += offset
-			nums[i][j] = nums[i][j].chr; end; end
+	for i in 0...nums.length do #Step through each word
+		for j in 0...nums[i].length do #And each character
+			nums[i][j] += offset #Alter the ASCII value by the offset
+			nums[i][j] = nums[i][j].chr; end; end #Translate back, ASCII->String
 
 	return nums
 end
