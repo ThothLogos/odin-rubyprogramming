@@ -17,7 +17,7 @@ def substrings(phrase, dictionary)
 	end
 end
 
-dictionary = ["below","down","go","going","horn","how","howdy", "now"
+dictionary = ["below","down","go","going","horn","how","howdy", "now",
 				"it","i","low","own","part","partner","sit", "this", "that",
             "then", "before", "fore", "hen", "hat", "his", "ore", "at", "is",
             "art", "word", "orb", "dick", "face", "ace", "up", "sleave", "slave",
