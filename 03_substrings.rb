@@ -1,19 +1,20 @@
 # The Odin Project - Section 3: Ruby Programming
 # Project Building Blocks, No. 3 Substrings
 
+
+# A relatively simple and elegent solution comes together with a bit of
+# simple RegEx. This may not be the fastest implementation, but the strategy
+# is simple - check everything, count it up.
+
 def substrings(phrase, dictionary)
 
-	result = []
-	chars = []
-
-	words = phrase.split(" ")
-	words.each do |word|
-		chars << word.split("")
+	# Iterate through each possible word we want to count
+	dictionary.each do |entry|
+		# Scan the entire incoming text for each entry, count the occurances
+		hits = phrase.scan(/#{entry}/).count
+		# Don't print anything if the entry didn't hit
+		unless hits == 0 then puts "Entry: " + entry + "\t" + hits.to_s; end
 	end
-
-	puts print words
-	puts print chars
-
 end
 
 dictionary = ["below","down","go","going","horn","how","howdy",
