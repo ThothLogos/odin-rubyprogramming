@@ -17,8 +17,11 @@ def substrings(phrase, dictionary)
 	end
 end
 
-dictionary = ["below","down","go","going","horn","how","howdy",
-				"it","i","low","own","part","partner","sit"]
+dictionary = ["below","down","go","going","horn","how","howdy", "now"
+				"it","i","low","own","part","partner","sit", "this", "that",
+            "then", "before", "fore", "hen", "hat", "his", "ore", "at", "is",
+            "art", "word", "orb", "dick", "face", "ace", "up", "sleave", "slave",
+            "sequin", "stuff"]
 #result = substrings("below", dictionary)
 puts "Enter some words, a phrase, anything: "
 input = gets.chomp
