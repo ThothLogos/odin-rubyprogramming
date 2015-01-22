@@ -18,17 +18,17 @@ def caesar_cipher(message, offset)
 		offset = -offset % 26
 		offset = -offset; end
 
-	words = message.split(" ") #Make an array of words from the input, strip spaces
-	words.each do |word| #From each word....
-		chars.push(word.split("")); end #Construct a sub-array of its characters
+	words = message.split(" ") # Make an array of words from the input, strip spaces
+	words.each do |word| # From each word....
+		chars.push(word.split("")); end # Construct a sub-array of its characters
 	
-	chars.each do |char| #On each character....
-		nums.push(char.map(&:ord)); end #Send the ASCII integer value to a new array
+	chars.each do |char| # On each character....
+		nums.push(char.map(&:ord)); end # Send the ASCII integer value to a new array
 
-	for i in 0...nums.length do #Step through each word
-		for j in 0...nums[i].length do #And each character
-			nums[i][j] += offset #Alter the ASCII value by the offset
-			nums[i][j] = nums[i][j].chr; end; end #Translate back, ASCII->String
+	for i in 0...nums.length do # Step through each word
+		for j in 0...nums[i].length do # And each character
+			nums[i][j] += offset # Alter the ASCII value by the offset
+			nums[i][j] = nums[i][j].chr; end; end # Translate back, ASCII->String
 
 	return nums
 end
@@ -53,25 +53,25 @@ def caesar_cipher2(message, offset)
 		message.each_char do |c|
 			offset.times do
 				if c.match(/[A-Ya-y]/)
-					c.next! #No wrap required on these letters, increment
+					c.next! # No wrap required on these letters, increment
 				else
 					if c.match(/Z/) #Wrap required
 						c = 'A'; end
 					if c.match(/z/)
 						c = 'a'; end; end; end
-			cipher << c #Insert scrambled character to output string
+			cipher << c # Insert scrambled character to output string
 		end
-	else #decrement
+	else # decrement
 		message.each_char do |c|
-			offset.abs.times do #Use absolute value, can't do a loop negative times!
+			offset.abs.times do # Use absolute value, can't do a loop negative times!
 				if c.match(/[B-Zb-z]/)
-					c = (c.ord - 1).chr #Quick shuffling using ASCII value
+					c = (c.ord - 1).chr # Quick shuffling using ASCII value
 				else
-					if c.match(/A/) #Reverse wrap required
+					if c.match(/A/) # Reverse wrap required
 						c = 'Z'; end
 					if c.match(/a/) 
 						c = 'z'; end; end; end
-			cipher << c #Insert scrambled character to output string
+			cipher << c # Insert scrambled character to output string
 		end
 	end
 
