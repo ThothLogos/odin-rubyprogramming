@@ -17,20 +17,20 @@ def stock_picker(price_set)
 
 	# Step through the array of prices
 	for i in 0..(prices.length - 1) do # The last index will never a "buy" day
-		for j in (i+1)..prices.length do # Step through every successive element from i
+		for j in (i+1)..prices.length do # Step through every successive "sell" day
 			
 			# Grab the values and convert to integers
-			first = prices[i].to_i
-			second = prices[j].to_i
+			first_day = prices[i].to_i
+			second_day = prices[j].to_i
 
 			# Find profit potential
-			profit = second - first
+			profit = second_day - first_day
 
 			# Compare to previous profit findings, replace if better
 			if profit > $best_profit
 				$best_profit = profit
-				$best_days[0] = i #
-				$best_days[1] = j; end; end; end
+				$best_days[0] = i + 1 # Add 1, there's no 0th day
+				$best_days[1] = j + 1; end; end; end
 end
 
 # Testing
@@ -41,5 +41,5 @@ input = gets.chomp
 stock_picker(input)
 
 puts "The best profit was: " + $best_profit.to_s
-puts "The best day to buy was day number " + ($best_days[0]+1).to_s +
-	 " and then sell on day number " + ($best_days[1]+1).to_s
+puts "The best day to buy was day number " + $best_days[0].to_s +
+	 " and then sell on day number " + $best_days[1].to_s
