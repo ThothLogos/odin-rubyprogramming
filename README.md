@@ -33,7 +33,7 @@ Advanced Problems - http://www.theodinproject.com/ruby-programming/advanced-buil
 
 05 - Enumerable Methods
 
-  A simple task to build several of the built-in sorting methods by hand, to explore enumerator functionality.
+  A task to build many of the built-in sorting methods by hand, to explore enumerable type functionality.
   
     - Add your new methods onto the existing Enumerable module.
     - Create #my_each, a method that is identical to #each but (obviously) does not use #each. You'll need to remember the yield statement. Make sure it returns the same thing as #each as well.
