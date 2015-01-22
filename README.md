@@ -1,5 +1,6 @@
-# odin-rubyscripts
-The Odin Project - Ruby: Basic Problems - http://www.theodinproject.com/ruby-programming/building-blocks
+# The Odin Project - Ruby Programming
+
+Basic Problems - http://www.theodinproject.com/ruby-programming/building-blocks
 
 01 - Caesar Cipher
 
