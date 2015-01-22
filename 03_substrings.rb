@@ -11,7 +11,7 @@ def substrings(phrase, dictionary)
 	# Iterate through each possible word we want to count
 	dictionary.each do |entry|
 		# Scan the entire incoming text for each entry, count the occurances
-		hits = phrase.scan(/#{entry}/).count
+		hits = phrase.scan(/#{entry}/i).count
 		# Don't print anything if the entry didn't hit
 		unless hits == 0 then puts "Entry: " + entry + "\t" + hits.to_s; end
 	end
