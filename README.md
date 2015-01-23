@@ -29,7 +29,7 @@
 
 <h5>04 - Bubble Sort</h5>
 
-  The classic bubble sort, implemented in Ruby.
+  The classic bubble sort. Iterations through the supplied set of numbers continue, comparing each element to each successive elements, and swapping positions if the first is greater than the second. With each pass, the largest values "bubble" to one side, eventually sorting the entire set.
   <ul>
   <li>Build a method #bubble_sort that takes an array and returns a sorted array. It must use the bubble sort methodology</li>
   <li>Create a similar method called #bubble_sort_by which sorts an array but accepts a block. The block should take two arguments which represent the two elements currently being compared. Expect that the block's return will be similar to the spaceship operator you learned about before -- if the result of the block is negative, the element on the left is "smaller" than the element on the right. 0 means they are equal. A positive result means the left element is greater. Use this to sort your array</li>
