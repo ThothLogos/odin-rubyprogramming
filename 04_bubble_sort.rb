@@ -36,7 +36,7 @@ def bubble_sort_by(array)
    while unsorted == true 
       unsorted = false
       for i in 0...(array.length - 1)
-         if yield(array[i], array[i+1]) > 0 # Compare using block input
+         if yield(array[i], array[i+1]) > 0 # Call to block, the return is checked
             array[i], array[i+1] = array[i+1], array[i]
             unsorted = true; end; end; end
 
