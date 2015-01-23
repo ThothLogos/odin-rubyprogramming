@@ -4,22 +4,23 @@
 
 <h5>01 - Caesar Cipher</h5>
 
-  A caesar cipher is an elementary encryption technique of shifting each character forward or backword by a particular key value. This problem required:
+  A caesar cipher is an elementary encryption technique of shifting each character forward or backword by a particular amount.
   <ul>
   <li>Implement a caesar cipher that takes in a string and the shift factor and then outputs the modified string</li>
   <li>Don't forget to wrap from z to a</li>
   <li>Don't forget to keep the same case</li>
   </ul>
+  
 <h5>02 - Stock Picker</h5>
 
-  A simple program to identify the best single trading opportunity between a set of prices, and report the correct days for the opportunity to the user, the problem required:
+  A simple program to identify the best single trading opportunity between a set of daily market prices, and report the correct days for the opportunity to the user.
   <ul>
   <li>Implement a method #stock_picker that takes in an array of stock prices, one for each hypothetical day. It should return a pair of days representing the best day to buy and the best day to sell</li>
   </ul>
 
 <h5>03 - Substrings</h5>
 
-  A simple program to count the occurances of dictionary words in a given input. The problem required:
+  Provided a dictionary of words to check for, the task was to search a user's input string for instances of each word in the dictionary and report this data to the user.
   <ul>
   <li>Implement a method #substrings that takes a word as the first argument and then an array of valid substrings (your dictionary) as the second argument. It should return a hash listing each substring (case insensitive) that was found in the original string and how many times it was found</li>
   <li>Make sure your method can handle multiple words</li>
