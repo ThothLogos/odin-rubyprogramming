@@ -1,5 +1,10 @@
 # The Odin Project - Section 3: Ruby Programming
 # Project Building Blocks, No. 3 Substrings
+#
+# NOTE: The heavy use of comments is intended for users of The Odin Project
+# seeking another student's strategy/thought process. 
+
+
 
 
 # A relatively simple and elegent solution comes together with a bit of

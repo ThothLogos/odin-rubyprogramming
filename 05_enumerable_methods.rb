@@ -1,11 +1,17 @@
 # The Odin Project - Section 3: Ruby Programming
 # Project Building Blocks, No. 5 Enumerable Methods
+#
+# NOTE: The heavy use of comments is intended for users of The Odin Project
+# seeking another student's strategy/thought process. 
+
+
 
 
 # The purpose of this problem set was to explore the implementation of many
 # useful Enumerable type methods by re-creating them from the ground up. I
 # utilized the impelmentation descriptions for these methods found at ruby-doc.org
-# to help me understand and rebuild their intended behavior.
+# to help me understand and rebuild their intended behavior. Method descriptions
+# are largely copied/paraphrased from ruby-doc.org.
 
 module Enumerable
    

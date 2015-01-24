@@ -1,5 +1,10 @@
 # The Odin Project - Section 3: Ruby Programming
 # Project Building Blocks, No. 2 Stock Picker
+#
+# NOTE: The heavy use of comments is intended for users of The Odin Project
+# seeking another student's strategy/thought process. 
+
+
 
 
 # My stratey was simple. Since you must buy before you can sell,
