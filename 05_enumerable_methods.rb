@@ -122,12 +122,21 @@ module Enumerable
    end
 
 
-   # 
-   def my_inject
+   # Combines every element in the collection by applying a binary operation
+   # specified by a block.
+   def my_inject(accumulator = self.shift)
 
-
+      for i in self
+         accumulator = yield(accumulator, i); end
+      return accumulator
    end
 
+end
+
+
+# Test method for my_inject
+def multiply_elements(array)
+      array.my_inject { |product, num| product * num }
 end
 
 
@@ -157,5 +166,10 @@ words = ["ant", "bear", "cat"]
 #array.my_count(3)
 #array.my_count { |x|  x % 2 == 0 }
 
-array.map { |x| x ** x }
-array.my_map { |x| x ** x }
+#array.map { |x| x ** x }
+#array.my_map { |x| x ** x }
+
+array.my_inject { |sum, n| sum + n }
+array.my_inject(0) { |sum, n| sum + n }
+words.my_inject { |memo, word| memo.length > word.length ? memo : word }
+multiply_elements([2,4,5])
