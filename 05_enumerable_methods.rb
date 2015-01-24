@@ -78,7 +78,7 @@ module Enumerable
    def my_none?
 
       truthiness = true # Assume we won't hit any matches
-      
+
       for i in self
          if block_given? # If we have a block, yield
             truthiness = false if yield(i) == true
@@ -111,10 +111,21 @@ module Enumerable
    # inside the calling collection. If no block is provided, an enum is returned
    def my_map
 
-      if block_given?
+      result = []
 
+      if block_given?
+         for i in self
+            result << yield(i); end
+         return result
       else
          return self.to_enum; end
+   end
+
+
+   # 
+   def my_inject
+
+
    end
 
 end
@@ -145,3 +156,6 @@ words = ["ant", "bear", "cat"]
 #array.my_count
 #array.my_count(3)
 #array.my_count { |x|  x % 2 == 0 }
+
+array.map { |x| x ** x }
+array.my_map { |x| x ** x }
