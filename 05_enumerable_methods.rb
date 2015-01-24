@@ -3,6 +3,7 @@
 
 module Enumerable
    
+
    def my_each
 
       if block_given?
@@ -12,6 +13,7 @@ module Enumerable
          return self.to_enum; end # If no block, return enum
    end
 
+
    def my_each_index
 
       if block_given?
@@ -20,6 +22,7 @@ module Enumerable
       else
          return self.to_enum; end
    end
+
 
    def my_select
 
@@ -34,6 +37,28 @@ module Enumerable
          return self.to_enum; end 
    end
 
+
+   def my_all?(&block)
+
+      truthiness = true
+
+      if !block_given?
+         block ||= Proc.new { |obj| obj }; end
+
+      for i in self
+         truthiness = false if block.call(i) == false || block.call(i) == nil; end
+
+      return truthiness
+   end
+
+
+   def my_any?
+
+      
+      
+   end
+
+
 end
 
 
@@ -46,5 +71,15 @@ array = [6,3,4,11]
 #array.each_index { |x| puts "Pos: #{x} "}
 #array.my_each_index { |x| puts "Pos: #{x}"}
 
-array.select { |num| num.even? }
-array.my_select { |num| num.even? }
+#array.select { |num| num.even? }
+#array.my_select { |num| num.even? }
+
+words = ["ant", "bear", "cat"]
+
+words.all? { |word| word.length >= 3 }
+words.all? { |word| word.length >= 4 }
+
+words.my_all? { |word| word.length >= 3 }
+words.my_all? { |word| word.length >= 4 }
+
+words.my_all?
