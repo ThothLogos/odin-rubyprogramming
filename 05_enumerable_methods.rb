@@ -1,6 +1,12 @@
 # The Odin Project - Section 3: Ruby Programming
 # Project Building Blocks, No. 5 Enumerable Methods
 
+
+# The purpose of this problem set was to explore the implementation of many
+# useful Enumerable type methods by re-creating them from the ground up. I
+# utilized the impelmentation descriptions for these methods found at ruby-doc.org
+# to help me understand and rebuild their intended behavior.
+
 module Enumerable
    
    # Iterates through each element inside of a collection and forwards each
@@ -9,9 +15,9 @@ module Enumerable
 
       if block_given?
          for i in self # Iterate each element
-            yield(i); end # Yield to the block
-      else
-         return self.to_enum; end # If no block, return enum
+            yield(i); end; end # Yield to the block
+
+      return self.to_enum # If no block, return enum
    end
 
    # Forwards each element's index, rather than value, to the block
@@ -19,9 +25,9 @@ module Enumerable
 
       if block_given?
          for i in self
-            yield(self.index(i)); end
-      else
-         return self.to_enum; end
+            yield(self.index(i)); end; end
+
+      return self.to_enum
    end
 
 
@@ -34,9 +40,9 @@ module Enumerable
          for i in self
             if yield(i) == true      # Anything returning true from the block
                result << i; end; end # is placed in a new array
-         return result
-      else
-         return self.to_enum; end 
+         return result; end
+
+      return self.to_enum
    end
 
 
@@ -57,7 +63,7 @@ module Enumerable
 
 
    # Returns true if the block ever returns anything besides false or nil. As with
-   # my_all?, the implicit block is added when non is provided, which will result
+   # my_all?, the implicit block is added when none is provided, which will result
    # in a true return
    def my_any?(&block)
 
@@ -116,14 +122,45 @@ module Enumerable
       if block_given?
          for i in self
             result << yield(i); end
-         return result
-      else
-         return self.to_enum; end
+         return result; end
+      # No block, return enum
+      return self.to_enum
+   end
+
+
+   # Second iteration of my_map, making it accept a proc instead of a block
+   def my_map2(proc = nil)
+
+      result = []
+      # Only do work if a valid proc is passed
+      if !proc.nil? && proc.is_a?(Proc)
+         for i in self
+            result << proc.call(i); end
+         return result; end
+      # No proc, return enum
+      return self.to_enum
+   end
+
+
+   # Third iteration of my_map, method accepts a proc or a block but only executes
+   # if both are provided, otherwise the default enum is returned. The specification
+   # was ambiguous about the exact interaction of the block & proc, so I simply nested
+   # them.
+   def my_map3(proc = nil)
+
+      result = []
+
+      if !proc.nil? && block_given?
+         for i in self
+            result << proc.call(yield(i)); end
+         return result; end
+
+      return self.to_enum
    end
 
 
    # Combines every element in the collection by applying a binary operation
-   # specified by a block.
+   # specified by a block
    def my_inject(accumulator = self.shift)
 
       for i in self
@@ -166,10 +203,19 @@ words = ["ant", "bear", "cat"]
 #array.my_count(3)
 #array.my_count { |x|  x % 2 == 0 }
 
-#array.map { |x| x ** x }
-#array.my_map { |x| x ** x }
+#array.map { |x| x ** 2 }
+#array.my_map { |x| x ** 2 }
 
-array.my_inject { |sum, n| sum + n }
-array.my_inject(0) { |sum, n| sum + n }
-words.my_inject { |memo, word| memo.length > word.length ? memo : word }
-multiply_elements([2,4,5])
+#array.my_inject { |sum, n| sum + n }
+#array.my_inject(0) { |sum, n| sum + n }
+#words.my_inject { |memo, word| memo.length > word.length ? memo : word }
+#multiply_elements([2,4,5])
+
+testproc = Proc.new { |p| p + 2 }
+
+#array.my_map2(testproc)
+#array.my_map2
+
+#array.my_map3(testproc)
+#array.my_map3 { |x| x*2 }
+#array.my_map3(testproc) { |x| x*2 } 
