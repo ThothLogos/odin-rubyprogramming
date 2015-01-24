@@ -1,53 +1,44 @@
 # The Odin Project - Section 3: Ruby Programming
 # Project Building Blocks, No. 5 Enumerable Methods
 
-# 
-
 module Enumerable
-
    
    def my_each
-      
-      
-      
 
-
+      if block_given?
+         for i in self # Iterate each element
+            yield(i); end # Yield to the block
+      else
+         return self.to_enum # If no block, return enum
+      end
    end
 
+   def my_each_index
 
-
-
-
-   
-   def my_each_with_index
+      if block_given?
+         for i in self
+            yield(self.index(i)); end # Send the index instead of the value
+      else
+         return self.to_enum
+      end
    end
-
 
    def my_select
+
+      
    end
 
 
-   def my_all?
-   end
 
-
-   def my_any?
-   end
-
-
-   def my_none?
-   end
-
-   def my_count
-   end
-
-   def my_map
-   end
-
-   def my_inject
-   end
-
-   def multiply_elements
-   end
 
 end
+
+
+# Test cases
+array = [6,3,4,11]
+
+#array.each {|x| puts "Value: #{x}" }
+#array.my_each {|x| puts "Value: #{x}" }
+
+#array.each_index { |x| puts "Pos: #{x} "}
+#array.my_each_index { |x| puts "Pos: #{x}"}
