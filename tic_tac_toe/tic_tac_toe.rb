@@ -151,6 +151,7 @@ end
 
 class View
 
+  # The first thing the user sees
   def main_menu
     system "clear"
     puts " ...::||| Main Menu |||::..."
@@ -161,6 +162,7 @@ class View
     print " Please make your selection:"
   end
 
+  # Main menu error variant
   def invalid_entry
     system "clear"
     puts " ...::||| Main Menu |||::..."
@@ -171,6 +173,7 @@ class View
     print " Invalid entry, try again! "
   end
 
+  # Assigning symbols and taking names
   def create_player(player)
     system "clear"
     puts " ...::||| Player #{player} |||::..."
@@ -184,6 +187,7 @@ class View
     print " Enter Player #{player}'s name: "
   end
 
+  # This screen runs briefly after the creation of a new game/players
   def instructions
     system "clear"
     puts " ...::||| Instructions |||::..."
@@ -196,6 +200,7 @@ class View
     puts ""
   end
 
+  # This is the primary gameplay screen that updates each turn
   def game_state(board, score)
     system "clear"
     puts " ...::||| TicTacToe |||::..."
@@ -227,7 +232,6 @@ class Player
   def marker
     return @marker
   end
-
 end
 
 
