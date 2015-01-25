@@ -28,7 +28,7 @@ class Game
   def initialize
     @board = GameBoard.new
     @view = View.new
-    @score = { games_played: 0, drawn: 0, p1: 0, p2: 0}
+    @score = { games_played: 1, drawn: 0, p1: 0, p2: 0}
     @continue_game = true
 
     system("clear")
@@ -49,7 +49,7 @@ class Game
       name = gets.chomp
       @player_two = Player.new(name, "O")
 
-      for i in 5.downto(1)
+      for i in 1.downto(1)
         @view.instructions
         puts "The game will start in #{i}..."
         sleep 1
@@ -67,17 +67,47 @@ class Game
 
   def main_loop
 
-
     while @continue_game
+
+      # Alternate starting player each round
+      if @score[:games_played] % 2 != 0
+        @active_player = @player_one
+      else
+        @active_player = @player_two
+      end
+
       @view.game_state(@board, @score)
-      @continue_game = false
+      
+      print " #{@active_player.name}'s turn. Your selection: "
+      location = gets.chomp
+      if !location.to_i.between?(1,9) # Verify a valid number was entered
+        puts " Invalid entry, please try again."
+        sleep 1
+        next # Break here and restart a new iteration of while
+      elsif @board.place_marker(location.to_i, @active_player.marker) == "occupied" 
+        puts "That spot is already taken... try again."
+        sleep 1
+        next
+      end
+
+      if @active_player == @player_one
+        @active_player = @player_two
+      else
+        @active_player = @player_one
+      end
+
+      @score[:games_played] += 1    
+      if @score[:games_played] > 3
+        @continue_game = false; end
     end
   end
+
 end
 
 
 class GameBoard
 
+  # Ready an empty board
   def initialize
     @board = { 1 => "_", 2 => "_", 3 => "_",
                4 => "_", 5 => "_", 6 => "_",
@@ -100,8 +130,11 @@ class GameBoard
   # the method will leave it unchanged and return a message
   def place_marker(location, marker)
     if @board[location] == "_"
+      puts "yup"
       @board[location] = marker
     else
+      puts "nope"
+      print @board[location]
       return "occupied"
     end
   end
@@ -117,10 +150,6 @@ class GameBoard
 end
 
 class View
-
-  def initialize
-    
-  end
 
   def main_menu
     system "clear"
@@ -165,13 +194,13 @@ class View
     puts "            |4|5|6|"
     puts "            |7|8|9|"
     puts ""
-    puts ""
   end
 
   def game_state(board, score)
     system "clear"
     puts " ...::||| TicTacToe |||::..."
     puts " "
+    puts "           Round #{score[:games_played]}"
     puts "     Board         Score"
     puts ""
     puts "    #{board.print(1)}        P1:  #{score[:p1]}"
@@ -191,9 +220,14 @@ class Player
     @marker = marker
   end
 
+  def name
+    return @name
+  end
+
   def marker
     return @marker
   end
+
 end
 
 
