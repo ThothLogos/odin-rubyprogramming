@@ -6,11 +6,11 @@
 
 
 # This in an implementation of the classic game Tic Tac Toe. I decided to
-# separate the structure into three primary classes:
+# separate the structure into four classes:
 #
-# The Game class is the primary loop class, it contains all of the procedures
-# to start a game, progress through turns, and act as the interface for user
-# interaction.
+# The Game class is the primary loop class, it is the entry point and conductor.
+# It controls the game-state, loops to progress through turns, and defines the
+# overall program flow.
 #
 # The GameBoard class contains everything needed to set up the board, keep track
 # of the board-state, place markers on the board, and check itself for a win or
@@ -19,18 +19,19 @@
 # The View class mostly holds a bunch of screen output for the user that I did not
 # want cluttering up the Game class.
 #
-# The Player class keeps track of player information, wins and losses, and which
-# marker represents them.
+# The Player class keeps track of player information including the number of wins 
+# and which marker represents the player.
 
 
 class Game
 
   def initialize
-    system("clear")
-    @continue_game = true
     @board = GameBoard.new
     @view = View.new
-    @games_played = 0
+    @score = { games_played: 0, drawn: 0, p1: 0, p2: 0}
+    @continue_game = true
+
+    system("clear")
     main_menu
   end
 
@@ -40,6 +41,20 @@ class Game
     selection = gets.chomp
 
     if selection == "1"
+      @view.create_player(1)
+      name = gets.chomp
+      @player_one = Player.new(name, "X")
+
+      @view.create_player(2)
+      name = gets.chomp
+      @player_two = Player.new(name, "O")
+
+      for i in 5.downto(1)
+        @view.instructions
+        puts "The game will start in #{i}..."
+        sleep 1
+      end
+
       main_loop
     elsif selection == "2"
       abort(" Thanks for playing!")
@@ -51,8 +66,10 @@ class Game
   end
 
   def main_loop
+
+
     while @continue_game
-      @view.game_state(@board)
+      @view.game_state(@board, @score)
       @continue_game = false
     end
   end
@@ -125,15 +142,41 @@ class View
     print " Invalid entry, try again! "
   end
 
-  def game_state(board)
+  def create_player(player)
+    system "clear"
+    puts " ...::||| Player #{player} |||::..."
+    puts ""
+    if player == 1
+      puts "   Your symbol will be X."
+    elsif player == 2
+      puts "   Your symbol will be O."; end
+    puts ""
+    puts ""
+    print " Enter Player #{player}'s name: "
+  end
+
+  def instructions
+    system "clear"
+    puts " ...::||| Instructions |||::..."
+    puts " "
+    puts "    Select location with 1-9"
+    puts ""
+    puts "            |1|2|3|"
+    puts "            |4|5|6|"
+    puts "            |7|8|9|"
+    puts ""
+    puts ""
+  end
+
+  def game_state(board, score)
     system "clear"
     puts " ...::||| TicTacToe |||::..."
     puts " "
     puts "     Board         Score"
     puts ""
-    puts "    #{board.print(1)}        P1:  2"
-    puts "    #{board.print(1)}        P2:  4"
-    puts "    #{board.print(1)}      Draw:  4"
+    puts "    #{board.print(1)}        P1:  #{score[:p1]}"
+    puts "    #{board.print(2)}        P2:  #{score[:p2]}"
+    puts "    #{board.print(3)}      Draw:  #{score[:drawn]}"
     puts ""
     puts ""
   end
@@ -143,9 +186,6 @@ end
 
 class Player
 
-  @wins = 0
-  @losses = 0
-
   def initialize(name, marker)
     @name = name
     @marker = marker
@@ -154,7 +194,6 @@ class Player
   def marker
     return @marker
   end
-
 end
 
 
