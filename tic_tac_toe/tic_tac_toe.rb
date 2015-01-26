@@ -78,17 +78,22 @@ class Game
 
 
   def main_loop
+    
+    @continue_game = true
     # Game session loop, continues until users quit
     while @continue_game
 
+      # Reset the board and turn count
+      @board = GameBoard.new      
+      
+      @score[:turns] = 0
+      @score[:drawn] = 0
+      @score[:p1] = 0
+      @score[:p2] = 0
       # Swap starting player each round, odd rounds = player 1, even = player 2
       @score[:rounds_played] % 2 != 0 ? @active_player = @player_two : @active_player = @player_one
 
-      # Reset the board and turn count
-      @board = GameBoard.new      
       @continue_round = true
-      @score[:turns] = 0
-
       # Begin round, continues until the current board is won or drawn
       while @continue_round
 
@@ -277,10 +282,10 @@ class View
     puts "\e[H\e[2J"
     puts " ...::|||  Game Over  |||::..."
     puts " "
-    puts "        Best of #{score[:rounds_played]} Rounds"
+    puts "       Best of #{score[:rounds_played]} Rounds"
     puts "      "
-    puts "         P1:  #{score[:p1]}   P2:  #{score[:p2]}"
-    puts "          Drawn:  #{score[:drawn]}"
+    puts "        P1:  #{score[:p1]}   P2:  #{score[:p2]}"
+    puts "         Drawn:  #{score[:drawn]}"
     puts "     "
     puts "     The winner is #{winner}!"
   end
