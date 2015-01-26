@@ -32,7 +32,7 @@ class Game
     @continue_game = true
     @continue_round = true
     # Clear the screen and start the game
-    #system("clear")
+    system("clear")
     main_menu
   end
 
@@ -49,11 +49,11 @@ class Game
       # Create player one, get name from user
       @view.player_info(1)
       name = gets.chomp
-      @player_one = Player.new(name, "X")
+      @player_one = Player.new(:p1, name, "X")
       # Player two
       @view.player_info(2)
       name = gets.chomp
-      @player_two = Player.new(name, "O")
+      @player_two = Player.new(:p2, name, "O")
       # Timed countdown to show the instructions for a few seconds
       for i in 1.downto(1)
         @view.instructions
@@ -74,10 +74,8 @@ class Game
     # Game session loop, continues until users quit
     while @continue_game
 
-      # Increase game count
-      @score[:rounds_played] += 1
       # Swap starting player each round, odd rounds = player 1, even = player 2
-      (@score[:rounds_played] % 2 != 0) ? @active_player = @player_one : @active_player = @player_two
+      @score[:rounds_played] % 2 != 0 ? @active_player = @player_two : @active_player = @player_one
 
       # Reset the board and turn count
       @board = GameBoard.new      
@@ -104,13 +102,30 @@ class Game
 
         # Primary game view, updated every round
         @view.game_state(@board, @score)
-        # Check for full board
-        @continue_round = false if @board.is_full?
+
+        # Check for winner as soon as it becomes possible
+        if @score[:turns] > 4
+          if @board.check_winner == @active_player.marker
+            @score[@active_player.id] += 1
+            @continue_round = false
+            puts "         #{@active_player.name} Wins!"
+            sleep 1; end
+        end
+
+        # If we've managed to hit the end of the 9th turn without a winner, it's a draw
+        if @score[:turns] == 9
+          @score[:drawn] += 1
+          @continue_round = false
+          puts "            Draw!"
+          sleep 1; end
+
         # At the end of each turn, swap out active player in preparation for the next turn
         @active_player == @player_one ? @active_player = @player_two : @active_player = @player_one
       end
 
-      @continue_game = false if @score[:rounds_played] > 3      
+      # Increase game count
+      @score[:rounds_played] += 1
+      @continue_game = false if @score[:rounds_played] > 10      
     end
   end
 
@@ -126,21 +141,15 @@ class GameBoard
                7 => "_", 8 => "_", 9 => "_" }
   end
 
-  # Output the current board-state to the user. Also accepts a parameter to specify a single
-  # row and print that without a line break.
-  def print(row = nil)
-    case row
-    when 1
-      return "|#{@board[1]}|#{@board[2]}|#{@board[3]}|"
-    when 2
-      return "|#{@board[4]}|#{@board[5]}|#{@board[6]}|"
-    when 3
-      return "|#{@board[7]}|#{@board[8]}|#{@board[9]}|"
-    end 
+  def print_row(row = nil)
+
+    return "|#{@board[1]}|#{@board[2]}|#{@board[3]}|" if row == 1
+    return "|#{@board[4]}|#{@board[5]}|#{@board[6]}|" if row == 2
+    return "|#{@board[7]}|#{@board[8]}|#{@board[9]}|" if row == 3
   end
 
   # Handles converting an empty space into a player's marker, if the space is taken
-  # the method will leave it unchanged and return a message
+  # the method will leave it unchanged and return a notification
   def place_marker(location, marker)
     if @board[location] == "_"
       @board[location] = marker
@@ -149,17 +158,26 @@ class GameBoard
     end
   end
 
-  def game_win?
-    # Check board-state for win
-  end
 
-  def is_full?
-    for i in 1..9
-      if @board[i].to_s == "_"
-        return false
-      end
-    end
-    return true
+  def check_winner(winner = nil)
+    # Check rows
+    1..9.step(3) do |i|
+      if @board[i] == @board[i+1] && @board[i] == @board[i+2]
+        winner = @board[i]; end; end
+
+    # Check columns
+    for i in 1..3
+      if @board[i] == @board[i+3] && @board[i] == @board[i+6]
+        winner = @board[i]; end; end
+
+    # Check top left - bottom right diag
+    if @board[1] == @board[5] && @board[1] == @board[9]
+      winner = @board[1]; end
+
+    # Check top right - bottom left diag
+    if @board[3] == @board[5] && @board[3] == @board[7]
+      winner = @board[3]; end
+    return winner
   end
 
 end
@@ -168,7 +186,7 @@ class View
 
   # The first thing the user sees
   def main_menu
-    #system "clear"
+    system "clear"
     puts " ...::||| Main Menu |||::..."
     puts ""
     puts "        1) New Game"
@@ -179,7 +197,7 @@ class View
 
   # Main menu error variant
   def invalid_entry
-    #system "clear"
+    system "clear"
     puts " ...::||| Main Menu |||::..."
     puts ""
     puts "        1) New Game"
@@ -190,7 +208,7 @@ class View
 
   # Assigning symbols and taking names
   def player_info(player)
-    #system "clear"
+    system "clear"
     puts " ...::||| Player #{player} |||::..."
     puts ""
     if player == 1
@@ -204,7 +222,7 @@ class View
 
   # This screen runs briefly after the creation of a new game/players
   def instructions
-    #system "clear"
+    system "clear"
     puts " ...::||| Instructions |||::..."
     puts " "
     puts "    Select location with 1-9"
@@ -217,15 +235,15 @@ class View
 
   # This is the primary gameplay screen that updates each turn
   def game_state(board, score)
-    #system "clear"
+    system "clear"
     puts " ...::||| TicTacToe |||::..."
     puts " "
     puts "        Round #{score[:rounds_played]}, Turn #{score[:turns]}"
     puts "     Board         Score"
     puts ""
-    puts "    #{board.print(1)}        P1:  #{score[:p1]}"
-    puts "    #{board.print(2)}        P2:  #{score[:p2]}"
-    puts "    #{board.print(3)}      Draw:  #{score[:drawn]}"
+    puts "    #{board.print_row(1)}        P1:  #{score[:p1]}"
+    puts "    #{board.print_row(2)}        P2:  #{score[:p2]}"
+    puts "    #{board.print_row(3)}      Draw:  #{score[:drawn]}"
     puts ""
     puts ""
   end
@@ -235,9 +253,14 @@ end
 
 class Player
 
-  def initialize(name, marker)
+  def initialize(id, name, marker)
+    @id = id
     @name = name
     @marker = marker
+  end
+
+  def id
+    return @id
   end
 
   def name
