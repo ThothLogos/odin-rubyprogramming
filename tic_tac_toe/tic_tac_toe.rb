@@ -7,8 +7,16 @@
 #
 # This in an implementation of the classic game Tic Tac Toe. I went a bit above and
 # beyond the bare-bones solution to this problem, trying to create a more game-like 
-# experience with a user interface and some feedback. I decided to separate the structure
-# into four classes:
+# experience with a user interface and some feedback. I use calls to clear the console
+# and re-draw the screen often to achieve the illusion of a static game environment.
+# The game keeps score of how many rounds each player has won, and automatically
+# toggles between p1 or p2 going first, to make sure the starting advantage is
+# spread out evenly. I implemented a very simple and rather dumb solution/winner
+# analysis - the design right now only recognizes a draw when there are no more
+# possible moves to make. Ideally it should be recognizing drawn games that can happen
+# prior to a full board.
+#
+# I decided to separate the structure into four classes:
 #
 # The Game class is the primary loop class, it is the entry point and conductor.
 # It controls the game-state, loops to progress through turns, and defines the
@@ -88,19 +96,28 @@ class Game
       while @continue_round
 
         @score[:turns] += 1
-        
-        print " #{@active_player.name}'s turn. Your selection: "
-        location = gets.chomp
-        if !location.to_i.between?(1,9) # Verify a valid number was entered
-          puts " Invalid entry, please try again."
-          sleep 1
-          next # Break here and restart a new iteration of while
-        elsif @board.place_marker(location.to_i, @active_player.marker) == "occupied" 
-          puts "That spot is already taken... try again."
-          sleep 1
-          next; end
 
-        # Primary game view, updated every round
+        # The game view will repeat continuously each turn until a valid move is chosen
+        valid_input = false
+        until valid_input
+          # Refresh the game view
+          @view.game_state(@board, @score)
+          print " #{@active_player.name}'s turn. Your selection: "
+          location = gets.chomp
+          # Check the input for validity
+          if location.to_i.between?(1,9)
+            valid_input = true
+            # If we have valid input, try to place the marker, if occupied, invalidate input
+            if @board.place_marker(location.to_i, @active_player.marker) == "occupied"
+              puts "That spot is already taken... try again."
+              valid_input = false
+              sleep 1; end
+          else
+            puts " Invalid entry, please try again."
+            sleep 1; end
+        end
+
+        # Update game view after new marker is placed
         @view.game_state(@board, @score)
 
         # Check for winner as soon as it becomes possible
@@ -113,10 +130,10 @@ class Game
         end
 
         # If we've managed to hit the end of the 9th turn without a winner, it's a draw
-        if @score[:turns] == 9
+        if @score[:turns] == 9 && @continue_round == true
           @score[:drawn] += 1
           @continue_round = false
-          puts "            Draw!"
+          puts "          It's a Draw!"
           sleep 1; end
 
         # At the end of each turn, swap out active player in preparation for the next turn
