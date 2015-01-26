@@ -40,7 +40,7 @@ class Game
     @continue_game = true
     @continue_round = true
     # Clear the screen and start the game
-    system("clear")
+    puts "\e[H\e[2J"
     main_menu
   end
 
@@ -210,7 +210,7 @@ class View
 
   # The first thing the user sees
   def main_menu
-    system "clear"
+    puts "\e[H\e[2J"
     puts " ...::||| Main Menu |||::..."
     puts ""
     puts "        1) New Game"
@@ -221,7 +221,7 @@ class View
 
   # Main menu error variant
   def invalid_entry
-    system "clear"
+    puts "\e[H\e[2J"
     puts " ...::||| Main Menu |||::..."
     puts ""
     puts "        1) New Game"
@@ -232,7 +232,7 @@ class View
 
   # Assigning symbols and taking names
   def player_info(player)
-    system "clear"
+    puts "\e[H\e[2J"
     puts " ...::||| Player #{player} |||::..."
     puts ""
     if player == 1
@@ -246,7 +246,7 @@ class View
 
   # This screen runs briefly after the creation of a new game/players
   def instructions
-    system "clear"
+    puts "\e[H\e[2J"
     puts " ...::||| Instructions |||::..."
     puts " "
     puts "      Place three of your  "
@@ -260,7 +260,7 @@ class View
 
   # This is the primary gameplay screen that updates each turn
   def game_state(board, score)
-    system "clear"
+    puts "\e[H\e[2J"
     puts " ...::|||  TicTacToe  |||::..."
     puts " "
     puts "        Round #{score[:rounds_played]}, Turn #{score[:turns]}"
@@ -274,7 +274,7 @@ class View
 
   # Once the game is complete, a quick readout of the results
   def final_score(winner, score)
-    system "clear"
+    puts "\e[H\e[2J"
     puts " ...::|||  Game Over  |||::..."
     puts " "
     puts "        Best of #{score[:rounds_played]} Rounds"
