@@ -63,7 +63,7 @@ class Game
       name = gets.chomp
       @player_two = Player.new(:p2, name, "O")
       # Timed countdown to show the instructions for a few seconds
-      for i in 1.downto(1)
+      for i in 4.downto(1)
         @view.instructions
         puts "The game will start in #{i}..."
         sleep 1; end
@@ -102,7 +102,7 @@ class Game
         until valid_input
           # Refresh the game view
           @view.game_state(@board, @score)
-          print " #{@active_player.name}'s turn. Your selection: "
+          print " #{@active_player.name}'s turn. Select (1-9): "
           location = gets.chomp
           # Check the input for validity
           if location.to_i.between?(1,9)
@@ -171,8 +171,7 @@ class GameBoard
     if @board[location] == "_"
       @board[location] = marker
     else
-      return "occupied"
-    end
+      return "occupied"; end
   end
 
 
