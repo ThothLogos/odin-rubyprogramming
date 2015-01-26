@@ -27,13 +27,12 @@
 class Game
 
   def initialize
-    @board = GameBoard.new
     @view = View.new
-    @score = { games_played: 0, turns: 0, drawn: 0, p1: 0, p2: 0}
+    @score = { rounds_played: 0, turns: 0, drawn: 0, p1: 0, p2: 0}
     @continue_game = true
     @continue_round = true
     # Clear the screen and start the game
-    system("clear")
+    #system("clear")
     main_menu
   end
 
@@ -76,16 +75,20 @@ class Game
     while @continue_game
 
       # Increase game count
-      @score[:games_played] += 1
+      @score[:rounds_played] += 1
       # Swap starting player each round, odd rounds = player 1, even = player 2
-      @score[:games_played] % 2 != 0 ? @active_player = @player_one : @active_player = @player_two
-      # Present initial game state
-      @view.game_state(@board, @score)  
+      (@score[:rounds_played] % 2 != 0) ? @active_player = @player_one : @active_player = @player_two
 
-      # Round loop, continues until the current board is won or drawn
+      # Reset the board and turn count
+      @board = GameBoard.new      
+      @continue_round = true
+      @score[:turns] = 0
+      # Present initial game state to users
+      @view.game_state(@board, @score)
+
+      # Begin round, continues until the current board is won or drawn
       while @continue_round
-        
-        # Keep track of how many turns have been in the round
+
         @score[:turns] += 1
         
         print " #{@active_player.name}'s turn. Your selection: "
@@ -102,10 +105,12 @@ class Game
         # Primary game view, updated every round
         @view.game_state(@board, @score)
         # Check for full board
-        @continue_round = false if @board.cats_game?
+        @continue_round = false if @board.is_full?
         # At the end of each turn, swap out active player in preparation for the next turn
         @active_player == @player_one ? @active_player = @player_two : @active_player = @player_one
-      end      
+      end
+
+      @continue_game = false if @score[:rounds_played] > 3      
     end
   end
 
@@ -124,13 +129,14 @@ class GameBoard
   # Output the current board-state to the user. Also accepts a parameter to specify a single
   # row and print that without a line break.
   def print(row = nil)
-    if    row == 1
+    case row
+    when 1
       return "|#{@board[1]}|#{@board[2]}|#{@board[3]}|"
-    elsif row == 2
+    when 2
       return "|#{@board[4]}|#{@board[5]}|#{@board[6]}|"
-    elsif row == 3
+    when 3
       return "|#{@board[7]}|#{@board[8]}|#{@board[9]}|"
-    end  
+    end 
   end
 
   # Handles converting an empty space into a player's marker, if the space is taken
@@ -147,8 +153,8 @@ class GameBoard
     # Check board-state for win
   end
 
-  def cats_game?
-    for i in 1...9
+  def is_full?
+    for i in 1..9
       if @board[i].to_s == "_"
         return false
       end
@@ -162,7 +168,7 @@ class View
 
   # The first thing the user sees
   def main_menu
-    system "clear"
+    #system "clear"
     puts " ...::||| Main Menu |||::..."
     puts ""
     puts "        1) New Game"
@@ -173,7 +179,7 @@ class View
 
   # Main menu error variant
   def invalid_entry
-    system "clear"
+    #system "clear"
     puts " ...::||| Main Menu |||::..."
     puts ""
     puts "        1) New Game"
@@ -184,7 +190,7 @@ class View
 
   # Assigning symbols and taking names
   def player_info(player)
-    system "clear"
+    #system "clear"
     puts " ...::||| Player #{player} |||::..."
     puts ""
     if player == 1
@@ -198,7 +204,7 @@ class View
 
   # This screen runs briefly after the creation of a new game/players
   def instructions
-    system "clear"
+    #system "clear"
     puts " ...::||| Instructions |||::..."
     puts " "
     puts "    Select location with 1-9"
@@ -211,10 +217,10 @@ class View
 
   # This is the primary gameplay screen that updates each turn
   def game_state(board, score)
-    system "clear"
+    #system "clear"
     puts " ...::||| TicTacToe |||::..."
     puts " "
-    puts "        Round #{score[:games_played]}, Turn #{score[:turns]}"
+    puts "        Round #{score[:rounds_played]}, Turn #{score[:turns]}"
     puts "     Board         Score"
     puts ""
     puts "    #{board.print(1)}        P1:  #{score[:p1]}"
