@@ -54,4 +54,4 @@
   
 <h5>Tic Tac Toe</h5>
   
-  Build a console version of the classic game tic-tac-toe using Ruby and Class/Object-Oriented design. My solution can be previewed at: http://goo.gl/u5lwoa
+  Build a console version of the classic game tic-tac-toe using Ruby and Class/Object-Oriented design. My solution can be previewed at: http://goo.gl/Mq2DOz
