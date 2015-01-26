@@ -63,10 +63,9 @@ class Game
       name = gets.chomp
       @player_two = Player.new(:p2, name, "O")
       # Timed countdown to show the instructions for a few seconds
-      for i in 4.downto(1)
-        @view.instructions
-        puts "The game will start in #{i}..."
-        sleep 1; end
+      @view.instructions
+      print "Enter how many rounds to play: "
+      @max_rounds = gets.chomp
       # Setup complete, move to main game loop
       main_loop
     elsif selection == "2"
@@ -142,8 +141,20 @@ class Game
 
       # Increase game count
       @score[:rounds_played] += 1
-      @continue_game = false if @score[:rounds_played] > 10      
+      @continue_game = false if @score[:rounds_played] >= @max_rounds.to_i
+
     end
+
+    game_winner = ".. no one!" # default, used if it's a tie
+    game_winner = @player_one.name if @score[:p1] > @score[:p2]
+    game_winner = @player_two.name if @score[:p2] > @score[:p1]
+    
+    # Show the results
+    @view.final_score(game_winner, @score)  
+    
+    # Return back to the main menu
+    sleep 5
+    main_menu
   end
 
 end
@@ -241,27 +252,40 @@ class View
     system "clear"
     puts " ...::||| Instructions |||::..."
     puts " "
-    puts "    Select location with 1-9"
-    puts ""
-    puts "            |1|2|3|"
-    puts "            |4|5|6|"
-    puts "            |7|8|9|"
+    puts "      Place three of your  "
+    puts "   symbols in a line to win."
+    puts "            "
+    puts "    |1|2|3|     Select boxes    "
+    puts "    |4|5|6|      using 1-9"
+    puts "    |7|8|9|"
     puts ""
   end
 
   # This is the primary gameplay screen that updates each turn
   def game_state(board, score)
     system "clear"
-    puts " ...::||| TicTacToe |||::..."
+    puts " ...::|||  TicTacToe  |||::..."
     puts " "
     puts "        Round #{score[:rounds_played]}, Turn #{score[:turns]}"
-    puts "     Board         Score"
+    puts "      Board         Score"
     puts ""
-    puts "    #{board.print_row(1)}        P1:  #{score[:p1]}"
-    puts "    #{board.print_row(2)}        P2:  #{score[:p2]}"
-    puts "    #{board.print_row(3)}      Draw:  #{score[:drawn]}"
+    puts "     #{board.print_row(1)}        P1:  #{score[:p1]}"
+    puts "     #{board.print_row(2)}        P2:  #{score[:p2]}"
+    puts "     #{board.print_row(3)}      Draw:  #{score[:drawn]}"
     puts ""
-    puts ""
+  end
+
+  # Once the game is complete, a quick readout of the results
+  def final_score(winner, score)
+    system "clear"
+    puts " ...::|||  Game Over  |||::..."
+    puts " "
+    puts "        Best of #{score[:rounds_played]} Rounds"
+    puts "      "
+    puts "         P1:  #{score[:p1]}   P2:  #{score[:p2]}"
+    puts "          Drawn:  #{score[:drawn]}"
+    puts "     "
+    puts "     The winner is #{winner}!"
   end
 
 end
