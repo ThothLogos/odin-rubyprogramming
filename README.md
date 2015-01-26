@@ -49,3 +49,9 @@
   <li>Modify your #my_map method to take a proc instead</li>
   <li>Modify your #my_map method to take either a proc or a block, executing the block only if both are supplied (in which case it would execute both the block AND the proc)</li>
   </ul>
+  
+  <h4>OOP With Ruby - http://www.theodinproject.com/ruby-programming/oop</h4>
+  
+<h5>Tic Tac Toe</h5>
+  
+  Build a console version of the classic game tic-tac-toe using Ruby and Class/Object-Oriented design. My solution can be previewed at: http://goo.gl/u5lwoa
