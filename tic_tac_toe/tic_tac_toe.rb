@@ -18,18 +18,18 @@
 #
 # I decided to separate the structure into four classes:
 #
-# The Game class is the primary loop class, it is the entry point and conductor.
+#  - The Game class is the primary loop class, it is the entry point and conductor.
 # It controls the game-state, loops to progress through turns, and defines the
 # overall program flow. Game score/stats are also tracked here.
 #
-# The GameBoard class contains everything needed to set up the board, keep track
+#  - The GameBoard class contains everything needed to set up the board, keep track
 # of the board-state, place markers on the board, and check itself for a win or
 # a stalemate.
 #
-# The View class mostly holds a bunch of screen output for the user that I did not
+#  - The View class mostly holds a bunch of screen output for the user that I did not
 # want cluttering up the Game class.
 #
-# The Player class keeps track of simple player info, like their name and symbol.
+#  - The Player class keeps track of simple player info, like their name and symbol.
 
 
 class Game
@@ -88,8 +88,6 @@ class Game
       @board = GameBoard.new      
       @continue_round = true
       @score[:turns] = 0
-      # Present initial game state to users
-      @view.game_state(@board, @score)
 
       # Begin round, continues until the current board is won or drawn
       while @continue_round
@@ -120,8 +118,8 @@ class Game
         @view.game_state(@board, @score)
 
         # Check for winner as soon as it becomes possible
-        if @score[:turns] > 4
-          if @board.check_winner == @active_player.marker
+        if @score[:turns] > 3
+          if @board.check_winner == @player_one.marker || @board.check_winner == @player_two.marker
             @score[@active_player.id] += 1
             @continue_round = false
             puts "         #{@active_player.name} Wins!"
@@ -188,23 +186,22 @@ class GameBoard
 
   def check_winner(winner = nil)
     # Check rows
-    1..9.step(3) do |i|
+    (1..9).step(3) do |i|
       if @board[i] == @board[i+1] && @board[i] == @board[i+2]
-        winner = @board[i]; end; end
+        return winner = @board[i]; end; end
 
     # Check columns
     for i in 1..3
       if @board[i] == @board[i+3] && @board[i] == @board[i+6]
-        winner = @board[i]; end; end
+        return winner = @board[i]; end; end
 
     # Check top left - bottom right diag
     if @board[1] == @board[5] && @board[1] == @board[9]
-      winner = @board[1]; end
+      return winner = @board[1]; end
 
     # Check top right - bottom left diag
     if @board[3] == @board[5] && @board[3] == @board[7]
-      winner = @board[3]; end
-    return winner
+      return winner = @board[3]; end
   end
 
 end
