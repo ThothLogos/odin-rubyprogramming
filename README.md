@@ -55,3 +55,7 @@
 <h5>Tic Tac Toe</h5>
   
   Build a console version of the classic game tic-tac-toe using Ruby and Class/Object-Oriented design. My solution can be previewed at: http://runnable.com/VMa_BOd2DOlKjbrq/odin-ruby-tictactoe
+
+<h5>Mastermind</h5>
+  
+  Implement a console version of the 1970 board game "Mastermind" in using Ruby and OOP. This solution is still a work in progress but can be previewed at: http://runnable.com/VMdPpf-Mig8vm1fi/%5Bwip%5D-the-odin-project-section-3-ruby-programming-mastermind
