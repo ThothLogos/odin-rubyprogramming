@@ -22,7 +22,7 @@ class Game
     main_menu if menu_choice == "1"
     main_menu if menu_choice == "2"
     @view.how_to_play if menu_choice == "3"
-    @view.credits if menu_choice == "4"
+    @view.about if menu_choice == "4"
     abort("Thanks for playing!") if menu_choice == "5"
     main_menu if menu_choice == "\n" || menu_choice != nil
   end
@@ -36,7 +36,7 @@ class View
   def intro_splash
     puts "\e[H\e[2J"
     puts " _____________________________________________________________________________"
-    puts "/                                                                             \\"
+    puts "|                                                                             |"
     puts "|      __________________                                                     |"
     puts "|     /\\  ______________ \\                                                    |"
     puts "|    /::\\ \\ZZZZZZZZZZZZ/\\ \\                                                   |"
@@ -50,20 +50,20 @@ class View
     puts "|   \\:\\ \\     \\:\\_________________\\                                           |"
     puts "|    \\:\\ \\    /:/ZZZZZZZZZZZZZZZZZ/                                           |"
     puts "|     \\:\\ \\  /:/Z/    \\:\\ \\  /:/Z/                                            |"
-    puts "|      \\:\\ \\/:/Z/      \\:\\ \\/:/Z/                                             |"
+    puts "|      \\:\\ \\/:/Z/      \\:\\ \\/:/Z/             Press Enter to Begin...         |"
     puts "|       \\:\\/:/Z/________\\;\\/:/Z/                                              |"
     puts "|        \\::/Z/____________\\/Z/                                               |"
     puts "|         \\/ZZZZZZZZZZZZZZZZZ/                                                |"
-    puts "|                                            Press Enter to Begin...          |"
     puts "|                                                                             |"
     puts "|                                                                             |"
-    puts "\\___2015_ThothLogos___________________________________________________________/"
+    puts "|                                                                             |"
+    puts "|___________________________________________________________2015_ThothLogos___|"
   end
 
   def main_menu
     puts "\e[H\e[2J"
     puts " _____________________________________________________________________________"
-    puts "/                                                                             \\"
+    puts "|                                                                             |"
     puts "|                                                                             |"
     puts "|                              ___                                            |"
     puts "|  |\\/|  /\\  | |\\ |      |\\/| |__  |\\ | |  |                                  |"
@@ -77,21 +77,21 @@ class View
     puts "|                                         `:\\ M  i         `.            `+.  |"
     puts "|             3. How to Play                `:. A  n  m      `.  __.===::::;) |"
     puts "|                                     r   a   `: e       ___.__>'::::::a:f/'  |"
-    puts "|               4. Credits       t          D   `.  _,===:::=-'-=-\"\"\"''       |"
+    puts "|                4. About        t          D   `.  _,===:::=-'-=-\"\"\"''       |"
     puts "|                                                 ''                          |"
     puts "|                                                                             |"
     puts "|                5. Quit                                                      |"
     puts "|                                                                             |"
     puts "|                                                                             |"
     puts "|                                                                             |"
-    puts "\\_____________________________________________________________________________/"
+    puts "|___________________________________________________________2015_ThothLogos___|"
     print "  Please enter your choice: "
   end
 
   def how_to_play
     puts "\e[H\e[2J"
     puts " _____________________________________________________________________________"
-    puts "/                                                                             \\"
+    puts "|                                                                             |"
     puts "|                     __  ___  __        __  ___    __        __              |"
     puts "|             | |\\ | /__`  |  |__) |  | /  `  |  | /  \\ |\\ | /__`             |"
     puts "|             | | \\| .__/  |  |  \\ \\__/ \\__,  |  | \\__/ | \\| .__/             |"
@@ -112,7 +112,7 @@ class View
     puts "|                                                                             |"
     puts "|                                                                             |"
     puts "|                                                                             |"
-    puts "\\_____________________________________________________________________________/"
+    puts "|___________________________________________________________2015_ThothLogos___|"
     print "  Press enter to return to the Main Menu..."
     gets
   end
@@ -120,7 +120,7 @@ class View
   def game_win
     puts "\e[H\e[2J"
     puts " _____________________________________________________________________________"
-    puts "/            .__---~~~(~~-_.                                                  \\"
+    puts "|            .__---~~~(~~-_.                                                  |"
     puts "|         _-'  ) -~~- ) _-\" )_                                                |"
     puts "|        (  ( `-,_..`.,_--_ '_,)_                                             |"
     puts "|       (  -_)  ( -_-~  -_ `,    )                                            |"
@@ -141,7 +141,7 @@ class View
     puts "|                                                                             |"
     puts "|                                                                             |"
     puts "|                                                                             |"
-    puts "\\_____________________________________________________________________________/"
+    puts "|___________________________________________________________2015_ThothLogos___|"
     print "  Congratulations! Would you like to play again? (y/n) "
     if gets == "y" || gets == "Y" || gets = "yes" || gets = "Yes" || gets = "YES"
       main_menu
@@ -174,7 +174,7 @@ class View
     puts "|                                                                             |"
     puts "|                                                                             |"
     puts "|                                                                             |"
-    puts "\\_____________________________________________________________________________/"
+    puts "|___________________________________________________________2015_ThothLogos___|"
     print "  Perhaps next time. Would you like to play again? (y/n) "
     if gets == "y" || gets == "Y" || gets = "yes" || gets = "Yes" || gets = "YES"
       main_menu
@@ -182,18 +182,18 @@ class View
       abort("Thanks for playing!"); end
   end
 
-  def credits
+  def about
     puts "\e[H\e[2J"
     puts " _____________________________________________________________________________"
-    puts "/                                                                             \\"
-    puts "|                        __   __   ___  __    ___  __                         |"
-    puts "|                       /  ` |__) |__  |  \\ |  |  /__`                        |"
-    puts "|                       \\__, |  \\ |___ |__/ |  |  .__/                        |"
     puts "|                                                                             |"
+    puts "|           __   __       ___    ___         __       __              ___     |"
+    puts "|      /\\  |__) /  \\ |  |  |      |  |__| | /__`     / _`  /\\   |\\/| |__      |"
+    puts "|     /~~\\ |__) \\__/ \\__/  |      |  |  | | .__/     \\__> /~~\\  |  | |___     |"
     puts "|                                                                             |"
-    puts "|                   All code and design done by ThothLogos.                   |"
+    puts "|   All code and design/implementation done by ThothLogos. Project sourced    |"
+    puts "|      from The Odin Project collaborate development training community.      |"
     puts "|                                                                             |"
-    puts "|                               ASCII Artwork                                 |"
+    puts "|                        --==|| ASCII Artwork ||==--                          |"
     puts "|                                                                             |"
     puts "|                            Isometric Box - itz                              |"
     puts "|                             Flying Brain - mn                               |"
@@ -206,7 +206,7 @@ class View
     puts "|                                                                             |"
     puts "|                       Anthony F & Josh K for testing!                       |"
     puts "|                                                                             |"
-    puts "\\___2015_ThothLogos___________________________________________________________/"
+    puts "|___________________________________________________________2015_ThothLogos___|"
     print "  Press enter to return to the Main Menu..."
     gets
   end
