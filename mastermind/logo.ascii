@@ -14,62 +14,114 @@
 |    \:\ \    /:/ZZZZZZZZZZZZZZZZZ/                                           |
 |     \:\ \  /:/Z/    \:\ \  /:/Z/                                            |
 |      \:\ \/:/Z/      \:\ \/:/Z/                                             |
-|       \:\/:/Z/________\;\/:/Z/                                              |
+|       \:\/:/Z/________\;\/:/Z/            Press any key to begin...         |
 |        \::/Z/____________\/Z/                                               |
 |         \/ZZZZZZZZZZZZZZZZZ/                                                |
-|                                            Press Enter to Begin...          |
+|                                                                             |
 |                                                                             |
 |                                                                             |
 |___2015_ThothLogos___________________________________________________________|
 
  _____________________________________________________________________________
 |                                                                             |
-|                                                                             |
-|                              ___                                            |
-|  |\/|  /\  | |\ |      |\/| |__  |\ | |  |                                  |
-|  |  | /~~\ | | \|      |  | |___ | \| \__/                                  |
-|                                                            _.               |
-|                                                   _.-----'' `\              |
-|                                       __..-----'''            `.            |
-|           1. One Player v CPU        <            `\.           '\          |
-|                                      :.              `.           `\        |
-|              2. Two Player            `:.              `.           `-.     |
-|                                         `:\ M  i         `.            `+.  |
-|             3. How to Play                `:. A  n  m      `.  __.===::::;) |
-|                                     r   a   `: e       ___.__>'::::::a:f/'  |
-|               4. Credits       t          D   `.  _,===:::=-'-=-"""''       |
-|                                   j  s         '-/:::''                     | |                                                 ''                          |
-|                                                                             |
-|                5. Quit                                                      |
+|                          __  ___  ___  __                __                 |
+|               |\/|  /\  /__`  |  |__  |__)  |\/| | |\ | |  \                |
+|               |  | /~~\ .__/  |  |___ |  \  |  | | | \| |__/                |
 |                                                                             |
 |                                                                             |
+|      --||  Choose Game Mode ||--                                            |
+|                                                              _.             |
+|                                                     _.-----'' `\            |
+|   1. Player Breaker v CPU Mastermind    __..-----'''            `.          |
+|                                       <            `\.           '\         |
+|   2. CPU Breaker v Player Mastermind  :.              `.           `\       |
+|                                        `:.              `.           `-.    |
+|   3. Player v Player                     `:\ M  i         `.            `+. |
+|                                            `:. A  n  m      `.  __.===::::;)|
+|   4. How to Play                     r   a   `: e       ___.__>'::::::a:f/' |
+|                                 t          D   `.  _,===:::=-'-=-"""''      |
+|   5. About                         j  s         '-/:::''                    |
+|                                                  ''                         |
+|   X. Quit                                                                   |
 |                                                                             |
-|_____________________________________________________________________________|
+|___________________________________________________________2015_ThothLogos___|
 
+## IDEA: Redo letters coming off pages to swirl down into 2015 ThothLogos
 
  _____________________________________________________________________________
 |                                                                             |
-|                     __  ___  __        __  ___    __        __              |
-|             | |\ | /__`  |  |__) |  | /  `  |  | /  \ |\ | /__`             |
-|             | | \| .__/  |  |  \ \__/ \__,  |  | \__/ | \| .__/             |
+|                     __          ___  __      __                             |
+|               |__| /  \ |  |     |  /  \    |__) |     /\  \ /              |
+|               |  | \__/ |/\|     |  \__/    |    |___ /~~\  |               |
 |                                                                             |
-|         _________                                                           |
-|       1 |_|_|_|_|                                                           |
-|       2 |_|_|_|_|                                                           |
-|       3 |_|_|_|_|                                                           |
-|       4 |_|_|_|_|                                                           |
-|       5 |_|_|_|_|                                                           |
-|       6 |_|_|_|_|                                                           |
-|       7 |_|_|_|_|                                                           |
-|       8 |_|_|_|_|                                                           |
-|       9 |_|_|_|_|                                                           |
-|      10 |_|_|_|_|                                                           |
-|      11 |_|_|_|_|                                                           |
-|      12 |_|_|_|_|                                                           |
-|                                                                             |
-|                                                                             |
-|                                                                             |
+|  Turn  Guesses  Feedback                                                    |
+|       _________             As the Breaker you have 12 turns to correctly   |
+|    1  |1|2|3|4|  !*       guess a secret 4-digit code of the Maker. Only    |
+|    2  |1|3|5|6|  !*       numbers 1-6 are valid, duplicates are ok. At the  |
+|    3  |1|4|1|2|  *        end of each turn you will be given feedback to    |
+|    4  |2|3|4|6|  !!*      adjust your next attempt.                         |
+|    5  |2|3|3|4|  !!                                                         |
+|    6  |2|3|6|4|  !!*        As the Maker you will attempt to stump the CPU  |
+|    7  |3|3|4|4|  !!!      or a friend with a secret 4-digit code. Only use  |
+|    8  |4|3|4|4|  !!!      numbers 1-6, duplicates are ok.                   |
+|    9  |5|3|4|4|  !!!                                                        |
+|   10  |6|3|4|4|  Win!               --||  Feedback Symbols  ||--            |
+|   11  | | | | |                                                             |
+|   12  |_|_|_|_|            ! = A number is correct and correctly placed     |
+|                           * = A number is correct but not correctly placed  |
+|  Code: 6 3 4 4 (Hidden)                                                     |
 |_____________________________________________________________________________|
+                                      As the Code-Breaker                  
+                                                                           
+                      You have 12 turns to correctly guess a secret 4-digit
+                    code of the Maker. The only numbers allowed in the code
+                    are 1-6. At the end of each turn you will be told how  
+                    many digits are correct in both number and position and
+                    how many numbers are correct but out of position.      
+                                                                           
+                                       As the Code-Maker                   
+                    
+                      You will attempt to select a 4-digit code that cannot
+                    be deduced by the Breaker! See if you can stump the CPU
+                    player - or a friend!
+
+                                            As the Code-Breaker             
+
+                              You have 12 turns to correctly guess a secret
+                              4-digit code of the Maker's chosing. The only
+                              numbers allowed are 1-6. At the end of each
+                              turn you will be given some feedback to adjust
+                              your next guess.
+
+                                            As the Code-Maker
+
+                              You will attempt to stump the CPU or a friend
+                              by choosing a 4-digit code that that cannot be
+                              broken! Use only numbers 1-6, duplicates ok.
+
+                                            Feedback Symbols
+
+                              ! = a number is correct, and correctly placed
+                              * = a number is correct, not correctly placed
+
+
+                                As the Breaker you have 12 turns to correctly 
+                              guess a secret 4-digit code of the Maker. Only  
+                              numbers 1-6 are valid, duplicates are ok. At the
+                              end of each turn you will be given feedback to  
+                              adjust your next attempt.                       
+
+                                As the Maker you will attempt to stump the CPU
+                              or a friend with a secret 4-digit code. Only use
+                              numbers 1-6, duplicates are ok.                 
+
+                                              Feedback Symbols                
+                                                                              
+                               ! = a number is correct and correctly placed  
+                               * = a number is correct, not correctly placed  
+
+
+
 
 
  _____________________________________________________________________________
@@ -187,6 +239,11 @@ ___                      __     ___  __
  |  \__/ \__/    |  | /~~\  \/  |___    |    /~~\ | |___ |___ |__/ 
  
 
+      __          ___  __      __                
+|__| /  \ |  |     |  /  \    |__) |     /\  \ / 
+|  | \__/ |/\|     |  \__/    |    |___ /~~\  |  
+                                                 
+
                           __..--.._
   .....              .--~  .....  `.
 .":    "`-..  .    .' ..-'"    :". `
@@ -283,4 +340,4 @@ ___                      __     ___  __
 |                                                                             |
 |                                                                             |
 |                                                                             |
-\_____________________________________________________________________________/                           
+\_____________________________________________________________________________/
