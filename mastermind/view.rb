@@ -86,7 +86,7 @@ class View
     gets
   end
 
-  def game_state(attempts = nil, hits = nil, turn = 1)
+  def game_state(attempts = nil, hits = nil, turn = 1, code = ["?","?","?","?"])
     sleep 0.1
     puts "\e[H\e[2J"
     puts " _____________________________________________________________________________"
@@ -97,22 +97,22 @@ class View
     puts "|   )   ,----------------------------.       ,-----------------------.    (   |"
     puts "| ,'   /                     Hits     \\_____/    Code-Maker's Code    \\.   `. |"
     puts "|(    (\\       ,_______.              / )-(/      ___ ___ ___ ___      \\)    )|"
-    puts "| `.   /    1  |#{attempts[1][0]}|#{attempts[1][1]}|#{attempts[1][2]}|#{attempts[1][3]}|   #{hits[1]}    }'   \\     | ? | ? | ? | ? |     /   .' |"
-    puts "|   )  >    2  |#{attempts[2][0]}|#{attempts[2][1]}|#{attempts[2][2]}|#{attempts[2][3]}|   #{hits[2]}    \\     \\    `---'---'---'---'    /   (   |"
-    puts "| ,'   }    3  |#{attempts[3][0]}|#{attempts[3][1]}|#{attempts[3][2]}|#{attempts[3][3]}|   #{hits[3]}    }.   ,'`>---------------------<' .   `. |"
+    puts "| `.   /    1  |#{attempts[1][0]}|#{attempts[1][1]}|#{attempts[1][2]}|#{attempts[1][3]}|   #{hits[1][0]} #{hits[1][1]} #{hits[1][2]} #{hits[1][3]}    }'   \\     | #{code[0]} | #{code[1]} | #{code[2]} | #{code[3]} |     /   .' |"
+    puts "|   )  >    2  |#{attempts[2][0]}|#{attempts[2][1]}|#{attempts[2][2]}|#{attempts[2][3]}|   #{hits[2][0]} #{hits[2][1]} #{hits[2][2]} #{hits[1][3]}    \\     \\    `---'---'---'---'    /   (   |"
+    puts "| ,'   }    3  |#{attempts[3][0]}|#{attempts[3][1]}|#{attempts[3][2]}|#{attempts[3][3]}|   #{hits[3][0]} #{hits[3][1]} #{hits[3][2]} #{hits[1][3]}    }.   ,'`>---------------------<' .   `. |"
     if turn > 3
-      puts "|(    (|    4  |#{attempts[4][0]}|#{attempts[4][1]}|#{attempts[4][2]}|#{attempts[4][3]}|   #{hits[4]}    \\ )-(  /  Turns Remaining: #{13-turn}   \\  )    )|"
+      puts "|(    (|    4  |#{attempts[4][0]}|#{attempts[4][1]}|#{attempts[4][2]}|#{attempts[4][3]}|   #{hits[4][0]} #{hits[4][1]} #{hits[4][2]} #{hits[1][3]}    \\ )-(  /  Turns Remaining: #{13-turn}   \\  )    )|"
     else
-      puts "|(    (|    4  |#{attempts[4][0]}|#{attempts[4][1]}|#{attempts[4][2]}|#{attempts[4][3]}|   #{hits[4]}    \\ )-(  /  Turns Remaining: #{13-turn}  \\  )    )|"
+      puts "|(    (|    4  |#{attempts[4][0]}|#{attempts[4][1]}|#{attempts[4][2]}|#{attempts[4][3]}|   #{hits[4][0]} #{hits[4][1]} #{hits[4][2]} #{hits[1][3]}    \\ )-(  /  Turns Remaining: #{13-turn}  \\  )    )|"
     end
-    puts "| `.   \\    5  |#{attempts[5][0]}|#{attempts[5][1]}|#{attempts[5][2]}|#{attempts[5][3]}|   #{hits[5]}    /'   `.`-----------------------' '   .' |"
-    puts "|   )  /    6  |#{attempts[6][0]}|#{attempts[6][1]}|#{attempts[6][2]}|#{attempts[6][3]}|   #{hits[6]}    \\      X       X       X       X    (   |"
-    puts "| ,'   }    7  |#{attempts[7][0]}|#{attempts[7][1]}|#{attempts[7][2]}|#{attempts[7][3]}|   #{hits[7]}    {.   ,' `.   ,' `.   ,' `.   ,' `.   `. |"
-    puts "|(    (\\    8  |#{attempts[8][0]}|#{attempts[8][1]}|#{attempts[8][2]}|#{attempts[8][3]}|   #{hits[8]}    < )-(  ,-----------------------.  )    )|"
-    puts "| `.   /    9  |#{attempts[9][0]}|#{attempts[9][1]}|#{attempts[9][2]}|#{attempts[9][3]}|   #{hits[9]}    \\'   `/    Waiting for Player   \\'   .' |"
-    puts "|   )  }   10  |#{attempts[10][0]}|#{attempts[10][1]}|#{attempts[10][2]}|#{attempts[10][3]}|   #{hits[10]}    /     }                         {   (   |"
-    puts "| ,'   \\   11  |#{attempts[11][0]}|#{attempts[11][1]}|#{attempts[11][2]}|#{attempts[11][3]}|   #{hits[11]}    {.   .\\    Enter 'X' to Quit    /.   `. |"
-    puts "|(    '}   12  |#{attempts[12][0]}|#{attempts[12][1]}|#{attempts[12][2]}|#{attempts[12][3]}|   #{hits[12]}    \\ `-'  `-----------------------'  `    )|"
+    puts "| `.   \\    5  |#{attempts[5][0]}|#{attempts[5][1]}|#{attempts[5][2]}|#{attempts[5][3]}|   #{hits[5][0]} #{hits[5][1]} #{hits[5][2]} #{hits[1][3]}    /'   `.`-----------------------' '   .' |"
+    puts "|   )  /    6  |#{attempts[6][0]}|#{attempts[6][1]}|#{attempts[6][2]}|#{attempts[6][3]}|   #{hits[6][0]} #{hits[6][1]} #{hits[6][2]} #{hits[1][3]}    \\      X       X       X       X    (   |"
+    puts "| ,'   }    7  |#{attempts[7][0]}|#{attempts[7][1]}|#{attempts[7][2]}|#{attempts[7][3]}|   #{hits[7][0]} #{hits[7][1]} #{hits[7][2]} #{hits[1][3]}    {.   ,' `.   ,' `.   ,' `.   ,' `.   `. |"
+    puts "|(    (\\    8  |#{attempts[8][0]}|#{attempts[8][1]}|#{attempts[8][2]}|#{attempts[8][3]}|   #{hits[8][0]} #{hits[8][1]} #{hits[8][2]} #{hits[1][3]}    < )-(  ,-----------------------.  )    )|"
+    puts "| `.   /    9  |#{attempts[9][0]}|#{attempts[9][1]}|#{attempts[9][2]}|#{attempts[9][3]}|   #{hits[9][0]} #{hits[9][1]} #{hits[9][2]} #{hits[1][3]}    \\'   `/    Waiting for Player   \\'   .' |"
+    puts "|   )  }   10  |#{attempts[10][0]}|#{attempts[10][1]}|#{attempts[10][2]}|#{attempts[10][3]}|   #{hits[10][0]} #{hits[10][1]} #{hits[10][2]} #{hits[1][3]}    /     }                         {   (   |"
+    puts "| ,'   \\   11  |#{attempts[11][0]}|#{attempts[11][1]}|#{attempts[11][2]}|#{attempts[11][3]}|   #{hits[11][0]} #{hits[11][1]} #{hits[11][2]} #{hits[1][3]}    {.   .\\    Enter 'X' to Quit    /.   `. |"
+    puts "|(    '}   12  |#{attempts[12][0]}|#{attempts[12][1]}|#{attempts[12][2]}|#{attempts[12][3]}|   #{hits[12][0]} #{hits[12][1]} #{hits[12][2]} #{hits[1][3]}    \\ `-'  `-----------------------'  `    )|"
     puts "| `.   \\                              /.   .' `.   .' `.   .' `.   .' `.   .' |"
     puts "|   `-' `----------------------------' ` -'     `-'     `-'     `-'     `-'   |"
     puts "|___________________________________________________________2015_ThothLogos___|"
