@@ -13,7 +13,6 @@ class Game
   def initialize
     @turn = 1
     @new_game = true
-    @data = GameData.new
     @ai = MastermindAI.new
     @view = View.new
     @view.intro_splash_animate
@@ -22,6 +21,7 @@ class Game
   end
 
   def main_menu
+    @new_game = true
     @view.main_menu_animate
     menu_choice = gets.chomp
 
@@ -36,13 +36,17 @@ class Game
 
   def game_loop
     
-    if @new_game
+    if @new_game == true
+      @turn = 1  
+      @continue = true
+      @data = GameData.new
       @code = @ai.generate_code
       @view.game_state_animation
+      
     end
 
     @new_game = false
-    @continue = true
+    
 
     while @continue == true
 
@@ -51,7 +55,10 @@ class Game
         @view.game_state(@data.attempts, @data.hits, @turn, @code) 
         print " Enter your potential solution to break the code: "
         input = gets.chomp
-        if input.length > 4 || input.length < 4
+        if input == "x" || input == "X"
+          @continue = false
+          main_menu
+        elsif input.length > 4 || input.length < 4
           puts " Enter in the format 1234 - four digits, no spaces."
           sleep 1
           next
@@ -86,12 +93,25 @@ class Game
       hits = @data.check_hits(@code, break_attempt)
       @data.store_hits(@turn, hits)
       
-      @view.game_win if hits == ["!","!","!","!"]
-    
-      @turn = @turn + 1
-      if @turn > 12
+      if hits == ["!","!","!","!"]
         @continue = false
-        @view.game_loss; end
+        @view.game_win
+      elsif @turn >= 12
+        @continue = false
+        @view.game_loss
+      end
+
+      if !@continue
+        input = gets.chomp
+        if input == "y" || input == "Y" || input == "yes" || input == "Yes" || input == "YES"
+          @new_game = true
+          main_menu
+        else
+          abort("Thanks for playing!"); end
+      end
+          
+      @turn = @turn + 1
+
     end
   end
 

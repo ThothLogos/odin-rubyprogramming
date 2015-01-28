@@ -145,11 +145,6 @@ class View
     puts "|                                                                             |"
     puts "|___________________________________________________________2015_ThothLogos___|"
     print " Congratulations! Would you like to play again? (y/n) "
-    input = gets.chomp
-    if input == "y" || input == "Y" || input == "yes" || input == "Yes" || input == "YES"
-      main_menu
-    else
-      abort("Thanks for playing!"); end
   end
 
 
@@ -179,11 +174,6 @@ class View
     puts "|                                                                             |"
     puts "|___________________________________________________________2015_ThothLogos___|"
     print " Perhaps next time. Would you like to play again? (y/n) "
-    input = gets.chomp
-    if input == "y" || input == "Y" || input == "yes" || input == "Yes" || input == "YES"
-      main_menu
-    else
-      abort("Thanks for playing!"); end
   end
 
   def about
@@ -1543,7 +1533,7 @@ class View
   end
 
   def game_state_animation
-    12.times do
+    10.times do
       array_of_randoms = []
       4.times do
         array_of_randoms << 1 + rand(6)        

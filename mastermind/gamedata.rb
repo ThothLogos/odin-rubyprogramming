@@ -51,19 +51,15 @@ class GameData
           instances_attempt = attempt.count(attempt[i])
           instances_code = code.count(attempt[i])
           instances_attempt > instances_code ? max_instances = instances_code : max_instances = instances_attempt
-          if credited.include?(attempt[i])
-            puts "already credited #{i}, #{j}: #{code[j]}"
-          else
+          if !credited.include?(attempt[i])
             max_instances.times do
               star +=1; end
             credited << attempt[i]; end
         end
       end
     end
-    puts "Bangs found: #{bang}"
-    puts "Stars found: #{star}"
+
     star -= bang
-    puts "Stars mod: #{star}"
     
     i = 0
     if bang > 0
@@ -77,9 +73,6 @@ class GameData
         hits[i] = "*"
         i += 1; end
     end
-
-    puts "Hits: #{hits}"
-    gets
 
     return hits
 
