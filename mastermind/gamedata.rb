@@ -64,7 +64,6 @@ class GameData
     puts "Stars found: #{star}"
     star -= bang
     puts "Stars mod: #{star}"
-    gets
     
     i = 0
     if bang > 0
@@ -73,15 +72,13 @@ class GameData
         i += 1; end
     end
 
-    puts "Hits so far: #{hits}"
-
     if star > 0
       for p in 1..star
         hits[i] = "*"
         i += 1; end
     end
 
-    puts "Hits so far: #{hits}"
+    puts "Hits: #{hits}"
     gets
 
     return hits

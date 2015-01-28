@@ -85,10 +85,13 @@ class Game
       @data.store_attempt(@turn, break_attempt)
       hits = @data.check_hits(@code, break_attempt)
       @data.store_hits(@turn, hits)
-
+      
+      @view.game_win if hits == ["!","!","!","!"]
+    
       @turn = @turn + 1
       if @turn > 12
-        @continue = false; end
+        @continue = false
+        @view.game_loss; end
     end
   end
 
