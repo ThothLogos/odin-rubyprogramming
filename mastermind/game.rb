@@ -21,7 +21,6 @@ class Game
     main_menu
   end
 
-
   def main_menu
     @view.main_menu_animate
     menu_choice = gets.chomp
@@ -34,7 +33,6 @@ class Game
     abort("Thanks for playing!") if menu_choice == "X" || menu_choice == "x"
     main_menu if menu_choice == "\n" || menu_choice != nil
   end
-
 
   def game_loop
     
@@ -50,7 +48,7 @@ class Game
 
       valid = false
       until valid 
-        @view.game_state(@data.attempts, @data.hits, @turn) 
+        @view.game_state(@data.attempts, @data.hits, @turn, @code) 
         print " Enter your potential solution to break the code: "
         input = gets.chomp
         if input.length > 4 || input.length < 4
@@ -74,8 +72,9 @@ class Game
         input.each_char do |c|
           break_attempt << c; end
 
-        if @data.duplicate?(break_attempt)
+        if @data.duplicate?(break_attempt) == true
           puts " You've used this exact combination before, try something else."
+          sleep 1
           game_loop
         else
           valid = true
