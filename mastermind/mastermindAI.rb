@@ -1,8 +1,5 @@
 # The Odin Porject - Section 3: Ruby Programming
-# Project OOP With Ruby, No. 1 Tic Tac Toe
-#
-# NOTE: Heavy use of comments intended for fellow students of The Odin
-# Project who may be seeking insight into another's thought process.
+# Project OOP With Ruby, No. 2 Mastermind - by ThothLogos
 
 class MastermindAI
 

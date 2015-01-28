@@ -1,3 +1,6 @@
+# The Odin Porject - Section 3: Ruby Programming
+# Project OOP With Ruby, No. 2 Mastermind - by ThothLogos
+
 class View
 
   def intro_splash
@@ -40,9 +43,9 @@ class View
     puts "|      --||  Choose Game Mode ||--                                            |"
     puts "|                                                              _.             |"
     puts "|                                                     _.-----'' `\\            |"
-    puts "|   1. Player Breaker v CPU Mastermind    __..-----'''        5   `.          |"
+    puts "|   1. Player Breaker v CPU Maker         __..-----'''        5   `.          |"
     puts "|                                       <            `\\.  1        '\\         |"
-    puts "|   2. CPU Breaker v Player Codemaker   :.     2   0    `.  L    g  o`\\       |"
+    puts "|   2. CPU Breaker v Player Maker       :.     2   0    `.  L    g  o`\\       |"
     puts "|                                        `:.         o  t `.   o      s`-.    |"
     puts "|   3. Player v Player                     `:.  T  h      h `.            `+. |"
     puts "|                                            `:.              `.  __.===::::;)|"

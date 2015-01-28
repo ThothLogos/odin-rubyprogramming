@@ -1,3 +1,6 @@
+# The Odin Porject - Section 3: Ruby Programming
+# Project OOP With Ruby, No. 2 Mastermind - by ThothLogos
+
 class GameData
 
 
@@ -32,26 +35,30 @@ class GameData
 
     hits = [" ", " ", " ", " "]
     
+    # Check for exact match right away
     return ["!", "!", "!", "!"] if code == attempt
     
-    instances_attempt = 0
-    instances_code = 0
-    max_instances = 0
+    # Temp array which will hold numbers we've already counted, to ensure
+    # hits are exclusive
     credited = []
 
+    # Count up the exact matches of a number being in the correct spot, represented by !
     bang = 0  
     for i in 0..3
       bang += 1 if code[i] == attempt[i]; end
 
+    # After the bangs, count the stars - this one is a bit trickier to implement
     star = 0
     for i in 0..3
       for j in 0..3
+        # Check each digit of Breaker's attempt against every digit in the code
         if attempt[i] == code[j]
-          # Maximum number of hits possible constrained by actual duplicates
-          instances_attempt = attempt.count(attempt[i])
-          instances_code = code.count(attempt[i])
+          instances_attempt = attempt.count(attempt[i]) # Count up instances in Breaker's code
+          instances_code = code.count(attempt[i]) # Count up instances in the Maker's code
+          # Use the lesser of the two - can't count more than we actually have!
           instances_attempt > instances_code ? max_instances = instances_code : max_instances = instances_attempt
-          if !credited.include?(attempt[i])
+          # As long as this digit hasn't already been 
+          if !credited.include?(attempt[i]) && credited.count(attempt[i]) < max_instances
             max_instances.times do
               star +=1; end
             credited << attempt[i]; end
