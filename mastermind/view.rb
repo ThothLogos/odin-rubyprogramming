@@ -53,7 +53,7 @@ class View
     puts "|   X. Quit                                                                   |"
     puts "|                                                                             |"
     puts "|_____________________________________________________________________________|"
-    print "  Please enter your choice: "
+    print " Please enter your choice: "
   end
 
   def how_to_play
@@ -82,11 +82,11 @@ class View
     puts "|                           * = A number is correct but not correctly placed  |"
     puts "|  Code: 6 3 4 4 (Hidden)                                                     |"
     puts "|_____________________________________________________________________________|"
-    print "  Press enter to return to the Main Menu..."
+    print " Press enter to return to the Main Menu..."
     gets
   end
 
-  def game_state(board = nil, turn = 1)
+  def game_state(attempts = nil, hits = nil, turn = 1)
     sleep 0.1
     puts "\e[H\e[2J"
     puts " _____________________________________________________________________________"
@@ -97,22 +97,22 @@ class View
     puts "|   )   ,----------------------------.       ,-----------------------.    (   |"
     puts "| ,'   /                     Hits     \\_____/    Code-Maker's Code    \\.   `. |"
     puts "|(    (\\       ,_______.              / )-(/      ___ ___ ___ ___      \\)    )|"
-    puts "| `.   /    1  | | | | |   ! ! * *    }'   \\     | ? | ? | ? | ? |     /   .' |"
-    puts "|   )  >    2  | | | | |              \\     \\    `---'---'---'---'    /   (   |"
-    puts "| ,'   }    3  | | | | |              }.   ,'`>---------------------<' .   `. |"
+    puts "| `.   /    1  |#{attempts[1][0]}|#{attempts[1][1]}|#{attempts[1][2]}|#{attempts[1][3]}|   #{hits[1]}    }'   \\     | ? | ? | ? | ? |     /   .' |"
+    puts "|   )  >    2  |#{attempts[2][0]}|#{attempts[2][1]}|#{attempts[2][2]}|#{attempts[2][3]}|   #{hits[2]}    \\     \\    `---'---'---'---'    /   (   |"
+    puts "| ,'   }    3  |#{attempts[3][0]}|#{attempts[3][1]}|#{attempts[3][2]}|#{attempts[3][3]}|   #{hits[3]}    }.   ,'`>---------------------<' .   `. |"
     if turn > 3
-      puts "|(    (|    4  | | | | |              \\ )-(  /  Turns Remaining: #{13-turn}   \\  )    )|"
+      puts "|(    (|    4  |#{attempts[4][0]}|#{attempts[4][1]}|#{attempts[4][2]}|#{attempts[4][3]}|   #{hits[4]}    \\ )-(  /  Turns Remaining: #{13-turn}   \\  )    )|"
     else
-      puts "|(    (|    4  | | | | |              \\ )-(  /  Turns Remaining: #{13-turn}  \\  )    )|"
+      puts "|(    (|    4  |#{attempts[4][0]}|#{attempts[4][1]}|#{attempts[4][2]}|#{attempts[4][3]}|   #{hits[4]}    \\ )-(  /  Turns Remaining: #{13-turn}  \\  )    )|"
     end
-    puts "| `.   \\    5  | | | | |              /'   `.`-----------------------' '   .' |"
-    puts "|   )  /    6  | | | | |              \\      X       X       X       X    (   |"
-    puts "| ,'   }    7  | | | | |              {.   ,' `.   ,' `.   ,' `.   ,' `.   `. |"
-    puts "|(    (\\    8  | | | | |              < )-(  ,-----------------------.  )    )|"
-    puts "| `.   /    9  | | | | |              \\'   `/    Waiting for Player   \\'   .' |"
-    puts "|   )  }   10  | | | | |              /     }                         {   (   |"
-    puts "| ,'   \\   11  | | | | |              {.   .\\    Enter 'X' to Quit    /.   `. |"
-    puts "|(    '}   12  |_|_|_|_|              \\ `-'  `-----------------------'  `    )|"
+    puts "| `.   \\    5  |#{attempts[5][0]}|#{attempts[5][1]}|#{attempts[5][2]}|#{attempts[5][3]}|   #{hits[5]}    /'   `.`-----------------------' '   .' |"
+    puts "|   )  /    6  |#{attempts[6][0]}|#{attempts[6][1]}|#{attempts[6][2]}|#{attempts[6][3]}|   #{hits[6]}    \\      X       X       X       X    (   |"
+    puts "| ,'   }    7  |#{attempts[7][0]}|#{attempts[7][1]}|#{attempts[7][2]}|#{attempts[7][3]}|   #{hits[7]}    {.   ,' `.   ,' `.   ,' `.   ,' `.   `. |"
+    puts "|(    (\\    8  |#{attempts[8][0]}|#{attempts[8][1]}|#{attempts[8][2]}|#{attempts[8][3]}|   #{hits[8]}    < )-(  ,-----------------------.  )    )|"
+    puts "| `.   /    9  |#{attempts[9][0]}|#{attempts[9][1]}|#{attempts[9][2]}|#{attempts[9][3]}|   #{hits[9]}    \\'   `/    Waiting for Player   \\'   .' |"
+    puts "|   )  }   10  |#{attempts[10][0]}|#{attempts[10][1]}|#{attempts[10][2]}|#{attempts[10][3]}|   #{hits[10]}    /     }                         {   (   |"
+    puts "| ,'   \\   11  |#{attempts[11][0]}|#{attempts[11][1]}|#{attempts[11][2]}|#{attempts[11][3]}|   #{hits[11]}    {.   .\\    Enter 'X' to Quit    /.   `. |"
+    puts "|(    '}   12  |#{attempts[12][0]}|#{attempts[12][1]}|#{attempts[12][2]}|#{attempts[12][3]}|   #{hits[12]}    \\ `-'  `-----------------------'  `    )|"
     puts "| `.   \\                              /.   .' `.   .' `.   .' `.   .' `.   .' |"
     puts "|   `-' `----------------------------' ` -'     `-'     `-'     `-'     `-'   |"
     puts "|___________________________________________________________2015_ThothLogos___|"
@@ -144,7 +144,7 @@ class View
     puts "|                                                                             |"
     puts "|                                                                             |"
     puts "|___________________________________________________________2015_ThothLogos___|"
-    print "  Congratulations! Would you like to play again? (y/n) "
+    print " Congratulations! Would you like to play again? (y/n) "
     if gets == "y" || gets == "Y" || gets = "yes" || gets = "Yes" || gets = "YES"
       main_menu
     else
@@ -177,7 +177,7 @@ class View
     puts "|                                                                             |"
     puts "|                                                                             |"
     puts "|___________________________________________________________2015_ThothLogos___|"
-    print "  Perhaps next time. Would you like to play again? (y/n) "
+    print " Perhaps next time. Would you like to play again? (y/n) "
     if gets == "y" || gets == "Y" || gets = "yes" || gets = "Yes" || gets = "YES"
       main_menu
     else
@@ -210,7 +210,7 @@ class View
     puts "|                       Anthony F & Josh K for testing!                       |"
     puts "|                                                                             |"
     puts "|___________________________________________________________2015_ThothLogos___|"
-    print "  Press enter to return to the Main Menu..."
+    print " Press enter to return to the Main Menu..."
     gets
   end
 
@@ -1144,7 +1144,7 @@ class View
     puts "|   X. Quit                                                                   |"
     puts "|                                                                             |"
     puts "|_____________________________________________________________________________|"
-    print "  Please enter your choice: "
+    print " Please enter your choice: "
   end
 
   def main_menu3
@@ -1173,7 +1173,7 @@ class View
     puts "|   X. Quit                                                                   |"
     puts "|                                                                             |"
     puts "|_____________________________________________________________________________|"
-    print "  Please enter your choice: "
+    print " Please enter your choice: "
   end
 
   def main_menu4
@@ -1202,7 +1202,7 @@ class View
     puts "|   X. Quit                                                                   |"
     puts "|                                                                             |"
     puts "|_____________________________________________________________________________|"
-    print "  Please enter your choice: "
+    print " Please enter your choice: "
   end
 
     def main_menu5
@@ -1231,7 +1231,7 @@ class View
     puts "|   X. Quit                                                                   |"
     puts "|                                                                             |"
     puts "|_____________________________________________________________________________|"
-    print "  Please enter your choice: "
+    print " Please enter your choice: "
   end
 
   def main_menu6
@@ -1260,7 +1260,7 @@ class View
     puts "|   X. Quit                                                                   |"
     puts "|                                                                             |"
     puts "|_____________________________________________________________________________|"
-    print "  Please enter your choice: "
+    print " Please enter your choice: "
   end
 
   def main_menu7
@@ -1289,7 +1289,7 @@ class View
     puts "|   X. Quit                               h                                   |"
     puts "|                                                                             |"
     puts "|_____________________________________________________________________________|"
-    print "  Please enter your choice: "
+    print " Please enter your choice: "
   end
 
   def main_menu8
@@ -1318,7 +1318,7 @@ class View
     puts "|   X. Quit                                 T   h o  g                        |"
     puts "|                                     2     h                                 |"
     puts "|_____________________________________________________________________________|"
-    print "  Please enter your choice: "
+    print " Please enter your choice: "
   end
 
   def main_menu9
@@ -1347,7 +1347,7 @@ class View
     puts "|   X. Quit                                     h   hL                        |"
     puts "|                                     0    2  o  T    o   g                   |"
     puts "|_____________________________________________________________________________|"
-    print "  Please enter your choice: "
+    print " Please enter your choice: "
   end
 
   def main_menu10
@@ -1376,7 +1376,7 @@ class View
     puts "|   X. Quit                                  0   2   o     o   g              |"
     puts "|                                          1       ot   h                     |"
     puts "|_____________________________________________________T___o___________________|"
-    print "  Please enter your choice: "
+    print " Please enter your choice: "
   end
 
   def main_menu11
@@ -1405,7 +1405,7 @@ class View
     puts "|   X. Quit                                        1    o t      L    s       |"
     puts "|                                                5  0   2   T o     g         |"
     puts "|_________________________________________________________o____h______________|"
-    print "  Please enter your choice: "
+    print " Please enter your choice: "
   end
 
   def main_menu12
@@ -1434,7 +1434,7 @@ class View
     puts "|   X. Quit                                                   o     o         |"
     puts "|                                                       5 0  h   t    o   s   |"
     puts "|_________________________________________________________2_____T_o_hL__g_____|"
-    print "  Please enter your choice: "
+    print " Please enter your choice: "
   end
 
   def main_menu13
@@ -1463,7 +1463,7 @@ class View
     puts "|   X. Quit                                                   1               |"
     puts "|                                                           5    h            |"
     puts "|___________________________________________________________20___T_othLogos___|"
-    print "  Please enter your choice: "
+    print " Please enter your choice: "
   end
 
   def main_menu14
@@ -1492,7 +1492,7 @@ class View
     puts "|   X. Quit                                                                   |"
     puts "|                                                                             |"
     puts "|___________________________________________________________2015_ThothLogos___|"
-    print "  Please enter your choice: "
+    print " Please enter your choice: "
   end
 
   def main_menu_animate
