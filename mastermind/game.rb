@@ -11,7 +11,8 @@ require_relative 'gamedata.rb'
 class Game
 
   def initialize
-    turns = 0
+    @turns = 1
+    @newgame = true
     @data = GameData.new
     @ai = Mastermind.new
     @view = View.new
@@ -36,27 +37,55 @@ class Game
 
 
   def game_loop
-    code = @ai.generate_code
-    @view.game_state_animation
+    
+    if @newgame
+      code = @ai.generate_code
+      @view.game_state_animation
+    end
+
+    @newgame = false
     @continue = true
+
     while @continue == true
-        turns = turns.to_i + 1
-        @view.game_state(nil, turns)
-        nums = []
+        
+      valid = false
+      until valid 
+        @view.game_state(nil, @turns) 
         print "  Go ahead, take a shot - you'll get it this time: "
         input = gets.chomp
+        if input.length > 4 || input.length < 4
+          puts "Enter in the format 1234, no spaces."
+          sleep 1
+          next
+        elsif input.include? " "
+          puts "No spaces allowed. Please try again."
+          sleep 1
+          next
+        else
+          input.each_char do |char|
+            if !char.to_i.between?(1,6)
+              puts "Only numerals 1 through 6 are valid. Try again please."
+              sleep 1
+              game_loop; end
+          end
+        end
+        nums = []
         input.each_char do |c|
-            if c.to_i.is_a? Integer
-                nums << c.to_i; end
+          nums << c.to_i; end
+        nums.each do |num|
+          if !num.is_a? (Integer)
+            puts "Something went wrong, please try again."
+            game_loop; end
         end
-        puts "Attempt: " + nums.to_s
-        sleep 2
-        @data.store_attempt(nums)
-        puts @data.getattempts.to_s
-        sleep 5
-        if turns >= 3
-            @continue = false
-        end
+        valid = true
+      end
+
+      @data.store_attempt(nums)
+
+      @turns = @turns + 1
+
+      if @turns >= 12
+        @continue = false; end
     end
   end
 
