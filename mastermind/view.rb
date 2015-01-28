@@ -87,7 +87,7 @@ class View
   end
 
   def game_state(board = nil, turn = 1)
-    sleep 0.2
+    sleep 0.1
     puts "\e[H\e[2J"
     puts " _____________________________________________________________________________"
     puts "|   .-.      ,__________________________________________________. .     .-.   |"
@@ -116,8 +116,6 @@ class View
     puts "| `.   \\                              /.   .' `.   .' `.   .' `.   .' `.   .' |"
     puts "|   `-' `----------------------------' ` -'     `-'     `-'     `-'     `-'   |"
     puts "|___________________________________________________________2015_ThothLogos___|"
-    print "  Press enter to return to the Main Menu..."
-    gets
   end
 
 
@@ -1548,7 +1546,7 @@ class View
         array_of_randoms << 1 + rand(6)        
       end
       game_state_animator(array_of_randoms)
-      sleep 0.05
+      sleep 0.03
     end
   end
 end
