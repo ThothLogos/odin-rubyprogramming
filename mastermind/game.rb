@@ -39,7 +39,7 @@ class Game
   def game_loop
     
     if @new_game
-      code = @ai.generate_code
+      @code = @ai.generate_code
       @view.game_state_animation
     end
 
@@ -69,14 +69,23 @@ class Game
               game_loop; end
           end
         end
+
         break_attempt = []
         input.each_char do |c|
-          break_attempt << c; end     
-        valid = true
+          break_attempt << c; end
+
+        if @data.duplicate?(break_attempt)
+          puts " You've used this exact combination before, try something else."
+          game_loop
+        else
+          valid = true
+        end
+
       end
 
-      # Insert the code-breaker's attempt for this turn into the record
       @data.store_attempt(@turn, break_attempt)
+      hits = @data.check_hits(@code, break_attempt)
+      @data.store_hits(@turn, hits)
 
       @turn = @turn + 1
       if @turn > 12
