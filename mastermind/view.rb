@@ -42,9 +42,9 @@ class View
     puts "|                                                     _.-----'' `\\            |"
     puts "|   1. Player Breaker v CPU Mastermind    __..-----'''        5   `.          |"
     puts "|                                       <            `\\.  1        '\\         |"
-    puts "|   2. CPU Breaker v Player Mastermind  :.     2   0    `.  L    g  o`\\       |"
+    puts "|   2. CPU Breaker v Player Codemaker   :.     2   0    `.  L    g  o`\\       |"
     puts "|                                        `:.         o  t `.   o      s`-.    |"
-    puts "|   3. Player v Player                     `:\\  T  h      h `.            `+. |"
+    puts "|   3. Player v Player                     `:.  T  h      h `.            `+. |"
     puts "|                                            `:.              `.  __.===::::;)|"
     puts "|   4. How to Play                             `:         ___.__>'::::::a:f/' |"
     puts "|                                                `.  _,===:::=-'-=-\"\"\"''      |"
@@ -382,7 +382,7 @@ class View
     puts "|                                                                             |"
     puts "|                                                                             |"
     puts "|                                                                             |"
-    puts "|___2015_ThothLogos______________________________Press_enter_to_begin...______|"
+    puts "|___2015_ThothLogos___________________________________________________________|"
   end
 
   def intro_splash8
@@ -610,7 +610,7 @@ class View
   end
 
   def intro_splash16
-    sleep 0.04
+    sleep 0.06
     puts "\e[H\e[2J"
     puts " _____________________________________________________________________________"
     puts "|                                                                             |"
@@ -638,7 +638,7 @@ class View
   end
 
   def intro_splash17
-    sleep 0.04
+    sleep 0.06
     puts "\e[H\e[2J"
     puts " _____________________________________________________________________________"
     puts "|                                                                             |"
@@ -666,7 +666,7 @@ class View
   end
 
   def intro_splash18
-    sleep 0.04
+    sleep 0.06
     puts "\e[H\e[2J"
     puts " _____________________________________________________________________________"
     puts "|                                                                             |"
@@ -694,7 +694,7 @@ class View
   end
 
   def intro_splash19
-    sleep 0.04
+    sleep 0.06
     puts "\e[H\e[2J"
     puts " _____________________________________________________________________________"
     puts "|                                                                             |"
@@ -722,7 +722,7 @@ class View
   end
 
   def intro_splash20
-    sleep 0.04
+    sleep 0.06
     puts "\e[H\e[2J"
     puts " _____________________________________________________________________________"
     puts "|                                                                             |"
@@ -750,7 +750,7 @@ class View
   end
 
   def intro_splash21
-    sleep 0.04
+    sleep 0.06
     puts "\e[H\e[2J"
     puts " _____________________________________________________________________________"
     puts "|                                                                             |"
@@ -778,7 +778,7 @@ class View
   end
 
   def intro_splash22
-    sleep 0.04
+    sleep 0.06
     puts "\e[H\e[2J"
     puts " _____________________________________________________________________________"
     puts "|                                                                             |"
@@ -806,7 +806,7 @@ class View
   end
 
   def intro_splash23
-    sleep 0.04
+    sleep 0.06
     puts "\e[H\e[2J"
     puts " _____________________________________________________________________________"
     puts "|                                                                             |"
@@ -834,7 +834,7 @@ class View
   end
 
   def intro_splash24
-    sleep 0.04
+    sleep 0.06
     puts "\e[H\e[2J"
     puts " _____________________________________________________________________________"
     puts "|                                                                             |"
@@ -862,7 +862,7 @@ class View
   end
 
   def intro_splash25
-    sleep 0.04
+    sleep 0.06
     puts "\e[H\e[2J"
     puts " _____________________________________________________________________________"
     puts "|                                                                             |"
@@ -890,7 +890,7 @@ class View
   end
 
   def intro_splash26
-    sleep 0.04
+    sleep 0.06
     puts "\e[H\e[2J"
     puts " _____________________________________________________________________________"
     puts "|                                                                             |"
@@ -918,7 +918,7 @@ class View
   end
 
   def intro_splash27
-    sleep 0.04
+    sleep 0.06
     puts "\e[H\e[2J"
     puts " _____________________________________________________________________________"
     puts "|                                                                             |"
@@ -946,7 +946,7 @@ class View
   end
 
   def intro_splash28
-    sleep 0.04
+    sleep 0.06
     puts "\e[H\e[2J"
     puts " _____________________________________________________________________________"
     puts "|                                                                             |"
@@ -974,7 +974,7 @@ class View
   end
 
   def intro_splash29
-    sleep 0.04
+    sleep 0.06
     puts "\e[H\e[2J"
     puts " _____________________________________________________________________________"
     puts "|                                                                             |"
@@ -1002,7 +1002,7 @@ class View
   end
 
   def intro_splash30
-    sleep 0.04
+    sleep 0.06
     puts "\e[H\e[2J"
     puts " _____________________________________________________________________________"
     puts "|                                                                             |"
@@ -1030,7 +1030,7 @@ class View
   end
 
   def intro_splash31
-    sleep 0.04
+    sleep 0.06
     puts "\e[H\e[2J"
     puts " _____________________________________________________________________________"
     puts "|                                                                             |"
@@ -1058,7 +1058,7 @@ class View
   end
 
   def intro_splash32
-    sleep 0.04
+    sleep 0.06
     puts "\e[H\e[2J"
     puts " _____________________________________________________________________________"
     puts "|                                                                             |"
@@ -1085,41 +1085,7 @@ class View
     puts "|___2015_ThothLogos___________________________________________________________|"
   end
 
-  def intro_splash_outro
-    intro_splash2
-    intro_splash3
-    intro_splash4
-    intro_splash5
-    intro_splash6
-    intro_splash7
-    intro_splash8
-    intro_splash9
-    intro_splash10
-    intro_splash11
-    intro_splash12
-    intro_splash13
-    intro_splash14
-    intro_splash15
-    intro_splash16
-    intro_splash17
-    intro_splash18
-    intro_splash19
-    intro_splash20
-    intro_splash21
-    intro_splash22
-    intro_splash23
-    intro_splash24
-    intro_splash25
-    intro_splash26
-    intro_splash27
-    intro_splash28
-    intro_splash29
-    intro_splash30
-    intro_splash31
-    intro_splash32
-  end
-
-    def intro_splash_animate
+  def intro_splash_animate
     intro_splash32
     intro_splash31
     intro_splash30
@@ -1155,7 +1121,7 @@ class View
   end
 
   def main_menu2
-    sleep 0.06
+    sleep 0.4
     puts "\e[H\e[2J"
     puts " _____________________________________________________________________________ "
     puts "|                                                                             |"
@@ -1169,9 +1135,9 @@ class View
     puts "|                                                     _.-----'' `\\            |"
     puts "|   1. Player Breaker v CPU Mastermind    __..-----'''    5       `.          |"
     puts "|                                       <            `\\1        o  '\\         |"
-    puts "|   2. CPU Breaker v Player Mastermind  :.      0       `.  L        `\\       |"
+    puts "|   2. CPU Breaker v Player Codemaker   :.      0       `.  L        `\\       |"
     puts "|                                        `:. 2     o     h`.   g   s   `-.    |"
-    puts "|   3. Player v Player                     `:\\   h    t     `o            `+. |"
+    puts "|   3. Player v Player                     `:.   h    t     `o            `+. |"
     puts "|                                            `T.              `.  __.===::::;)|"
     puts "|   4. How to Play                             `:         ___.__>'::::::a:f/' |"
     puts "|                                                `.  _,===:::=-'-=-\"\"\"''      |"
@@ -1198,9 +1164,9 @@ class View
     puts "|                                                     _.-----'' `\\            |"
     puts "|   1. Player Breaker v CPU Mastermind    __..-----'''    5       `.          |"
     puts "|                                       <            `\\1        o  '\\         |"
-    puts "|   2. CPU Breaker v Player Mastermind  :.      0       `.  L        `\\       |"
+    puts "|   2. CPU Breaker v Player Codemaker   :.      0       `.  L        `\\       |"
     puts "|                                        `:. 2     o     h`.   g   s   `-.    |"
-    puts "|   3. Player v Player                     `:\\   h    t     `o            `+. |"
+    puts "|   3. Player v Player                     `:.   h    t     `o            `+. |"
     puts "|                                            `T.              `.  __.===::::;)|"
     puts "|   4. How to Play                             `:         ___.__>'::::::a:f/' |"
     puts "|                                                `.  _,===:::=-'-=-\"\"\"''      |"
@@ -1227,7 +1193,7 @@ class View
     puts "|                                                     _.-----'' `\\            |"
     puts "|   1. Player Breaker v CPU Mastermind    __..-----'''            `.          |"
     puts "|                                       <            `\\5           '\\         |"
-    puts "|   2. CPU Breaker v Player Mastermind  :.  0    1      `. g  o      `\\       |"
+    puts "|   2. CPU Breaker v Player Codemaker   :.  0    1      `. g  o      `\\       |"
     puts "|                                       2`:.          L   `.           `-.    |"
     puts "|   3. Player v Player                     `:h  o           `o   s        `+. |"
     puts "|                                            `:.   t   h      `.  __.===::::;)|"
@@ -1256,7 +1222,7 @@ class View
     puts "|                                                     _.-----'' `\\            |"
     puts "|   1. Player Breaker v CPU Mastermind    __..-----'''            `.          |"
     puts "|                                       <            `\\.           '\\         |"
-    puts "|   2. CPU Breaker v Player Mastermind  :.         5    `.           `\\       |"
+    puts "|   2. CPU Breaker v Player Codemaker   :.         5    `.           `\\       |"
     puts "|                                        `:.  1          o`.           `-.    |"
     puts "|   3. Player v Player                   0 `:.   h     g    s.            `+. |"
     puts "|                                    2      o`:.    L     o   `.  __.===::::;)|"
@@ -1285,7 +1251,7 @@ class View
     puts "|                                                     _.-----'' `\\            |"
     puts "|   1. Player Breaker v CPU Mastermind    __..-----'''            `.          |"
     puts "|                                       <            `\\.           '\\         |"
-    puts "|   2. CPU Breaker v Player Mastermind  :.  5           `.           `\\       |"
+    puts "|   2. CPU Breaker v Player Codemaker   :.  5           `.           `\\       |"
     puts "|                                        `:.      o       `.           `-.    |"
     puts "|   3. Player v Player                   1 `:.L             `.            `+. |"
     puts "|                                    0       `:.      s       `.  __.===::::;)|"
@@ -1314,7 +1280,7 @@ class View
     puts "|                                                     _.-----'' `\\            |"
     puts "|   1. Player Breaker v CPU Mastermind    __..-----'''            `.          |"
     puts "|                                       <            `\\.           '\\         |"
-    puts "|   2. CPU Breaker v Player Mastermind  :.              `.           `\\       |"
+    puts "|   2. CPU Breaker v Player Codemaker   :.              `.           `\\       |"
     puts "|                                        `:.              `.           `-.    |"
     puts "|   3. Player v Player                  5  `:.              `.            `+. |"
     puts "|                                    1       o:.              `.  __.===::::;)|"
@@ -1343,7 +1309,7 @@ class View
     puts "|                                                     _.-----'' `\\            |"
     puts "|   1. Player Breaker v CPU Mastermind    __..-----'''            `.          |"
     puts "|                                       <            `\\.           '\\         |"
-    puts "|   2. CPU Breaker v Player Mastermind  :.              `.           `\\       |"
+    puts "|   2. CPU Breaker v Player Codemaker   :.              `.           `\\       |"
     puts "|                                        `:.              `.           `-.    |"
     puts "|   3. Player v Player                     `:.              `.            `+. |"
     puts "|                                            `:.              `.  __.===::::;)|"
@@ -1372,7 +1338,7 @@ class View
     puts "|                                                     _.-----'' `\\            |"
     puts "|   1. Player Breaker v CPU Mastermind    __..-----'''            `.          |"
     puts "|                                       <            `\\.           '\\         |"
-    puts "|   2. CPU Breaker v Player Mastermind  :.              `.           `\\       |"
+    puts "|   2. CPU Breaker v Player Codemaker   :.              `.           `\\       |"
     puts "|                                        `:.              `.           `-.    |"
     puts "|   3. Player v Player                     `:.              `.            `+. |"
     puts "|                                            `:.              `.  __.===::::;)|"
@@ -1401,7 +1367,7 @@ class View
     puts "|                                                     _.-----'' `\\            |"
     puts "|   1. Player Breaker v CPU Mastermind    __..-----'''            `.          |"
     puts "|                                       <            `\\.           '\\         |"
-    puts "|   2. CPU Breaker v Player Mastermind  :.              `.           `\\       |"
+    puts "|   2. CPU Breaker v Player Codemaker   :.              `.           `\\       |"
     puts "|                                        `:.              `.           `-.    |"
     puts "|   3. Player v Player                     `:.              `.            `+. |"
     puts "|                                            `:.              `.  __.===::::;)|"
@@ -1430,7 +1396,7 @@ class View
     puts "|                                                     _.-----'' `\\            |"
     puts "|   1. Player Breaker v CPU Mastermind    __..-----'''            `.          |"
     puts "|                                       <            `\\.           '\\         |"
-    puts "|   2. CPU Breaker v Player Mastermind  :.              `.           `\\       |"
+    puts "|   2. CPU Breaker v Player Codemaker   :.              `.           `\\       |"
     puts "|                                        `:.              `.           `-.    |"
     puts "|   3. Player v Player                     `:.              `.            `+. |"
     puts "|                                            `:.              `.  __.===::::;)|"
@@ -1459,7 +1425,7 @@ class View
     puts "|                                                     _.-----'' `\\            |"
     puts "|   1. Player Breaker v CPU Mastermind    __..-----'''            `.          |"
     puts "|                                       <            `\\.           '\\         |"
-    puts "|   2. CPU Breaker v Player Mastermind  :.              `.           `\\       |"
+    puts "|   2. CPU Breaker v Player Codemaker   :.              `.           `\\       |"
     puts "|                                        `:.              `.           `-.    |"
     puts "|   3. Player v Player                     `:.              `.            `+. |"
     puts "|                                            `:.              `.  __.===::::;)|"
@@ -1488,7 +1454,7 @@ class View
     puts "|                                                     _.-----'' `\\            |"
     puts "|   1. Player Breaker v CPU Mastermind    __..-----'''            `.          |"
     puts "|                                       <            `\\.           '\\         |"
-    puts "|   2. CPU Breaker v Player Mastermind  :.              `.           `\\       |"
+    puts "|   2. CPU Breaker v Player Codemaker   :.              `.           `\\       |"
     puts "|                                        `:.              `.           `-.    |"
     puts "|   3. Player v Player                     `:.              `.            `+. |"
     puts "|                                            `:.              `.  __.===::::;)|"
@@ -1517,7 +1483,7 @@ class View
     puts "|                                                     _.-----'' `\\            |"
     puts "|   1. Player Breaker v CPU Mastermind    __..-----'''            `.          |"
     puts "|                                       <            `\\.           '\\         |"
-    puts "|   2. CPU Breaker v Player Mastermind  :.              `.           `\\       |"
+    puts "|   2. CPU Breaker v Player Codemaker   :.              `.           `\\       |"
     puts "|                                        `:.              `.           `-.    |"
     puts "|   3. Player v Player                     `:.              `.            `+. |"
     puts "|                                            `:.              `.  __.===::::;)|"
@@ -1532,6 +1498,7 @@ class View
   end
 
   def main_menu_animate
+    main_menu
     main_menu2
     main_menu3
     main_menu4
@@ -1545,5 +1512,43 @@ class View
     main_menu12
     main_menu13
     main_menu14
+  end
+
+  def game_state_animator(rnd)
+    puts "\e[H\e[2J"
+    puts " _____________________________________________________________________________"
+    puts "|   .-.      ,__________________________________________________. .     .-.   |"
+    puts "| .'   `._.'//             __  ___  ___  __                __   \\\\ `._.'   `. |"
+    puts "|(    .     \\\\  |\\/|  /\\  /__`  |  |__  |__)  |\\/| | |\\ | |  \\  //.     .    )|"
+    puts "| `.   `. ,'//  |  | /~~\\ .__/  |  |___ |  \\  |  | | | \\| |__/  \\\\ `. ,'   .' |"
+    puts "|   )   ,----------------------------.       ,-----------------------.    (   |"
+    puts "| ,'   /                     Hits     \\_____/    Code-Maker's Code    \\.   `. |"
+    puts "|(    (\\       ,_______.              / )-(/      ___ ___ ___ ___      \\)    )|"
+    puts "| `.   /    1  | | | | |   ! ! * *    }'   \\     | #{rnd[0]} | #{rnd[1]} | #{rnd[2]} | #{rnd[3]} |     /   .' |"
+    puts "|   )  >    2  | | | | |              \\     \\    `---'---'---'---'    /   (   |"
+    puts "| ,'   }    3  | | | | |              }.   ,'`>---------------------<' .   `. |"
+    puts "|(    (|    4  | | | | |              \\ )-(  /  Turns Remaining: 12  \\  )    )|"
+    puts "| `.   \\    5  | | | | |              /'   `.`-----------------------' '   .' |"
+    puts "|   )  /    6  | | | | |              \\      X       X       X       X    (   |"
+    puts "| ,'   }    7  | | | | |              {.   ,' `.   ,' `.   ,' `.   ,' `.   `. |"
+    puts "|(    (\\    8  | | | | |              < )-(  ,-----------------------.  )    )|"
+    puts "| `.   /    9  | | | | |              \\'   `/        Encrypting       \\'   .' |"
+    puts "|   )  }   10  | | | | |              /     }                         {   (   |"
+    puts "| ,'   \\   11  | | | | |              {.   .\\    Enter 'X' to Quit    /.   `. |"
+    puts "|(    '}   12  |_|_|_|_|              \\ `-'  `-----------------------'  `    )|"
+    puts "| `.   \\                              /.   .' `.   .' `.   .' `.   .' `.   .' |"
+    puts "|   `-' `----------------------------' ` -'     `-'     `-'     `-'     `-'   |"
+    puts "|___________________________________________________________2015_ThothLogos___|"
+  end
+
+  def game_state_animation
+    25.times do
+      array_of_randoms = []
+      4.times do
+        array_of_randoms << 1 + rand(6)        
+      end
+      game_state_animator(array_of_randoms)
+      sleep 0.05
+    end
   end
 end
