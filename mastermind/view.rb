@@ -65,28 +65,28 @@ class View
     puts "|               |__| /  \\ |  |     |  /  \\    |__) |     /\\  \\ /              |"
     puts "|               |  | \\__/ |/\\|     |  \\__/    |    |___ /~~\\  |               |"
     puts "|                                                                             |"
-    puts "|  Turn  Guesses  Feedback                                                    |"
-    puts "|       ,_______.             As the Breaker you have 12 turns to correctly   |"
-    puts "|    1  |1|2|3|4|  !*       guess a secret 4-digit code of the Maker. Only    |"
-    puts "|    2  |1|3|5|6|  !*       numbers 1-6 are valid, duplicates are ok. At the  |"
-    puts "|    3  |1|4|1|2|  *        end of each turn you will be given feedback to    |"
-    puts "|    4  |2|3|4|6|  !!*      adjust your next attempt.                         |"
-    puts "|    5  |2|3|3|4|  !!                                                         |"
-    puts "|    6  |2|3|6|4|  !!*        As the Maker you will attempt to stump the CPU  |"
-    puts "|    7  |3|3|4|4|  !!!      or a friend with a secret 4-digit code. Only use  |"
-    puts "|    8  |4|3|4|4|  !!!      numbers 1-6, duplicates are ok.                   |"
-    puts "|    9  |5|3|4|4|  !!!                                                        |"
-    puts "|   10  |6|3|4|4|  Win!               --||  Feedback Symbols  ||--            |"
-    puts "|   11  | | | | |                                                             |"
-    puts "|   12  |_|_|_|_|            ! = A number is correct and correctly placed     |"
-    puts "|                           * = A number is correct but not correctly placed  |"
-    puts "|  Code: 6 3 4 4 (Hidden)                                                     |"
+    puts "| Turn  Guesses    Hits                                                       |"
+    puts "|      ,_______.              As the Breaker you have 12 turns to correctly   |"
+    puts "|   1  |1|2|3|4|  ! *       guess a secret 4-digit code of the Maker. Only    |"
+    puts "|   2  |1|3|5|6|  ! *       numbers 1-6 are valid, duplicates are ok. At the  |"
+    puts "|   3  |1|4|1|2|  *         end of each turn you will be shown your 'hits'    |"
+    puts "|   4  |2|3|4|6|  ! ! *     which provide information which you can use to    |"
+    puts "|   5  |2|3|3|4|  ! !       strategically deduce what the code must be.       |"
+    puts "|   6  |2|3|6|4|  ! ! *       As the Maker you will attempt to stump the CPU  |"
+    puts "|   7  |3|3|4|4|  ! ! !     or a friend with a secret 4-digit code. Only use  |"
+    puts "|   8  |4|3|4|4|  ! ! !     numbers 1-6, duplicates are ok.                   |"
+    puts "|   9  |5|3|4|4|  ! ! !                                                       |"
+    puts "|  10  |6|3|4|4|  ! ! ! !               --||  Hit Notation  ||--              |" 
+    puts "|  11  | | | | |  (Win!)                                                      |"
+    puts "|  12  |_|_|_|_|          ! means 1 number is correct AND correctly placed    |"
+    puts "|                        * means 1 number is correct but NOT correctly placed |"
+    puts "| Code: 6 3 4 4 (Hidden)                                                      |"
     puts "|_____________________________________________________________________________|"
     print " Press enter to return to the Main Menu..."
     gets
   end
 
-  def game_state(attempts = nil, hits = nil, turn = 1, code = ["?","?","?","?"])
+  def game_state(attempts = nil, hits = nil, turn = 1, code = ["?","?","?","?"], status = "    Waiting for Player   ")
     sleep 0.1
     puts "\e[H\e[2J"
     puts " _____________________________________________________________________________"
@@ -109,7 +109,7 @@ class View
     puts "|   )  /    6  |#{attempts[6][0]}|#{attempts[6][1]}|#{attempts[6][2]}|#{attempts[6][3]}|   #{hits[6][0]} #{hits[6][1]} #{hits[6][2]} #{hits[6][3]}    \\      X       X       X       X    (   |"
     puts "| ,'   }    7  |#{attempts[7][0]}|#{attempts[7][1]}|#{attempts[7][2]}|#{attempts[7][3]}|   #{hits[7][0]} #{hits[7][1]} #{hits[7][2]} #{hits[7][3]}    {.   ,' `.   ,' `.   ,' `.   ,' `.   `. |"
     puts "|(    (\\    8  |#{attempts[8][0]}|#{attempts[8][1]}|#{attempts[8][2]}|#{attempts[8][3]}|   #{hits[8][0]} #{hits[8][1]} #{hits[8][2]} #{hits[8][3]}    < )-(  ,-----------------------.  )    )|"
-    puts "| `.   /    9  |#{attempts[9][0]}|#{attempts[9][1]}|#{attempts[9][2]}|#{attempts[9][3]}|   #{hits[9][0]} #{hits[9][1]} #{hits[9][2]} #{hits[9][3]}    \\'   `/    Waiting for Player   \\'   .' |"
+    puts "| `.   /    9  |#{attempts[9][0]}|#{attempts[9][1]}|#{attempts[9][2]}|#{attempts[9][3]}|   #{hits[9][0]} #{hits[9][1]} #{hits[9][2]} #{hits[9][3]}    \\'   `/#{status}\\'   .' |"
     puts "|   )  }   10  |#{attempts[10][0]}|#{attempts[10][1]}|#{attempts[10][2]}|#{attempts[10][3]}|   #{hits[10][0]} #{hits[10][1]} #{hits[10][2]} #{hits[10][3]}    /     }                         {   (   |"
     puts "| ,'   \\   11  |#{attempts[11][0]}|#{attempts[11][1]}|#{attempts[11][2]}|#{attempts[11][3]}|   #{hits[11][0]} #{hits[11][1]} #{hits[11][2]} #{hits[11][3]}    {.   .\\    Enter 'X' to Quit    /.   `. |"
     puts "|(    '}   12  |#{attempts[12][0]}|#{attempts[12][1]}|#{attempts[12][2]}|#{attempts[12][3]}|   #{hits[12][0]} #{hits[12][1]} #{hits[12][2]} #{hits[12][3]}    \\ `-'  `-----------------------'  `    )|"
@@ -192,7 +192,7 @@ class View
     puts "|                                                                             |"
     puts "|                            Isometric Box - itz                              |"
     puts "|                             Flying Brain - mn                               |"
-    puts "|                                Book - anon                                  |"
+    puts "|                                 Book - af                                   |"
     puts "|                 ___                      __      ___  __                    |"
     puts "|                  |  |__|  /\\  |\\ | |__/ /__`      |  /  \\                   |"
     puts "|                  |  |  | /~~\\ | \\| |  \\ .__/      |  \\__/                   |"
@@ -1504,7 +1504,7 @@ class View
     main_menu14
   end
 
-  def game_state_animator(rnd)
+  def game_state_animator(rnd, status = "        Encrypting       ")
     puts "\e[H\e[2J"
     puts " _____________________________________________________________________________"
     puts "|   .-.      ,__________________________________________________. .     .-.   |"
@@ -1522,7 +1522,7 @@ class View
     puts "|   )  /    6  | | | | |              \\      X       X       X       X    (   |"
     puts "| ,'   }    7  | | | | |              {.   ,' `.   ,' `.   ,' `.   ,' `.   `. |"
     puts "|(    (\\    8  | | | | |              < )-(  ,-----------------------.  )    )|"
-    puts "| `.   /    9  | | | | |              \\'   `/        Encrypting       \\'   .' |"
+    puts "| `.   /    9  | | | | |              \\'   `/#{status}\\'   .' |"
     puts "|   )  }   10  | | | | |              /     }                         {   (   |"
     puts "| ,'   \\   11  | | | | |              {.   .\\    Enter 'X' to Quit    /.   `. |"
     puts "|(    '}   12  |_|_|_|_|              \\ `-'  `-----------------------'  `    )|"
