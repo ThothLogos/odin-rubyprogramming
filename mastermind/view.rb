@@ -46,7 +46,7 @@ class View
     puts "|                                        `:.         o  t `.   o      s`-.    |"
     puts "|   3. Player v Player                     `:.  T  h      h `.            `+. |"
     puts "|                                            `:.              `.  __.===::::;)|"
-    puts "|   4. How to Play                             `:         ___.__>'::::::a:f/' |"
+    puts "|   4. How to Play                             `:         ___.__>':::::::::/' |"
     puts "|                                                `.  _,===:::=-'-=-\"\"\"''      |"
     puts "|   5. About                                      '-/:::''                    |"
     puts "|                                                  ''                         |"
@@ -1137,7 +1137,7 @@ class View
     puts "|                                        `:. 2     o     h`.   g   s   `-.    |"
     puts "|   3. Player v Player                     `:.   h    t     `o            `+. |"
     puts "|                                            `T.              `.  __.===::::;)|"
-    puts "|   4. How to Play                             `:         ___.__>'::::::a:f/' |"
+    puts "|   4. How to Play                             `:         ___.__>':::::::::/' |"
     puts "|                                                `.  _,===:::=-'-=-\"\"\"''      |"
     puts "|   5. About                                      '-/:::''                    |"
     puts "|                                                  ''                         |"
@@ -1166,7 +1166,7 @@ class View
     puts "|                                        `:. 2     o     h`.   g   s   `-.    |"
     puts "|   3. Player v Player                     `:.   h    t     `o            `+. |"
     puts "|                                            `T.              `.  __.===::::;)|"
-    puts "|   4. How to Play                             `:         ___.__>'::::::a:f/' |"
+    puts "|   4. How to Play                             `:         ___.__>':::::::::/' |"
     puts "|                                                `.  _,===:::=-'-=-\"\"\"''      |"
     puts "|   5. About                                      '-/:::''                    |"
     puts "|                                                  ''                         |"
@@ -1195,7 +1195,7 @@ class View
     puts "|                                       2`:.          L   `.           `-.    |"
     puts "|   3. Player v Player                     `:h  o           `o   s        `+. |"
     puts "|                                            `:.   t   h      `.  __.===::::;)|"
-    puts "|   4. How to Play                          T  `:         ___.__>'::::::a:f/' |"
+    puts "|   4. How to Play                          T  `:         ___.__>':::::::::/' |"
     puts "|                                                `.  _,===:::=-'-=-\"\"\"''      |"
     puts "|   5. About                                      '-/:::''                    |"
     puts "|                                                  ''                         |"
@@ -1224,7 +1224,7 @@ class View
     puts "|                                        `:.  1          o`.           `-.    |"
     puts "|   3. Player v Player                   0 `:.   h     g    s.            `+. |"
     puts "|                                    2      o`:.    L     o   `.  __.===::::;)|"
-    puts "|   4. How to Play                       h     `:         ___.__>'::::::a:f/' |"
+    puts "|   4. How to Play                       h     `:         ___.__>':::::::::/' |"
     puts "|                                                `.t _,===:::=-'-=-\"\"\"''      |"
     puts "|   5. About                                 T    '-/:::''                    |"
     puts "|                                                  ''                         |"
@@ -1253,7 +1253,7 @@ class View
     puts "|                                        `:.      o       `.           `-.    |"
     puts "|   3. Player v Player                   1 `:.L             `.            `+. |"
     puts "|                                    0       `:.      s       `.  __.===::::;)|"
-    puts "|   4. How to Play                     o  h    `t   g   o ___.__>'::::::a:f/' |"
+    puts "|   4. How to Play                     o  h    `t   g   o ___.__>':::::::::/' |"
     puts "|                                2               `.  _,===:::=-'-=-\"\"\"''      |"
     puts "|   5. About                                 h    '-/:::''                    |"
     puts "|                                       T          ''                         |"
@@ -1282,7 +1282,7 @@ class View
     puts "|                                        `:.              `.           `-.    |"
     puts "|   3. Player v Player                  5  `:.              `.            `+. |"
     puts "|                                    1       o:.              `.  __.===::::;)|"
-    puts "|   4. How to Play                             `t         ___.__>'::::::a:f/' |"
+    puts "|   4. How to Play                             `t         ___.__>':::::::::/' |"
     puts "|                                 0           L  `o  s,===:::=-'-=-\"\"\"''      |"
     puts "|   5. About                         o       h    '-/:::''                    |"
     puts "|                                 2     T       g  ''                         |"
@@ -1311,7 +1311,7 @@ class View
     puts "|                                        `:.              `.           `-.    |"
     puts "|   3. Player v Player                     `:.              `.            `+. |"
     puts "|                                            `:.              `.  __.===::::;)|"
-    puts "|   4. How to Play                     5       `.         ___.__>'::::::a:f/' |"
+    puts "|   4. How to Play                     5       `.         ___.__>':::::::::/' |"
     puts "|                                   1        o   `.  _,===:::=-'-=-\"\"\"''      |"
     puts "|   5. About                                 t    L-/:::''                    |"
     puts "|                                  0      o        ''s                        |"
@@ -1340,7 +1340,7 @@ class View
     puts "|                                        `:.              `.           `-.    |"
     puts "|   3. Player v Player                     `:.              `.            `+. |"
     puts "|                                            `:.              `.  __.===::::;)|"
-    puts "|   4. How to Play                             `.         ___.__>'::::::a:f/' |"
+    puts "|   4. How to Play                             `.         ___.__>':::::::::/' |"
     puts "|                                                `.  _,===:::=-'-=-\"\"\"''      |"
     puts "|   5. About                         5            '-/:::''                    |"
     puts "|                                       1       o t''     s                   |"
@@ -1369,7 +1369,7 @@ class View
     puts "|                                        `:.              `.           `-.    |"
     puts "|   3. Player v Player                     `:.              `.            `+. |"
     puts "|                                            `:.              `.  __.===::::;)|"
-    puts "|   4. How to Play                             `.         ___.__>'::::::a:f/' |"
+    puts "|   4. How to Play                             `.         ___.__>':::::::::/' |"
     puts "|                                                `.  _,===:::=-'-=-\"\"\"''      |"
     puts "|   5. About                                      '-/:::''       s            |"
     puts "|                                            5     ''  h    L                 |"
@@ -1398,7 +1398,7 @@ class View
     puts "|                                        `:.              `.           `-.    |"
     puts "|   3. Player v Player                     `:.              `.            `+. |"
     puts "|                                            `:.              `.  __.===::::;)|"
-    puts "|   4. How to Play                             `.         ___.__>'::::::a:f/' |"
+    puts "|   4. How to Play                             `.         ___.__>':::::::::/' |"
     puts "|                                                `.  _,===:::=-'-=-\"\"\"''      |"
     puts "|   5. About                                      '-/:::''        o           |"
     puts "|                                                  ''  h     o                |"
@@ -1427,7 +1427,7 @@ class View
     puts "|                                        `:.              `.           `-.    |"
     puts "|   3. Player v Player                     `:.              `.            `+. |"
     puts "|                                            `:.              `.  __.===::::;)|"
-    puts "|   4. How to Play                             `.         ___.__>'::::::a:f/' |"
+    puts "|   4. How to Play                             `.         ___.__>':::::::::/' |"
     puts "|                                                `.  _,===:::=-'-=-\"\"\"''      |"
     puts "|   5. About                                      '-/:::''                    |"
     puts "|                                                  ''      1                  |"
@@ -1456,7 +1456,7 @@ class View
     puts "|                                        `:.              `.           `-.    |"
     puts "|   3. Player v Player                     `:.              `.            `+. |"
     puts "|                                            `:.              `.  __.===::::;)|"
-    puts "|   4. How to Play                             `.         ___.__>'::::::a:f/' |"
+    puts "|   4. How to Play                             `.         ___.__>':::::::::/' |"
     puts "|                                                `.  _,===:::=-'-=-\"\"\"''      |"
     puts "|   5. About                                      '-/:::''                    |"
     puts "|                                                  ''                         |"
@@ -1485,7 +1485,7 @@ class View
     puts "|                                        `:.              `.           `-.    |"
     puts "|   3. Player v Player                     `:.              `.            `+. |"
     puts "|                                            `:.              `.  __.===::::;)|"
-    puts "|   4. How to Play                             `.         ___.__>'::::::a:f/' |"
+    puts "|   4. How to Play                             `.         ___.__>':::::::::/' |"
     puts "|                                                `.  _,===:::=-'-=-\"\"\"''      |"
     puts "|   5. About                                      '-/:::''                    |"
     puts "|                                                  ''                         |"
@@ -1522,7 +1522,7 @@ class View
     puts "|   )   ,----------------------------.       ,-----------------------.    (   |"
     puts "| ,'   /                     Hits     \\_____/    Code-Maker's Code    \\.   `. |"
     puts "|(    (\\       ,_______.              / )-(/      ___ ___ ___ ___      \\)    )|"
-    puts "| `.   /    1  | | | | |   ! ! * *    }'   \\     | #{rnd[0]} | #{rnd[1]} | #{rnd[2]} | #{rnd[3]} |     /   .' |"
+    puts "| `.   /    1  | | | | |              }'   \\     | #{rnd[0]} | #{rnd[1]} | #{rnd[2]} | #{rnd[3]} |     /   .' |"
     puts "|   )  >    2  | | | | |              \\     \\    `---'---'---'---'    /   (   |"
     puts "| ,'   }    3  | | | | |              }.   ,'`>---------------------<' .   `. |"
     puts "|(    (|    4  | | | | |              \\ )-(  /  Turns Remaining: 12  \\  )    )|"
@@ -1537,16 +1537,17 @@ class View
     puts "| `.   \\                              /.   .' `.   .' `.   .' `.   .' `.   .' |"
     puts "|   `-' `----------------------------' ` -'     `-'     `-'     `-'     `-'   |"
     puts "|___________________________________________________________2015_ThothLogos___|"
+    puts " Encrypting the Maker's code..."
   end
 
   def game_state_animation
-    25.times do
+    12.times do
       array_of_randoms = []
       4.times do
         array_of_randoms << 1 + rand(6)        
       end
       game_state_animator(array_of_randoms)
-      sleep 0.03
+      sleep 0.15
     end
   end
 end
