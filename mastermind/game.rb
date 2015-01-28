@@ -5,16 +5,16 @@
 # Project who may be seeking insight into another's thought process.
 
 require_relative 'view.rb'
-require_relative 'mastermind.rb'
+require_relative 'mastermindAI.rb'
 require_relative 'gamedata.rb'
 
 class Game
 
   def initialize
-    @turns = 1
-    @newgame = true
+    @turn = 1
+    @new_game = true
     @data = GameData.new
-    @ai = Mastermind.new
+    @ai = MastermindAI.new
     @view = View.new
     @view.intro_splash_animate
     gets
@@ -38,53 +38,48 @@ class Game
 
   def game_loop
     
-    if @newgame
+    if @new_game
       code = @ai.generate_code
       @view.game_state_animation
     end
 
-    @newgame = false
+    @new_game = false
     @continue = true
 
     while @continue == true
-        
+
       valid = false
       until valid 
-        @view.game_state(nil, @turns) 
-        print "  Go ahead, take a shot - you'll get it this time: "
+        @view.game_state(@data.attempts, @data.hits, @turn) 
+        print " Enter your potential solution to break the code: "
         input = gets.chomp
         if input.length > 4 || input.length < 4
-          puts "Enter in the format 1234, no spaces."
+          puts " Enter in the format 1234 - four digits, no spaces."
           sleep 1
           next
         elsif input.include? " "
-          puts "No spaces allowed. Please try again."
+          puts " No spaces allowed. Please try again."
           sleep 1
           next
         else
           input.each_char do |char|
             if !char.to_i.between?(1,6)
-              puts "Only numerals 1 through 6 are valid. Try again please."
+              puts " Only numerals 1 through 6 are valid. Try again please."
               sleep 1
               game_loop; end
           end
         end
-        nums = []
+        break_attempt = []
         input.each_char do |c|
-          nums << c.to_i; end
-        nums.each do |num|
-          if !num.is_a? (Integer)
-            puts "Something went wrong, please try again."
-            game_loop; end
-        end
+          break_attempt << c; end     
         valid = true
       end
 
-      @data.store_attempt(nums)
+      # Insert the code-breaker's attempt for this turn into the record
+      @data.store_attempt(@turn, break_attempt)
 
-      @turns = @turns + 1
-
-      if @turns >= 12
+      @turn = @turn + 1
+      if @turn > 12
         @continue = false; end
     end
   end

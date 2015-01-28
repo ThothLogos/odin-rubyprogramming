@@ -4,7 +4,7 @@
 # NOTE: Heavy use of comments intended for fellow students of The Odin
 # Project who may be seeking insight into another's thought process.
 
-class Mastermind
+class MastermindAI
 
     def generate_code
       code = []
