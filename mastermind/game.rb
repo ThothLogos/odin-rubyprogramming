@@ -1,8 +1,5 @@
 # The Odin Porject - Section 3: Ruby Programming
-# Project OOP With Ruby, No. 1 Tic Tac Toe
-#
-# NOTE: Heavy use of comments intended for fellow students of The Odin
-# Project who may be seeking insight into another's thought process.
+# Project OOP With Ruby, No. 2 Mastermind - by ThothLogos
 
 require_relative 'view.rb'
 require_relative 'mastermindAI.rb'
@@ -13,6 +10,7 @@ class Game
   def initialize
     @turn = 1
     @new_game = true
+    @game_mode = 1
     @ai = MastermindAI.new
     @view = View.new
     @view.intro_splash_animate
@@ -25,16 +23,29 @@ class Game
     @view.main_menu_animate
     menu_choice = gets.chomp
 
-    game_loop if menu_choice == "1"
-    main_menu if menu_choice == "2"
-    main_menu if menu_choice == "3"
-    @view.how_to_play if menu_choice == "4"
-    @view.about if menu_choice == "5"
-    abort("Thanks for playing!") if menu_choice == "X" || menu_choice == "x"
-    main_menu if menu_choice == "\n" || menu_choice != nil
+    case menu_choice
+      when "1"
+        @game_mode = 1
+        mode_one_loop
+      when "2"
+        @game_mode = 2
+        main_menu
+      when "3"
+        @game_mode = 3
+        main_menu
+      when "4"
+        @view.how_to_play
+      when "5"
+        @view.about
+      when "X", "x", "Q", "q"
+        abort("Thanks for playing!")
+      else
+        main_menu
+    end
+
   end
 
-  def game_loop
+  def mode_one_loop
     
     if @new_game == true
       @turn = 1  
@@ -71,9 +82,12 @@ class Game
             if !char.to_i.between?(1,6)
               puts " Only numerals 1 through 6 are valid. Try again please."
               sleep 1
-              game_loop; end
+              mode_one_loop; end
           end
         end
+
+        @view.game_state(@data.attempts, @data.hits, @turn, @code, "  Attempting Code Break  ")
+        sleep 1
 
         break_attempt = []
         input.each_char do |c|
@@ -82,7 +96,7 @@ class Game
         if @data.duplicate?(break_attempt) == true
           puts " You've used this exact combination before, try something else."
           sleep 1
-          game_loop
+          mode_one_loop
         else
           valid = true
         end
@@ -114,6 +128,18 @@ class Game
 
     end
   end
+
+
+  def mode_two_loop
+
+
+
+  end
+
+
+
+
+
 
 end
 
