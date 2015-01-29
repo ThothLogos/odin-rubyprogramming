@@ -210,7 +210,7 @@ class View
   end
 
 
- def intro_splash2
+  def intro_splash2
     sleep 0.04
     puts "\e[H\e[2J"
     puts " _____________________________________________________________________________"
@@ -238,7 +238,7 @@ class View
     puts "|___2015_ThothLogos___________________________________________________________|"
   end
 
- def intro_splash3
+  def intro_splash3
     sleep 0.04
     puts "\e[H\e[2J"
     puts " _____________________________________________________________________________"
@@ -266,7 +266,7 @@ class View
     puts "|___2015_ThothLogos___________________________________________________________|"
   end
 
- def intro_splash4
+  def intro_splash4
     sleep 0.04
     puts "\e[H\e[2J"
     puts " _____________________________________________________________________________"
@@ -294,7 +294,7 @@ class View
     puts "|___2015_ThothLogos___________________________________________________________|"
   end
 
- def intro_splash5
+  def intro_splash5
     sleep 0.04
     puts "\e[H\e[2J"
     puts " _____________________________________________________________________________"
@@ -322,7 +322,7 @@ class View
     puts "|___2015_ThothLogos___________________________________________________________|"
   end
 
- def intro_splash6
+  def intro_splash6
     sleep 0.04
     puts "\e[H\e[2J"
     puts " _____________________________________________________________________________"
@@ -350,7 +350,7 @@ class View
     puts "|___2015_ThothLogos___________________________________________________________|"
   end
 
-   def intro_splash7
+  def intro_splash7
     sleep 0.04
     puts "\e[H\e[2J"
     puts " _____________________________________________________________________________"
@@ -1126,9 +1126,9 @@ class View
     puts "|      --||  Choose Game Mode ||--                                            |"
     puts "|                                                              _.             |"
     puts "|                                                     _.-----'' `\\            |"
-    puts "|   1. Player Breaker v CPU Mastermind    __..-----'''    5       `.          |"
+    puts "|   1. Player Breaker v CPU Maker         __..-----'''    5       `.          |"
     puts "|                                       <            `\\1        o  '\\         |"
-    puts "|   2. CPU Breaker v Player Codemaker   :.      0       `.  L        `\\       |"
+    puts "|   2. CPU Breaker v Player Maker       :.      0       `.  L        `\\       |"
     puts "|                                        `:. 2     o     h`.   g   s   `-.    |"
     puts "|   3. Player v Player                     `:.   h    t     `o            `+. |"
     puts "|                                            `T.              `.  __.===::::;)|"
@@ -1155,9 +1155,9 @@ class View
     puts "|      --||  Choose Game Mode ||--                                            |"
     puts "|                                                              _.             |"
     puts "|                                                     _.-----'' `\\            |"
-    puts "|   1. Player Breaker v CPU Mastermind    __..-----'''    5       `.          |"
+    puts "|   1. Player Breaker v CPU Maker         __..-----'''    5       `.          |"
     puts "|                                       <            `\\1        o  '\\         |"
-    puts "|   2. CPU Breaker v Player Codemaker   :.      0       `.  L        `\\       |"
+    puts "|   2. CPU Breaker v Player Maker       :.      0       `.  L        `\\       |"
     puts "|                                        `:. 2     o     h`.   g   s   `-.    |"
     puts "|   3. Player v Player                     `:.   h    t     `o            `+. |"
     puts "|                                            `T.              `.  __.===::::;)|"
@@ -1184,9 +1184,9 @@ class View
     puts "|      --||  Choose Game Mode ||--                                            |"
     puts "|                                                              _.             |"
     puts "|                                                     _.-----'' `\\            |"
-    puts "|   1. Player Breaker v CPU Mastermind    __..-----'''            `.          |"
+    puts "|   1. Player Breaker v CPU Maker         __..-----'''            `.          |"
     puts "|                                       <            `\\5           '\\         |"
-    puts "|   2. CPU Breaker v Player Codemaker   :.  0    1      `. g  o      `\\       |"
+    puts "|   2. CPU Breaker v Player Maker       :.  0    1      `. g  o      `\\       |"
     puts "|                                       2`:.          L   `.           `-.    |"
     puts "|   3. Player v Player                     `:h  o           `o   s        `+. |"
     puts "|                                            `:.   t   h      `.  __.===::::;)|"
@@ -1200,7 +1200,7 @@ class View
     print " Please enter your choice: "
   end
 
-    def main_menu5
+  def main_menu5
     sleep 0.06
     puts "\e[H\e[2J"
     puts " _____________________________________________________________________________ "
@@ -1213,9 +1213,9 @@ class View
     puts "|      --||  Choose Game Mode ||--                                            |"
     puts "|                                                              _.             |"
     puts "|                                                     _.-----'' `\\            |"
-    puts "|   1. Player Breaker v CPU Mastermind    __..-----'''            `.          |"
+    puts "|   1. Player Breaker v CPU Maker         __..-----'''            `.          |"
     puts "|                                       <            `\\.           '\\         |"
-    puts "|   2. CPU Breaker v Player Codemaker   :.         5    `.           `\\       |"
+    puts "|   2. CPU Breaker v Player Maker       :.         5    `.           `\\       |"
     puts "|                                        `:.  1          o`.           `-.    |"
     puts "|   3. Player v Player                   0 `:.   h     g    s.            `+. |"
     puts "|                                    2      o`:.    L     o   `.  __.===::::;)|"
@@ -1242,9 +1242,9 @@ class View
     puts "|      --||  Choose Game Mode ||--                                            |"
     puts "|                                                              _.             |"
     puts "|                                                     _.-----'' `\\            |"
-    puts "|   1. Player Breaker v CPU Mastermind    __..-----'''            `.          |"
+    puts "|   1. Player Breaker v CPU Maker         __..-----'''            `.          |"
     puts "|                                       <            `\\.           '\\         |"
-    puts "|   2. CPU Breaker v Player Codemaker   :.  5           `.           `\\       |"
+    puts "|   2. CPU Breaker v Player Maker       :.  5           `.           `\\       |"
     puts "|                                        `:.      o       `.           `-.    |"
     puts "|   3. Player v Player                   1 `:.L             `.            `+. |"
     puts "|                                    0       `:.      s       `.  __.===::::;)|"
@@ -1271,9 +1271,9 @@ class View
     puts "|      --||  Choose Game Mode ||--                                            |"
     puts "|                                                              _.             |"
     puts "|                                                     _.-----'' `\\            |"
-    puts "|   1. Player Breaker v CPU Mastermind    __..-----'''            `.          |"
+    puts "|   1. Player Breaker v CPU Maker         __..-----'''            `.          |"
     puts "|                                       <            `\\.           '\\         |"
-    puts "|   2. CPU Breaker v Player Codemaker   :.              `.           `\\       |"
+    puts "|   2. CPU Breaker v Player Maker       :.              `.           `\\       |"
     puts "|                                        `:.              `.           `-.    |"
     puts "|   3. Player v Player                  5  `:.              `.            `+. |"
     puts "|                                    1       o:.              `.  __.===::::;)|"
@@ -1300,9 +1300,9 @@ class View
     puts "|      --||  Choose Game Mode ||--                                            |"
     puts "|                                                              _.             |"
     puts "|                                                     _.-----'' `\\            |"
-    puts "|   1. Player Breaker v CPU Mastermind    __..-----'''            `.          |"
+    puts "|   1. Player Breaker v CPU Maker         __..-----'''            `.          |"
     puts "|                                       <            `\\.           '\\         |"
-    puts "|   2. CPU Breaker v Player Codemaker   :.              `.           `\\       |"
+    puts "|   2. CPU Breaker v Player Maker       :.              `.           `\\       |"
     puts "|                                        `:.              `.           `-.    |"
     puts "|   3. Player v Player                     `:.              `.            `+. |"
     puts "|                                            `:.              `.  __.===::::;)|"
@@ -1329,9 +1329,9 @@ class View
     puts "|      --||  Choose Game Mode ||--                                            |"
     puts "|                                                              _.             |"
     puts "|                                                     _.-----'' `\\            |"
-    puts "|   1. Player Breaker v CPU Mastermind    __..-----'''            `.          |"
+    puts "|   1. Player Breaker v CPU Maker         __..-----'''            `.          |"
     puts "|                                       <            `\\.           '\\         |"
-    puts "|   2. CPU Breaker v Player Codemaker   :.              `.           `\\       |"
+    puts "|   2. CPU Breaker v Player Maker       :.              `.           `\\       |"
     puts "|                                        `:.              `.           `-.    |"
     puts "|   3. Player v Player                     `:.              `.            `+. |"
     puts "|                                            `:.              `.  __.===::::;)|"
@@ -1358,9 +1358,9 @@ class View
     puts "|      --||  Choose Game Mode ||--                                            |"
     puts "|                                                              _.             |"
     puts "|                                                     _.-----'' `\\            |"
-    puts "|   1. Player Breaker v CPU Mastermind    __..-----'''            `.          |"
+    puts "|   1. Player Breaker v CPU Maker         __..-----'''            `.          |"
     puts "|                                       <            `\\.           '\\         |"
-    puts "|   2. CPU Breaker v Player Codemaker   :.              `.           `\\       |"
+    puts "|   2. CPU Breaker v Player Maker       :.              `.           `\\       |"
     puts "|                                        `:.              `.           `-.    |"
     puts "|   3. Player v Player                     `:.              `.            `+. |"
     puts "|                                            `:.              `.  __.===::::;)|"
@@ -1387,9 +1387,9 @@ class View
     puts "|      --||  Choose Game Mode ||--                                            |"
     puts "|                                                              _.             |"
     puts "|                                                     _.-----'' `\\            |"
-    puts "|   1. Player Breaker v CPU Mastermind    __..-----'''            `.          |"
+    puts "|   1. Player Breaker v CPU Maker         __..-----'''            `.          |"
     puts "|                                       <            `\\.           '\\         |"
-    puts "|   2. CPU Breaker v Player Codemaker   :.              `.           `\\       |"
+    puts "|   2. CPU Breaker v Player Maker       :.              `.           `\\       |"
     puts "|                                        `:.              `.           `-.    |"
     puts "|   3. Player v Player                     `:.              `.            `+. |"
     puts "|                                            `:.              `.  __.===::::;)|"
@@ -1416,9 +1416,9 @@ class View
     puts "|      --||  Choose Game Mode ||--                                            |"
     puts "|                                                              _.             |"
     puts "|                                                     _.-----'' `\\            |"
-    puts "|   1. Player Breaker v CPU Mastermind    __..-----'''            `.          |"
+    puts "|   1. Player Breaker v CPU Maker         __..-----'''            `.          |"
     puts "|                                       <            `\\.           '\\         |"
-    puts "|   2. CPU Breaker v Player Codemaker   :.              `.           `\\       |"
+    puts "|   2. CPU Breaker v Player Maker       :.              `.           `\\       |"
     puts "|                                        `:.              `.           `-.    |"
     puts "|   3. Player v Player                     `:.              `.            `+. |"
     puts "|                                            `:.              `.  __.===::::;)|"
@@ -1445,9 +1445,9 @@ class View
     puts "|      --||  Choose Game Mode ||--                                            |"
     puts "|                                                              _.             |"
     puts "|                                                     _.-----'' `\\            |"
-    puts "|   1. Player Breaker v CPU Mastermind    __..-----'''            `.          |"
+    puts "|   1. Player Breaker v CPU Maker         __..-----'''            `.          |"
     puts "|                                       <            `\\.           '\\         |"
-    puts "|   2. CPU Breaker v Player Codemaker   :.              `.           `\\       |"
+    puts "|   2. CPU Breaker v Player Maker       :.              `.           `\\       |"
     puts "|                                        `:.              `.           `-.    |"
     puts "|   3. Player v Player                     `:.              `.            `+. |"
     puts "|                                            `:.              `.  __.===::::;)|"
@@ -1474,9 +1474,9 @@ class View
     puts "|      --||  Choose Game Mode ||--                                            |"
     puts "|                                                              _.             |"
     puts "|                                                     _.-----'' `\\            |"
-    puts "|   1. Player Breaker v CPU Mastermind    __..-----'''            `.          |"
+    puts "|   1. Player Breaker v CPU Maker         __..-----'''            `.          |"
     puts "|                                       <            `\\.           '\\         |"
-    puts "|   2. CPU Breaker v Player Codemaker   :.              `.           `\\       |"
+    puts "|   2. CPU Breaker v Player Maker       :.              `.           `\\       |"
     puts "|                                        `:.              `.           `-.    |"
     puts "|   3. Player v Player                     `:.              `.            `+. |"
     puts "|                                            `:.              `.  __.===::::;)|"
@@ -1545,4 +1545,232 @@ class View
       sleep 0.15
     end
   end
+
+
+  def challenge
+
+    message = "So, you think I can't DEFEAT you?"
+    result =  "                                 "
+
+    challenge_animation(result)
+    sleep 1
+
+    # Looping through the message to create a real-time typing effect
+    for i in 0...message.length do  
+      
+      result[i] = message[i]
+      challenge_animation(result)
+
+      # Various levels of delay to add a human feel to the message
+      if i < 3
+        sleep 0.15
+      elsif i == 3
+        sleep 1
+      elsif i == 20
+        sleep 0.8
+      elsif i > 20 && i < 28
+        sleep 0.15
+      else
+        sleep 0.08
+      end    
+    end
+
+    sleep 0.8
+
+    # After the first message is complete, fade out the letters randomly
+    until is_blank?(result)
+      changed = false
+      until changed
+        # Select a random position in the message
+        target = rand(message.length)
+        # If it's not already blank, make it blank
+        if result[target] != " "
+          result[target] = " "
+          # We changed it - flip the flag to break the loop
+          changed = true; end 
+      end
+      # Redraw, add a bit of delay
+      challenge_animation(result)
+      sleep 0.024
+    end
+
+    sleep 0.5
+
+
+    face = { 1 => "                          __..--.._ ",
+             2 => "  .....              .--~  .....  `.",
+             3 => ".\":    \"`-..  .    .' ..-'\"    :\". `",
+             4 => "` `._ ` _.'`\"(     `-\"'`._ ' _.' '  ",
+             5 => "     ~~~      `.          ~~~       ",
+             6 => "              .'                    ",
+             7 => "             /                      ",
+             8 => "            (                       ",
+             9 => "             ^---'                  " }
+
+
+    challenge_animation2(face[1],face[2],face[3],face[4],face[5],face[6],face[7],face[8],face[9])
+
+    all_blank = false
+
+    until all_blank
+      
+      lines_blank = 0
+
+      changed = 0
+      until changed > 2
+
+
+
+        face.each do |line|
+          target = rand(line.length)
+          if 
+        end
+
+
+        target = rand(face[1].length)
+        if face[1][target] != " "
+          face[1][target] = " "
+          changed += 1; end
+        target = rand(face[2].length)
+        if face[2][target] != " "
+          face[2][target] = " "
+          changed += 1; end
+        target = rand(face[3].length)
+        if face[3][target] != " "
+          face[3][target] = " "
+          changed += 1; end
+        target = rand(face[4].length)
+        if face[4][target] != " "
+          face[4][target] = " "
+          changed += 1; end
+        target = rand(face[5].length)
+        if face[5][target] != " "
+          face[5][target] = " "
+          changed += 1; end
+        target = rand(face[6].length)
+        if face[6][target] != " "
+          face[6][target] = " "
+          changed += 1; end
+        target = rand(face[7].length)
+        if face[7][target] != " "
+          face[7][target] = " "
+          changed += 1; end
+        target = rand(face[8].length)
+        if face[8][target] != " "
+          face[8][target] = " "
+          changed += 1; end
+        target = rand(face[9].length)
+        if face[9][target] != " "
+          face[9][target] = " "
+          changed += 1; end         
+      end
+
+      puts "Drawing"
+      challenge_animation2(face[1],face[2],face[3],face[4],face[5],face[6],face[7],face[8],face[9])
+      sleep 0.05
+
+      for i in 1..9
+        puts "Checking #{i} for blanks"
+        if is_blank?(face[i])
+          lines_blank += 1; end
+      end
+
+      if lines_blank >= 9
+        all_blank = true; end
+    end
+    
+
+
+  end
+
+  def is_blank?(message)
+
+    blank = true
+    message.each_char do |c|
+      if c != " "
+        blank = false; end
+    end
+    return blank
+  end
+
+  def challenge_animation(message = "So, you think I can't defeat you?")
+    puts "\e[H\e[2J"
+    puts " _____________________________________________________________________________"
+    puts "|                                                                             |"
+    puts "|                                                                             |"
+    puts "|                                                                             |"
+    puts "|                                                                             |"
+    puts "|                                                                             |"
+    puts "|                                                                             |"
+    puts "|                                                                             |"
+    puts "|                                                                             |"
+    puts "|                                                                             |"
+    puts "|                    ,-----------------------------------.                    |"
+    puts "|                    | #{message} |                    |"
+    puts "|                    `-----------------------------------'                    |"
+    puts "|                                                                             |"
+    puts "|                                                                             |"
+    puts "|                                                                             |"
+    puts "|                                                                             |"
+    puts "|                                                                             |"
+    puts "|                                                                             |"
+    puts "|                                                                             |"
+    puts "|                                                                             |"
+    puts "|                                                                             |"
+    puts "|_____________________________________________________________________________|"
+  end
+
+  def challenge_animation2(line1,line2,line3,line4,line5,line6,line7,line8,line9)
+    puts "\e[H\e[2J"
+    puts " _____________________________________________________________________________"
+    puts "|                                                                             |"
+    puts "|                                                                             |"
+    puts "|                                                                             |"
+    puts "|                     #{line1}                                                       |"
+    puts "|                     #{line2}                                                       |"
+    puts "|                     #{line3}                                                       |"
+    puts "|                     #{line4}                                                       |"
+    puts "|                     #{line5}                                                       |"
+    puts "|                     #{line6}                                                       |"
+    puts "|                     #{line7}                                                       |"
+    puts "|                     #{line8}                                                       |"
+    puts "|                     #{line9}                                                       |"
+    puts "|                                                                             |"
+    puts "|                                                                             |"
+    puts "|                                                                             |"
+    puts "|                                                                             |"
+    puts "|                                                                             |"
+    puts "|                                                                             |"
+    puts "|                                                                             |"
+    puts "|                                                                             |"
+    puts "|                                                                             |"
+    puts "|_____________________________________________________________________________|"
+  end    
+
+  def challenge_animation3(line1,line2,line3,line4,line5,line6,line7,line8,line9)
+    puts "\e[H\e[2J"
+    puts " _____________________________________________________________________________"
+    puts "|                                                                             |"
+    puts "|                                                                             |"
+    puts "|                                                                             |"
+    puts "|                                               __..--.._                     |"
+    puts "|                       .....              .--~  .....  `.                    |"
+    puts "|                     .\":    \"`-..  .    .' ..-'\"    :\". `                    |"
+    puts "|                     ` `._ ` _.'`\"(     `-\"'`._ ' _.' '                      |"
+    puts "|                          ~~~      `.          ~~~                           |"
+    puts "|                                   .'                                        |"
+    puts "|                                  /                                          |"
+    puts "|                                 (                                           |"
+    puts "|                                  ^---'                                      |"
+    puts "|                                                                             |"
+    puts "|                                                                             |"
+    puts "|                                                                             |"
+    puts "|                                                                             |"
+    puts "|                                                                             |"
+    puts "|                                                                             |"
+    puts "|                                                                             |"
+    puts "|                                                                             |"
+    puts "|                                                                             |"
+    puts "|_____________________________________________________________________________|"
+  end 
 end
