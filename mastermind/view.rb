@@ -3,6 +3,166 @@
 
 class View
 
+  def challenge
+    message = "So, you think I can't DEFEAT you?"
+    result =  "                                 "
+    challenge_animation(result)
+    sleep 1
+    
+    # Looping through the message to create a real-time typing effect
+    for i in 0...message.length do  
+      result[i] = message[i]
+      challenge_animation(result)
+      # Various levels of delay to add a human feel to the message
+      if i < 3
+        sleep 0.12
+      elsif i == 3
+        sleep 1
+      elsif i == 20
+        sleep 1
+      elsif i > 20 && i < 28
+        sleep 0.15
+      elsif i.between?(28,31)
+        sleep 0.11
+      else
+        sleep 0.08
+      end    
+    end
+    sleep 2
+
+    # After the first message is complete, fade out the letters randomly
+    until is_blank?(result)
+      changed = false
+      until changed
+        # Select a random position in the message
+        target = rand(message.length)
+        # If it's not already blank, make it blank
+        if result[target] != " "
+          result[target] = " "
+          # We changed it - flip the flag to break the loop
+          changed = true; end 
+      end
+      # Redraw, add a bit of delay
+      challenge_animation(result)
+      sleep 0.024
+    end
+    sleep 0.5
+
+    face = { 1 => "                          __..--.._ ",
+             2 => "  .....              .--~  .....  `.",
+             3 => ".\":    \"`-..  .    .' ..-'\"    :\". `",
+             4 => "` `._ ` _.'`\"(     `-\"'`._ ' _.' '  ",
+             5 => "     ~~~      `.          ~~~       ",
+             6 => "              .'                    ",
+             7 => "             /                      ",
+             8 => "            (                       ",
+             9 => "             ^---'                  " }
+
+    blank_screen
+    sleep 2
+    challenge_animation2(face[1],face[2],face[3],face[4],face[5],face[6],face[7],face[8],face[9])
+    sleep 2
+    challenge_animation3
+
+    all_blank = false
+
+    message = "Go ahead, pick any code you want. I'll break it. Try me."
+    result  = "                                                        "
+    for i in 0...message.length do  
+      result[i] = message[i]
+      challenge_animation3(result)
+      if i < 4
+        sleep 0.07
+      elsif i == 14
+        sleep 0.08
+      elsif i > 20 && i < 28
+        sleep 0.09
+      elsif i == 33 || i == 48
+        sleep 1.2
+      else
+        sleep 0.06
+      end    
+    end
+    sleep 1.2
+
+    # Fadeout
+    until is_blank?(result)
+      changed = false
+      until changed
+        # Select a random position in the message
+        target = rand(message.length)
+        # If it's not already blank, make it blank
+        if result[target] != " "
+          result[target] = " "
+          # We changed it - flip the flag to break the loop
+          changed = true; end 
+      end
+      # Redraw, add a bit of delay
+      challenge_animation3(result)
+      sleep 0.024
+    end
+    sleep 0.8
+
+    message = "               I'm not looking, I swear!                "
+    result  = "                                                        "
+
+    for i in 0...message.length do  
+      result[i] = message[i]
+      challenge_animation3(result)
+      if i < 10
+        sleep 0.01
+      elsif i == 30
+        sleep 0.5
+      elsif i > 20 && i < 28
+        sleep 0.12
+      else
+        sleep 0.06
+      end    
+    end
+    sleep 1
+
+    until all_blank
+      lines_blank = 0
+      changed = false
+      until changed
+        for line in 1..9
+          target = rand(face[line].length)
+          if face[line][target] != " "
+            face[line][target] = " "
+            changed = true; end
+        end      
+      end
+      challenge_animation2(face[1],face[2],face[3],face[4],face[5],face[6],face[7],face[8],face[9])
+      sleep 0.02
+
+      for i in 1..9
+        if is_blank?(face[i])
+          lines_blank += 1; end
+      end
+      if lines_blank >= 9
+        all_blank = true; end
+    end
+  end
+
+  def challenge_final
+    message = "Enter a 4 digit code using 1-6 only, duplicates are ok."
+    result  = "                                                       "                     
+    for i in 0...message.length do  
+      result[i] = message[i]
+      challenge_animation1(result)
+      sleep 0.02  
+    end
+  end
+
+  def is_blank?(message)
+    blank = true
+    message.each_char do |c|
+      if c != " "
+        blank = false; end
+    end
+    return blank
+  end
+
   def intro_splash
     puts "\e[H\e[2J"
     puts " _____________________________________________________________________________"
@@ -121,6 +281,44 @@ class View
     puts "|___________________________________________________________2015_ThothLogos___|"
   end
 
+  def game_state_animation
+    10.times do
+      array_of_randoms = []
+      4.times do
+        array_of_randoms << 1 + rand(6)        
+      end
+      game_state_animator(array_of_randoms)
+      sleep 0.15
+    end
+  end
+
+  def game_state_animator(rnd, status = "        Encrypting       ")
+    puts "\e[H\e[2J"
+    puts " _____________________________________________________________________________"
+    puts "|   .-.      ,__________________________________________________. .     .-.   |"
+    puts "| .'   `._.'//             __  ___  ___  __                __   \\\\ `._.'   `. |"
+    puts "|(    .     \\\\  |\\/|  /\\  /__`  |  |__  |__)  |\\/| | |\\ | |  \\  //.     .    )|"
+    puts "| `.   `. ,'//  |  | /~~\\ .__/  |  |___ |  \\  |  | | | \\| |__/  \\\\ `. ,'   .' |"
+    puts "|   )   ,----------------------------.       ,-----------------------.    (   |"
+    puts "| ,'   /                     Hits     \\_____/    Code-Maker's Code    \\.   `. |"
+    puts "|(    (\\       ,_______.              / )-(/      ___ ___ ___ ___      \\)    )|"
+    puts "| `.   /    1  | | | | |              }'   \\     | #{rnd[0]} | #{rnd[1]} | #{rnd[2]} | #{rnd[3]} |     /   .' |"
+    puts "|   )  >    2  | | | | |              \\     \\    `---'---'---'---'    /   (   |"
+    puts "| ,'   }    3  | | | | |              }.   ,'`>---------------------<' .   `. |"
+    puts "|(    (|    4  | | | | |              \\ )-(  /  Turns Remaining: 12  \\  )    )|"
+    puts "| `.   \\    5  | | | | |              /'   `.`-----------------------' '   .' |"
+    puts "|   )  /    6  | | | | |              \\      X       X       X       X    (   |"
+    puts "| ,'   }    7  | | | | |              {.   ,' `.   ,' `.   ,' `.   ,' `.   `. |"
+    puts "|(    (\\    8  | | | | |              < )-(  ,-----------------------.  )    )|"
+    puts "| `.   /    9  | | | | |              \\'   `/#{status}\\'   .' |"
+    puts "|   )  }   10  | | | | |              /     }                         {   (   |"
+    puts "| ,'   \\   11  | | | | |              {.   .\\    Enter 'X' to Quit    /.   `. |"
+    puts "|(    '}   12  |_|_|_|_|              \\ `-'  `-----------------------'  `    )|"
+    puts "| `.   \\                              /.   .' `.   .' `.   .' `.   .' `.   .' |"
+    puts "|   `-' `----------------------------' ` -'     `-'     `-'     `-'     `-'   |"
+    puts "|___________________________________________________________2015_ThothLogos___|"
+    puts " Encrypting the Maker's code..."
+  end
 
   def game_win
     puts "\e[H\e[2J"
@@ -1506,232 +1704,6 @@ class View
     main_menu13
     main_menu14
   end
-
-  def game_state_animator(rnd, status = "        Encrypting       ")
-    puts "\e[H\e[2J"
-    puts " _____________________________________________________________________________"
-    puts "|   .-.      ,__________________________________________________. .     .-.   |"
-    puts "| .'   `._.'//             __  ___  ___  __                __   \\\\ `._.'   `. |"
-    puts "|(    .     \\\\  |\\/|  /\\  /__`  |  |__  |__)  |\\/| | |\\ | |  \\  //.     .    )|"
-    puts "| `.   `. ,'//  |  | /~~\\ .__/  |  |___ |  \\  |  | | | \\| |__/  \\\\ `. ,'   .' |"
-    puts "|   )   ,----------------------------.       ,-----------------------.    (   |"
-    puts "| ,'   /                     Hits     \\_____/    Code-Maker's Code    \\.   `. |"
-    puts "|(    (\\       ,_______.              / )-(/      ___ ___ ___ ___      \\)    )|"
-    puts "| `.   /    1  | | | | |              }'   \\     | #{rnd[0]} | #{rnd[1]} | #{rnd[2]} | #{rnd[3]} |     /   .' |"
-    puts "|   )  >    2  | | | | |              \\     \\    `---'---'---'---'    /   (   |"
-    puts "| ,'   }    3  | | | | |              }.   ,'`>---------------------<' .   `. |"
-    puts "|(    (|    4  | | | | |              \\ )-(  /  Turns Remaining: 12  \\  )    )|"
-    puts "| `.   \\    5  | | | | |              /'   `.`-----------------------' '   .' |"
-    puts "|   )  /    6  | | | | |              \\      X       X       X       X    (   |"
-    puts "| ,'   }    7  | | | | |              {.   ,' `.   ,' `.   ,' `.   ,' `.   `. |"
-    puts "|(    (\\    8  | | | | |              < )-(  ,-----------------------.  )    )|"
-    puts "| `.   /    9  | | | | |              \\'   `/#{status}\\'   .' |"
-    puts "|   )  }   10  | | | | |              /     }                         {   (   |"
-    puts "| ,'   \\   11  | | | | |              {.   .\\    Enter 'X' to Quit    /.   `. |"
-    puts "|(    '}   12  |_|_|_|_|              \\ `-'  `-----------------------'  `    )|"
-    puts "| `.   \\                              /.   .' `.   .' `.   .' `.   .' `.   .' |"
-    puts "|   `-' `----------------------------' ` -'     `-'     `-'     `-'     `-'   |"
-    puts "|___________________________________________________________2015_ThothLogos___|"
-    puts " Encrypting the Maker's code..."
-  end
-
-  def game_state_animation
-    10.times do
-      array_of_randoms = []
-      4.times do
-        array_of_randoms << 1 + rand(6)        
-      end
-      game_state_animator(array_of_randoms)
-      sleep 0.15
-    end
-  end
-
-
-  def challenge
-
-    message = "So, you think I can't DEFEAT you?"
-    result =  "                                 "
-
-    challenge_animation(result)
-    sleep 1
-
-    # Looping through the message to create a real-time typing effect
-    for i in 0...message.length do  
-      
-      result[i] = message[i]
-      challenge_animation(result)
-
-      # Various levels of delay to add a human feel to the message
-      if i < 3
-        sleep 0.15
-      elsif i == 3
-        sleep 1
-      elsif i == 20
-        sleep 1
-      elsif i > 20 && i < 28
-        sleep 0.15
-      elsif i.between?(28,31)
-        sleep 0.11
-      else
-        sleep 0.06
-      end    
-    end
-
-    sleep 1.5
-
-    # After the first message is complete, fade out the letters randomly
-    until is_blank?(result)
-      changed = false
-      until changed
-        # Select a random position in the message
-        target = rand(message.length)
-        # If it's not already blank, make it blank
-        if result[target] != " "
-          result[target] = " "
-          # We changed it - flip the flag to break the loop
-          changed = true; end 
-      end
-      # Redraw, add a bit of delay
-      challenge_animation(result)
-      sleep 0.024
-    end
-
-    sleep 1
-
-
-    face = { 1 => "                          __..--.._ ",
-             2 => "  .....              .--~  .....  `.",
-             3 => ".\":    \"`-..  .    .' ..-'\"    :\". `",
-             4 => "` `._ ` _.'`\"(     `-\"'`._ ' _.' '  ",
-             5 => "     ~~~      `.          ~~~       ",
-             6 => "              .'                    ",
-             7 => "             /                      ",
-             8 => "            (                       ",
-             9 => "             ^---'                  " }
-
-    blank_screen
-    sleep 2
-    challenge_animation2(face[1],face[2],face[3],face[4],face[5],face[6],face[7],face[8],face[9])
-    sleep 2
-    challenge_animation3
-
-    all_blank = false
-
-    message = "Go ahead, pick any code you want. I'll break it. Try me."
-    result  = "                                                        "
-    
-
-    for i in 0...message.length do  
-      
-      result[i] = message[i]
-      challenge_animation3(result)
-
-      # Various levels of delay to add a human feel to the message
-      if i < 4
-        sleep 0.07
-      elsif i == 14
-        sleep 0.08
-      elsif i > 20 && i < 28
-        sleep 0.09
-      elsif i == 33 || i == 48
-        sleep 1.2
-      else
-        sleep 0.06
-      end    
-    end
-
-    sleep 1.2
-
-    # Fadeout
-    until is_blank?(result)
-      changed = false
-      until changed
-        # Select a random position in the message
-        target = rand(message.length)
-        # If it's not already blank, make it blank
-        if result[target] != " "
-          result[target] = " "
-          # We changed it - flip the flag to break the loop
-          changed = true; end 
-      end
-      # Redraw, add a bit of delay
-      challenge_animation3(result)
-      sleep 0.024
-    end
-
-    sleep 0.8
-
-    message = "               I'm not looking, I swear!                "
-    result  = "                                                        "
-
-    for i in 0...message.length do  
-      
-      result[i] = message[i]
-      challenge_animation3(result)
-
-      # Various levels of delay to add a human feel to the message
-      if i < 10
-        sleep 0.01
-      elsif i == 30
-        sleep 0.5
-      elsif i > 20 && i < 28
-        sleep 0.12
-      else
-        sleep 0.06
-      end    
-    end
-
-    sleep 1
-
-    until all_blank
-      
-      lines_blank = 0
-
-      changed = false
-      until changed
-        for line in 1..9
-          target = rand(face[line].length)
-          if face[line][target] != " "
-            face[line][target] = " "
-            changed = true; end
-        end      
-      end
-
-      challenge_animation2(face[1],face[2],face[3],face[4],face[5],face[6],face[7],face[8],face[9])
-      sleep 0.02
-
-      for i in 1..9
-        if is_blank?(face[i])
-          lines_blank += 1; end
-      end
-
-      if lines_blank >= 9
-        all_blank = true; end
-    end
-    
-  end
-
-  def challenge_final
-    message = "Enter a 4 digit code using 1-6 only, duplicates are ok."
-    result  = "                                                       "                     
-
-    for i in 0...message.length do  
-      result[i] = message[i]
-      challenge_animation1(result)
-      sleep 0.02  
-    end
-  end
-
-  def is_blank?(message)
-
-    blank = true
-    message.each_char do |c|
-      if c != " "
-        blank = false; end
-    end
-    return blank
-  end
-
 
   def challenge_animation(message = "So, you think I can't defeat you?")
     puts "\e[H\e[2J"
