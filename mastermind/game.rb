@@ -17,6 +17,7 @@ class Game
 
   def main_menu
     @new_game = true
+    @continue = false
     @view.main_menu_animate
     menu_choice = gets.chomp
 
@@ -39,11 +40,10 @@ class Game
       else
         main_menu
     end
-
   end
 
   def mode_one_loop
-    
+
     if @new_game == true
       @turn = 1  
       @continue = true
@@ -52,7 +52,6 @@ class Game
       @code = @ai.generate_code
       @view.game_state_animation 
     end
-
 
     while @continue == true
 
@@ -101,7 +100,7 @@ class Game
       @data.store_attempt(@turn, break_attempt)
       hits = @data.check_hits(@code, break_attempt)
       @data.store_hits(@turn, hits)
-      
+
       if hits == ["!","!","!","!"]
         @continue = false
         @view.game_win
@@ -109,7 +108,6 @@ class Game
         @continue = false
         @view.game_loss
       end
-
       if !@continue
         input = gets.chomp
         if input == "y" || input == "Y" || input == "yes" || input == "Yes" || input == "YES"
@@ -118,8 +116,9 @@ class Game
         else
           abort("Thanks for playing!"); end
       end
+
           
-      @turn = @turn + 1
+      @turn += 1
 
     end
   end
@@ -135,11 +134,112 @@ class Game
       @view.challenge
     end
 
-    gets
-    main_menu
+    valid = false
+    until valid # Input checking
+      @view.challenge_final
+      print " Enter a code to challenge the computer: "
+      input = gets.chomp
+      if input == "x" || input == "X"
+        main_menu
+      elsif input.length > 4 || input.length < 4
+        puts " Enter in the format 1234 - four digits, no spaces."
+        sleep 1
+        next
+      elsif input.include? " "
+        puts " No spaces allowed. Please try again."
+        sleep 1
+        next
+      else
+        skip = false
+        input.each_char do |char|
+          if !char.to_i.between?(1,6)
+            puts " Only numerals 1 through 6 are valid. Try again please."
+            sleep 1
+            skip = true
+            break; end
+        end
+        next if skip
+      end
 
+      @code = []
+      input.each_char do |char|
+        @code << char.to_s
+      end
+      valid = true
+    end # End input checking
+
+    while @continue
+
+      @view.game_state(@data.attempts, @data.hits, @turn, @code, "     Challenge  Mode     ")
+      sleep 1
+      @view.game_state(@data.attempts, @data.hits, @turn, @code, "   Evaluating Options    ")      
+      
+      break_attempt = @ai.generate_code
+
+      until !@data.duplicate?(break_attempt)
+        break_attempt = @ai.generate_code
+      end
+
+      @data.store_attempt(@turn, break_attempt)
+      hits = @data.check_hits(@code, break_attempt)
+      @data.store_hits(@turn, hits)
+
+      sleep 2
+
+      if hits == ["!","!","!","!"]
+        @continue = false
+        @view.game_loss
+      elsif @turn >= 12
+        @continue = false
+        @view.game_win
+      end
+      if !@continue
+        input = gets.chomp
+        if input == "y" || input == "Y" || input == "yes" || input == "Yes" || input == "YES"
+          @new_game = true
+          main_menu
+        else
+          abort("Thanks for playing!"); end
+      end
+      @turn += 1
+    end
   end
 
+
+
+  def get_input(prompt = "", mode)
+
+    valid = false
+    until valid
+      self.send(mode)
+      print prompt
+      input = gets.chomp
+      if input == "x" || input == "X"
+        main_menu
+      elsif input.length > 4 || input.length < 4
+        puts " Enter in the format 1234 - four digits, no spaces."
+        sleep 1
+        next
+      elsif input.include? " "
+        puts " No spaces allowed. Please try again."
+        sleep 1
+        next
+      else
+        skip = false
+        input.each_char do |char|
+        if !char.to_i.between?(1,6)
+          puts " Only numerals 1 through 6 are valid. Try again please."
+          sleep 1
+          skip = true; end
+        end
+        next if skip
+      end
+
+      valid = true
+    end 
+
+    return input
+  end
 
 
 
