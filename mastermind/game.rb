@@ -84,7 +84,7 @@ class Game
       hits = @data.check_hits(@code, break_attempt)
       @data.store_hits(@turn, hits)
       
-      check_win(hits, game_mode)
+      check_win(hits, @game_mode)
       @turn += 1
     end
   end
@@ -126,7 +126,7 @@ class Game
       @data.store_hits(@turn, hits)
       
       sleep 1.2
-      check_win(hits, game_mode)
+      check_win(hits, @game_mode)
       @turn += 1
     end
   end

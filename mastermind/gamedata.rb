@@ -15,8 +15,7 @@ class GameData
 
   def duplicate?(break_attempt)
     for i in 1..12
-      return true if @attempts[i] == break_attempt
-    end
+      return true if @attempts[i] == break_attempt; end
     return false
   end
    
@@ -65,11 +64,11 @@ class GameData
     return hits
   end
 
-  # Store history of code-breaker guesses, integers as an index storying 4-integer arrays
+  # Store history of code-breaker guesses
   def store_attempt(turn, attempt)
     @attempts[turn] = attempt 
   end
-
+  # Store history of hits (bangs & stars)
   def store_hits(turn, hits)
     @hits[turn] = hits
   end
