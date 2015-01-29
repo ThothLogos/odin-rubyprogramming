@@ -8,9 +8,6 @@ require_relative 'gamedata.rb'
 class Game
 
   def initialize
-    @turn = 1
-    @new_game = true
-    @game_mode = 1
     @ai = MastermindAI.new
     @view = View.new
     @view.intro_splash_animate
@@ -29,7 +26,7 @@ class Game
         mode_one_loop
       when "2"
         @game_mode = 2
-        main_menu
+        mode_two_loop
       when "3"
         @game_mode = 3
         main_menu
@@ -50,14 +47,12 @@ class Game
     if @new_game == true
       @turn = 1  
       @continue = true
+      @new_game = false
       @data = GameData.new
       @code = @ai.generate_code
-      @view.game_state_animation
-      
+      @view.game_state_animation 
     end
 
-    @new_game = false
-    
 
     while @continue == true
 
@@ -132,7 +127,16 @@ class Game
 
   def mode_two_loop
 
+    if @new_game == true
+      @turn = 1  
+      @continue = true
+      @newgame = false
+      @data = GameData.new
+      @view.challenge
+    end
 
+    gets
+    main_menu
 
   end
 
