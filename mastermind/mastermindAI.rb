@@ -3,6 +3,10 @@
 
 class MastermindAI
 
+    def initialize
+      @possible_solutions = {}
+    end
+
     def generate_code
       code = []
       4.times do
@@ -10,4 +14,24 @@ class MastermindAI
       end
       return code
     end
+
+
+    def simple_algo(data)
+
+      initial_guess = [1, 1, 1, 1]
+
+      
+
+
+    end
+
+
+
+    def knuth_algo
+
+
+
+    end
+
+
 end

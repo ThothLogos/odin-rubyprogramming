@@ -85,6 +85,14 @@ class GameData
 
   end
 
+  def get_bangs(turn, data)
+
+  end
+
+  def get_stars(turn, data)
+    
+  end
+
   def store_hits(turn, hits)
     @hits[turn] = hits
   end

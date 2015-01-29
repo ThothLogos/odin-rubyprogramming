@@ -29,11 +29,8 @@ class Game
         @game_mode = 2
         mode_two_loop
       when "3"
-        @game_mode = 3
-        main_menu
-      when "4"
         @view.how_to_play
-      when "5"
+      when "4"
         @view.about
       when "X", "x", "Q", "q"
         abort("Thanks for playing!")
@@ -60,25 +57,8 @@ class Game
         @view.game_state(@data.attempts, @data.hits, @turn, @code) 
         print " Enter your potential solution to break the code: "
         input = gets.chomp
-        if input == "x" || input == "X"
-          @continue = false
-          main_menu
-        elsif input.length > 4 || input.length < 4
-          puts " Enter in the format 1234 - four digits, no spaces."
-          sleep 1
-          next
-        elsif input.include? " "
-          puts " No spaces allowed. Please try again."
-          sleep 1
-          next
-        else
-          input.each_char do |char|
-            if !char.to_i.between?(1,6)
-              puts " Only numerals 1 through 6 are valid. Try again please."
-              sleep 1
-              mode_one_loop; end
-          end
-        end
+        
+        next if !is_good?(input)
 
         @view.game_state(@data.attempts, @data.hits, @turn, @code, "  Attempting Code Break  ")
         sleep 1
@@ -139,31 +119,13 @@ class Game
       @view.challenge_final
       print " Enter a code to challenge the computer: "
       input = gets.chomp
-      if input == "x" || input == "X"
-        main_menu
-      elsif input.length > 4 || input.length < 4
-        puts " Enter in the format 1234 - four digits, no spaces."
-        sleep 1
-        next
-      elsif input.include? " "
-        puts " No spaces allowed. Please try again."
-        sleep 1
-        next
-      else
-        skip = false
+      
+      if is_good?(input)
+        @code = []
         input.each_char do |char|
-          if !char.to_i.between?(1,6)
-            puts " Only numerals 1 through 6 are valid. Try again please."
-            sleep 1
-            skip = true
-            break; end
-        end
-        next if skip
-      end
-
-      @code = []
-      input.each_char do |char|
-        @code << char.to_s
+          @code << char.to_s; end
+      else
+        next
       end
       valid = true
     end # End input checking
@@ -207,38 +169,26 @@ class Game
 
 
 
-  def get_input(prompt = "", mode)
-
-    valid = false
-    until valid
-      self.send(mode)
-      print prompt
-      input = gets.chomp
-      if input == "x" || input == "X"
-        main_menu
-      elsif input.length > 4 || input.length < 4
-        puts " Enter in the format 1234 - four digits, no spaces."
+  def is_good?(input)
+    if input == "x" || input == "X"
+      main_menu
+    elsif input.length > 4 || input.length < 4
+      puts " Enter in the format 1234 - four digits, no spaces."
+      sleep 1
+      return false
+    elsif input.include? " "
+      puts " No spaces allowed. Please try again."
+      sleep 1
+      return false
+    else
+      input.each_char do |char|
+      if !char.to_i.between?(1,6)
+        puts " Only numerals 1 through 6 are valid. Try again please."
         sleep 1
-        next
-      elsif input.include? " "
-        puts " No spaces allowed. Please try again."
-        sleep 1
-        next
-      else
-        skip = false
-        input.each_char do |char|
-        if !char.to_i.between?(1,6)
-          puts " Only numerals 1 through 6 are valid. Try again please."
-          sleep 1
-          skip = true; end
-        end
-        next if skip
+        return false; end
       end
-
-      valid = true
-    end 
-
-    return input
+    end
+    return true
   end
 
 
