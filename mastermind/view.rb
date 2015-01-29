@@ -89,7 +89,7 @@ class View
     gets
   end
 
-  def game_state(attempts = nil, hits = nil, turn = 1, code = ["?","?","?","?"], status = "    Waiting for Player   ")
+  def game_state(attempts = nil, hits = nil, turn = 1, code = ["?","?","?","?"], status = "    Waiting for Player   ", maker = "Code-Maker")
     sleep 0.1
     puts "\e[H\e[2J"
     puts " _____________________________________________________________________________"
@@ -98,7 +98,7 @@ class View
     puts "|(    .     \\\\  |\\/|  /\\  /__`  |  |__  |__)  |\\/| | |\\ | |  \\  //.     .    )|"
     puts "| `.   `. ,'//  |  | /~~\\ .__/  |  |___ |  \\  |  | | | \\| |__/  \\\\ `. ,'   .' |"
     puts "|   )   ,----------------------------.       ,-----------------------.    (   |"
-    puts "| ,'   /                     Hits     \\_____/    Code-Maker's Code    \\.   `. |"
+    puts "| ,'   /                     Hits     \\_____/    #{maker}'s Code    \\.   `. |"
     puts "|(    (\\       ,_______.              / )-(/      ___ ___ ___ ___      \\)    )|"
     puts "| `.   /    1  |#{attempts[1][0]}|#{attempts[1][1]}|#{attempts[1][2]}|#{attempts[1][3]}|   #{hits[1][0]} #{hits[1][1]} #{hits[1][2]} #{hits[1][3]}    }'   \\     | #{code[0]} | #{code[1]} | #{code[2]} | #{code[3]} |     /   .' |"
     puts "|   )  >    2  |#{attempts[2][0]}|#{attempts[2][1]}|#{attempts[2][2]}|#{attempts[2][3]}|   #{hits[2][0]} #{hits[2][1]} #{hits[2][2]} #{hits[2][3]}    \\     \\    `---'---'---'---'    /   (   |"
@@ -1567,15 +1567,17 @@ class View
       elsif i == 3
         sleep 1
       elsif i == 20
-        sleep 0.8
+        sleep 1
       elsif i > 20 && i < 28
         sleep 0.15
+      elsif i.between?(28,31)
+        sleep 0.11
       else
-        sleep 0.08
+        sleep 0.06
       end    
     end
 
-    sleep 0.8
+    sleep 1.5
 
     # After the first message is complete, fade out the letters randomly
     until is_blank?(result)
@@ -1594,7 +1596,7 @@ class View
       sleep 0.024
     end
 
-    sleep 0.5
+    sleep 1
 
 
     face = { 1 => "                          __..--.._ ",
@@ -1625,19 +1627,22 @@ class View
       challenge_animation3(result)
 
       # Various levels of delay to add a human feel to the message
-      if i < 3
-        sleep 0.04
-      elsif i == 3
-        sleep 0.2
-      elsif i == 20
-        sleep 0.3
-      elsif i > 20 && i < 28
-        sleep 0.12
-      else
+      if i < 4
         sleep 0.07
+      elsif i == 14
+        sleep 0.08
+      elsif i > 20 && i < 28
+        sleep 0.09
+      elsif i == 33 || i == 48
+        sleep 1.2
+      else
+        sleep 0.06
       end    
     end
 
+    sleep 1.2
+
+    # Fadeout
     until is_blank?(result)
       changed = false
       until changed
@@ -1654,6 +1659,8 @@ class View
       sleep 0.024
     end
 
+    sleep 0.8
+
     message = "               I'm not looking, I swear!                "
     result  = "                                                        "
 
@@ -1665,14 +1672,16 @@ class View
       # Various levels of delay to add a human feel to the message
       if i < 10
         sleep 0.01
-      elsif i == 20
-        sleep 0.8
+      elsif i == 30
+        sleep 0.5
       elsif i > 20 && i < 28
-        sleep 0.15
+        sleep 0.12
       else
         sleep 0.06
       end    
     end
+
+    sleep 1
 
     until all_blank
       
@@ -1688,12 +1697,10 @@ class View
         end      
       end
 
-      puts "Drawing"
       challenge_animation2(face[1],face[2],face[3],face[4],face[5],face[6],face[7],face[8],face[9])
       sleep 0.02
 
       for i in 1..9
-        puts "Checking #{i} for blanks"
         if is_blank?(face[i])
           lines_blank += 1; end
       end
@@ -1701,17 +1708,19 @@ class View
       if lines_blank >= 9
         all_blank = true; end
     end
+    
+  end
 
+  def challenge_final
     message = "Enter a 4 digit code using 1-6 only, duplicates are ok."
     result  = "                                                       "                     
 
     for i in 0...message.length do  
       result[i] = message[i]
       challenge_animation1(result)
-      sleep 0.03  
+      sleep 0.02  
     end
   end
-
 
   def is_blank?(message)
 
