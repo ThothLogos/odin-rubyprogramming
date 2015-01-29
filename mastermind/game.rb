@@ -97,34 +97,26 @@ class Game
       @continue = true
       @newgame = false
       @data = GameData.new
-      @view.challenge if @mode_two_first_run
+      @view.challenge if @mode_two_first_run # The "eyes" scene plays only once
       @mode_two_first_run = false
     end
 
-    valid = false
-    until valid # Input checking
-      @view.challenge_final
-      print " Enter a code to challenge the computer: "
-      input = gets.chomp
-      
-      if is_good?(input)
-        @code = []
-        input.each_char do |char|
-          @code << char.to_s; end
-      else
-        next
-      end
-      valid = true
-    end # End input checking
+    @view.challenge_final
+    print " Enter a code to challenge the computer: "
+    input = gets.chomp
+
+    mode_two if !is_good?(input)
+
+    @code = []
+    input.each_char do |char|
+      @code << char.to_s; end
 
     while @continue
-
       @view.game_state(@data.attempts, @data.hits, @turn, @code, "     Challenge  Mode     ")
-      sleep 0.6
+      sleep 0.4
       @view.game_state(@data.attempts, @data.hits, @turn, @code, "   Evaluating Options    ")      
       
       break_attempt = @ai.generate_code
-
       until !@data.duplicate?(break_attempt)
         break_attempt = @ai.generate_code
       end
@@ -181,10 +173,8 @@ class Game
     return true
   end
 
-
-
-
-
 end
 
+
+# Run game
 game = Game.new
