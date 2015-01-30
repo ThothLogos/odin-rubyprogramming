@@ -7,7 +7,7 @@ class View
     message = "So, you think I can't DEFEAT you?"
     result =  "                                 "
     challenge_animation(result)
-    sleep 1
+    sleep 0.4
     
     # Looping through the message to create a real-time typing effect
     for i in 0...message.length do  
@@ -19,8 +19,8 @@ class View
       elsif i == 3
         sleep 1
       elsif i == 20
-        sleep 1
-      elsif i > 20 && i < 28
+        sleep 0.9
+      elsif i > 21 && i < 28
         sleep 0.15
       elsif i.between?(28,31)
         sleep 0.11
@@ -101,7 +101,7 @@ class View
       challenge_animation3(result)
       sleep 0.024
     end
-    sleep 0.8
+    sleep 0.4
 
     message = "               I'm not looking, I swear!                "
     result  = "                                                        "
@@ -345,7 +345,6 @@ class View
     puts "|                                                                             |"
     puts "|                                                                             |"
     puts "|___________________________________________________________2015_ThothLogos___|"
-    print " Congratulations! Would you like to play again? (y/n) "
   end
 
 
@@ -374,7 +373,6 @@ class View
     puts "|                                                                             |"
     puts "|                                                                             |"
     puts "|___________________________________________________________2015_ThothLogos___|"
-    print " Perhaps next time. Would you like to play again? (y/n) "
   end
 
   def about
@@ -486,7 +484,7 @@ class View
     puts "|    \\:\\/:/Z/________\\;\\/:/Z/                                                 |"
     puts "|     \\::/Z/____________\\/Z/                                                  |"
     puts "|      \\/ZZZZZZZZZZZZZZZZZ/                                                   |"
-    puts "|                                                Press enter to begin...      |"
+    puts "|                                               Press enter to begin...       |"
     puts "|                                                                             |"
     puts "|                                                                             |"
     puts "|___2015_ThothLogos___________________________________________________________|"
@@ -515,7 +513,7 @@ class View
     puts "|    \\::/Z/____________\\/Z/                                                   |"
     puts "|     \\/ZZZZZZZZZZZZZZZZZ/                                                    |"
     puts "|                                                                             |"
-    puts "|                                                Press enter to begin...      |"
+    puts "|                                               Press enter to begin...       |"
     puts "|                                                                             |"
     puts "|___2015_ThothLogos___________________________________________________________|"
   end
@@ -544,7 +542,7 @@ class View
     puts "|    \\/ZZZZZZZZZZZZZZZZZ/                                                     |"
     puts "|                                                                             |"
     puts "|                                                                             |"
-    puts "|                                                Press enter to begin...      |"
+    puts "|                                               Press enter to begin...       |"
     puts "|___2015_ThothLogos___________________________________________________________|"
   end
 
@@ -1804,10 +1802,10 @@ class View
     puts "|                                                                             |"
     puts "|                                                                             |"
     puts "|                                                                             |"
+    puts "|                                                                             |"
     puts "|         ,----------------------------------------------------------.        |"
     puts "|         | #{message} |        |"
     puts "|         `----------------------------------------------------------'        |"
-    puts "|                                                                             |"
     puts "|                                                                             |"
     puts "|                                                                             |"
     puts "|_____________________________________________________________________________|"
