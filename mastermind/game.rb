@@ -11,6 +11,8 @@ class Game
     # These two flags are used to control animations not repeating upon every "play again"
     @mode_one_first_run = true
     @mode_two_first_run = true
+    @game_mode = 0
+    @turn = 0
     @ai = MastermindAI.new
     # All animations and graphics are in view
     @view = View.new
@@ -21,6 +23,7 @@ class Game
   end
 
   def main_menu
+    @game_mode = nil
     @new_game = true # Resets setup flags for each game mode
     @continue = false
     @view.main_menu_animate # Book animation
@@ -28,10 +31,8 @@ class Game
     case menu_choice
       when "1"
         mode_one
-        @game_mode = 1
       when "2"
         mode_two
-        @game_mode = 2
       when "3"
         @view.how_to_play
         main_menu
@@ -49,9 +50,10 @@ class Game
 
     # Only runs on first call to this mode
     if @new_game == true
-      @turn = 1  
+      @turn = 0 
       @continue = true
       @new_game = false
+      @game_mode = 1
       @data = GameData.new
       @code = @ai.generate_code # CPU makes random code to solve
       @view.game_state_animation # Scrambled numbers animation
@@ -59,11 +61,11 @@ class Game
 
     # Mode one's primary game loop
     while @continue
-
-      @view.game_state(@data.attempts, @data.hits, @turn) 
+      @turn += 1
+      @view.game_state(@data.attempts, @data.hits, @turn, @code) 
       print " Enter your potential solution to break the code: "
       input = gets.chomp
-      
+
       # Check input, restart loop if it's bad
       mode_one if !is_good?(input)
       # Small moment of user feedback
@@ -83,19 +85,17 @@ class Game
       @data.store_attempt(@turn, break_attempt)
       hits = @data.check_hits(@code, break_attempt)
       @data.store_hits(@turn, hits)
-      
-      check_win(hits, @game_mode)
-      @turn += 1
+      check_win(hits)
     end
   end
-
 
   def mode_two
 
     if @new_game == true
-      @turn = 1  
+      @turn = 0  
       @continue = true
       @newgame = false
+      @game_mode = 2
       @data = GameData.new
       @view.challenge if @mode_two_first_run # The "eyes" scene plays only once
       @mode_two_first_run = false
@@ -104,7 +104,6 @@ class Game
     @view.challenge_final
     print " Enter a code to challenge the computer: "
     input = gets.chomp
-
     mode_two if !is_good?(input)
 
     @code = []
@@ -112,8 +111,9 @@ class Game
       @code << char.to_s; end
 
     while @continue
+      @turn += 1
       @view.game_state(@data.attempts, @data.hits, @turn, @code, "     Challenge  Mode     ")
-      sleep 0.4
+      sleep 0.2
       @view.game_state(@data.attempts, @data.hits, @turn, @code, "   Evaluating Options    ")      
       
       break_attempt = @ai.generate_code
@@ -124,32 +124,38 @@ class Game
       @data.store_attempt(@turn, break_attempt)
       hits = @data.check_hits(@code, break_attempt)
       @data.store_hits(@turn, hits)
-      
-      sleep 1.2
-      check_win(hits, @game_mode)
-      @turn += 1
+      @view.game_state(@data.attempts, @data.hits, @turn, @code, "   AI Attempting Break   ")
+      check_win(hits)
     end
   end
 
-  def check_win(hits, game_mode)
-      
-      if hits == ["!","!","!","!"]
-        @continue = false
-        game_mode == 1 ? @view.game_win : @view.game_loss
-      elsif @turn >= 12
-        @continue = false
-        game_mode == 1 ? @view.game_loss : @view.game_loss
-      end
-      if !@continue
-        input = gets.chomp
-        if input == "y" || input == "Y" || input == "yes" || input == "Yes" || input == "YES"
-          @new_game = true
-          main_menu
-        else
-          abort("Thanks for playing!"); end
-      end
+  def check_win(hits)
+    if hits == ["!","!","!","!"]
+      @continue = false
+      if @game_mode == 1
+        @view.game_win
+        print " Congratulations! Would you like to play again? (y/n) "
+      elsif @game_mode == 2
+        @view.game_loss
+        print " Perhaps next time. Would you like to play again? (y/n) "; end          
+    elsif @turn >= 12
+      @continue = false
+      if @game_mode == 1
+        @view.game_loss
+        print " Perhaps next time. Would you like to play again? (y/n) "
+      elsif @game_mode == 2
+        @view.game_win
+        print " Congratulations! Would you like to play again? (y/n) "; end 
+    end
+    
+    if @continue == false
+      input = gets.chomp
+      if input == "y" || input == "Y" || input == "yes" || input == "Yes" || input == "YES"
+        main_menu
+      else
+        abort("Thanks for playing!"); end
+    end
   end
-
 
   def is_good?(input)
     if input == "x" || input == "X"
