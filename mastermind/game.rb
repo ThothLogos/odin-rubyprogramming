@@ -50,7 +50,7 @@ class Game
 
     # Only runs on first call to this mode
     if @new_game == true
-      @turn = 0 
+      @turn = 1 
       @continue = true
       @new_game = false
       @game_mode = 1
@@ -61,7 +61,6 @@ class Game
 
     # Mode one's primary game loop
     while @continue
-      @turn += 1
       @view.game_state(@data.attempts, @data.hits, @turn, @code) 
       print " Enter your potential solution to break the code: "
       input = gets.chomp
@@ -70,7 +69,7 @@ class Game
       mode_one if !is_good?(input)
       # Small moment of user feedback
       @view.game_state(@data.attempts, @data.hits, @turn, @code, "  Attempting Code Break  ")
-      sleep 0.8 # User experience delay
+      sleep 0.6 # User experience delay
 
       break_attempt = []
       input.each_char { |c| break_attempt << c }
@@ -86,13 +85,14 @@ class Game
       hits = @data.check_hits(@code, break_attempt)
       @data.store_hits(@turn, hits)
       check_win(hits)
+      @turn += 1
     end
   end
 
   def mode_two
 
     if @new_game == true
-      @turn = 0  
+      @turn = 1  
       @continue = true
       @newgame = false
       @game_mode = 2
@@ -111,11 +111,10 @@ class Game
       @code << char.to_s; end
 
     while @continue
-      @turn += 1
       @view.game_state(@data.attempts, @data.hits, @turn, @code, "     Challenge  Mode     ")
       sleep 0.2
       @view.game_state(@data.attempts, @data.hits, @turn, @code, "   Evaluating Options    ")      
-      
+      sleep 0.6
       break_attempt = @ai.generate_code
       until !@data.duplicate?(break_attempt)
         break_attempt = @ai.generate_code
@@ -125,7 +124,9 @@ class Game
       hits = @data.check_hits(@code, break_attempt)
       @data.store_hits(@turn, hits)
       @view.game_state(@data.attempts, @data.hits, @turn, @code, "   AI Attempting Break   ")
+      sleep 0.4
       check_win(hits)
+      @turn += 1
     end
   end
 

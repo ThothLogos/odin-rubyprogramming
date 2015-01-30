@@ -60,18 +60,24 @@ class GameData
     
     # All bangs will also register as stars, so we remove them from the star count
     star -= bang
+    blank = 4
 
     # Add bangs to result
     if bang > 0
       for k in 1..bang
-        hits << "!"; end
+        hits << "!"
+        blank -= 1; end
     end
 
     # Add stars to result
     if star > 0
       for p in 1..star
-        hits << "*"; end
+        hits << "*"
+        blank -= 1; end
     end
+
+    blank.times do
+      hits << " "; end
 
     return hits
   end
