@@ -15,7 +15,9 @@ class GameData
 
   def duplicate?(break_attempt)
     for i in 1..12
-      return true if @attempts[i] == break_attempt; end
+      if @attempts[i] == break_attempt
+        return true; end
+    end
     return false
   end
    
@@ -43,7 +45,7 @@ class GameData
           # Use the lesser of the two - can't count more than we actually have!
           instances_attempt > instances_code ? max_instances = instances_code : max_instances = instances_attempt
           # As long as this digit hasn't already been 
-          if !credited.include?(attempt[i]) && credited.count(attempt[i]) < max_instances
+          if !credited.include?(attempt[i])
             max_instances.times do
               star +=1; end
             credited << attempt[i]; end
