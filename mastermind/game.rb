@@ -111,9 +111,12 @@ class Game
       @code << char.to_s; end
 
     while @continue
+      # These three are just for dramatic delay, so the process doesn't flash by
       @view.game_state(@data.attempts, @data.hits, @turn, @code, "     Challenge  Mode     ")
       sleep 0.2
       @view.game_state(@data.attempts, @data.hits, @turn, @code, "   Evaluating Options    ")      
+      sleep 1
+      @view.game_state(@data.attempts, @data.hits, @turn, @code, "   AI Attempting Break   ")
       sleep 0.6
       break_attempt = @ai.generate_code
       until !@data.duplicate?(break_attempt)
@@ -124,7 +127,7 @@ class Game
       hits = @data.check_hits(@code, break_attempt)
       @data.store_hits(@turn, hits)
       @view.game_state(@data.attempts, @data.hits, @turn, @code, "   AI Attempting Break   ")
-      sleep 0.4
+      sleep 0.6
       check_win(hits)
       @turn += 1
     end
