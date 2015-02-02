@@ -112,11 +112,11 @@ class Game
 
     while @continue
       # These three are just for dramatic delay, so the process doesn't flash by
-      @view.game_state(@data.attempts, @data.hits, @turn, @code, "     Challenge  Mode     ")
+      @view.game_state(@data.attempts, @data.hits, @turn, ["?","?","?","?"], "     Challenge  Mode     ")
       sleep 0.2
-      @view.game_state(@data.attempts, @data.hits, @turn, @code, "   Evaluating Options    ")      
+      @view.game_state(@data.attempts, @data.hits, @turn, ["?","?","?","?"], "   Evaluating Options    ")      
       sleep 1
-      @view.game_state(@data.attempts, @data.hits, @turn, @code, "   AI Attempting Break   ")
+      @view.game_state(@data.attempts, @data.hits, @turn, ["?","?","?","?"], "   AI Attempting Break   ")
       sleep 0.6
       break_attempt = @ai.generate_code
       until !@data.duplicate?(break_attempt)
