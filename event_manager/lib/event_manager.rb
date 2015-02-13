@@ -1,36 +1,40 @@
 # The Odin Porject - Section 3: Ruby Programming
 # Project File I/O and Serialization, No. 1 Event Manager
 
-require "csv"
-require "sunlight/congress"
-
+require 'csv'
+require 'sunlight/congress'
+require 'erb'
 
 Sunlight::Congress.api_key = "e179a6973728c4dd3fb1204283aaccb5"
 
-def sanitize_zipcode(zipcode)
+def clean_zipcode(zipcode)
   zipcode.to_s.rjust(5,"0")[0..4]
 end
 
 def legislators_by_zipcode(zipcode)
-  legislators = Sunlight::Congress::Legislator.by_zipcode(zipcode)
-  legi_names = legislators.collect do |legi|
-    "#{legi.first_name} #{legi.last_name}"
-  end
-  legi_names = legi_names.join(", ")
+  Sunlight::Congress::Legislator.by_zipcode(zipcode)
 end
 
+def save_thank_you_letters(id,form_letter)
+  Dir.mkdir("../output") unless Dir.exists?("../output")
 
-contents = CSV.open("../event_attendees.csv", headers: true, header_converters: :symbol)
-template_letter = File.read "../form_letter.html"
+  filename = "../output/thanks_#{id}.html"
 
+  File.open(filename,'w') do |file|
+    file.puts form_letter
+  end
+end
+
+contents = CSV.open('../event_attendees.csv', headers: true, header_converters: :symbol)
+
+template_letter = File.read "../form_letter.erb"
+erb_template = ERB.new template_letter
 
 contents.each do |row|
+  id = row[0]
   name = row[:first_name]
-  zipcode = sanitize_zipcode(row[:zipcode])
+  zipcode = clean_zipcode(row[:zipcode])
   legislators = legislators_by_zipcode(zipcode)
-
-  personal_letter = template_letter.gsub("FIRST_NAME", name)
-  personal_letter.gsub!("LEGISLATORS", legislators)
-
-  puts personal_letter
+  form_letter = erb_template.result(binding)
+  save_thank_you_letters(id,form_letter)
 end
