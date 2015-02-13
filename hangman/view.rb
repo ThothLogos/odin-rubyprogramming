@@ -36,21 +36,25 @@ class View
     one_i = "           "
     two_i = "                  "
     three_i = "              "
+    four_i = "                  "
     quit_i = "       "
 
     one_f = "1. New Game"
     two_f = "2. Load Saved Game"
     three_f = "3. How to Play"
+    four_f = "4. About this Game"
     quit_f = "X. Quit"
 
     one_remaining = []
     two_remaining = []
     three_remaining = []
+    four_remaining = []
     quit_remaining = []
 
     for i in 0...one_i.length do one_remaining << i end
     for i in 0...two_i.length do two_remaining << i end
     for i in 0...three_i.length do three_remaining << i end
+    for i in 0...four_i.length do four_remaining << i end
     for i in 0...quit_i.length do quit_remaining << i end
 
     sizes = [one_i.length, two_i.length, three_i.length, quit_i.length]
@@ -66,10 +70,13 @@ class View
       if i < three_i.length
         selected = three_remaining.slice!(three_remaining.index(three_remaining.sample))
         three_i[selected] = three_f[selected]; end
+      if i < four_i.length
+        selected = four_remaining.slice!(four_remaining.index(four_remaining.sample))
+        four_i[selected] = four_f[selected]; end
       if i < quit_i.length
         selected = quit_remaining.slice!(quit_remaining.index(quit_remaining.sample))
         quit_i[selected] = quit_f[selected]; end      
-      main_menu(one_i, two_i, three_i, quit_i, logo)
+      main_menu(one_i, two_i, three_i, four_i, quit_i, logo)
       sleep 0.03
     end    
   end
@@ -81,9 +88,10 @@ class View
     one = "1) New Game"
     two = "2) Load Saved Game"
     three = "3) How to Play"
+    four = "4. About this Game"
     quit = "X. Quit"
 
-    main_menu(one, two, three, quit, logo)
+    main_menu(one, two, three, four, quit, logo)
   end
 
   def show_how_to_play
@@ -225,7 +233,7 @@ class View
     puts "|___________________________________________________________#{logo}___|"
   end
 
-  def main_menu(option1, option2, option3, quit, logo)
+  def main_menu(option1, option2, option3, option4, quit, logo)
     puts "\e[H\e[2J"
     puts " _____________________________________________________________________________"
     puts "|                                                                             |"
@@ -241,14 +249,14 @@ class View
     puts "|                                |  \\__| $$                                   |"
     puts "|                                 \\$$    $$                                   |"
     puts "|                                  \\$$$$$$                                    |"
+    puts "|       #{option1}                                 #{option3}            |"
+    puts "|                                                                             |"
+    puts "|       #{option2}                          #{option4}        |"
     puts "|                                                                             |"
     puts "|                                                                             |"
     puts "|                                                                             |"
-    puts "|                 #{option1}                 #{option2}              |"
+    puts "|       #{quit}                                                               |"
     puts "|                                                                             |"
-    puts "|                              #{option3}                                 |"
-    puts "|                                                                             |"
-    puts "|   #{quit}                                                                   |"
     puts "|___________________________________________________________#{logo}___|"
   end
 
