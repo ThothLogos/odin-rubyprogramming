@@ -13,27 +13,27 @@ class Game
     @secret = @data.generate_word
     @view.show_intro_splash
     gets
+    @view.show_main_menu_animate
     main_menu
   end
 
   def main_menu
     
-    @view.show_main_menu_animate
-
-    valid = false
-    until valid
-      @view.show_main_menu
-      print " Please select a menu option: "
-      input = gets.chomp
-      if input.to_i.is_a? Integer
-        input = input.to_i
-        if input >= 1 && input <= 3
-          valid = true; end
+    @view.show_main_menu
+    print " Please enter a menu selection (1-3): "
+    menu_choice = gets.chomp
+    case menu_choice
+      when "1"
+        # new game
+      when "2"
+        # load saved game
+      when "3"
+        @view.show_how_to_play
+        main_menu
+      when "X", "x", "Q", "q", "quit", "Quit", "exit", "Exit"
+        abort("Thanks for playing!")
       else
-        sleep 0.2
-        puts " Invalid entry, please try again."
-        sleep 0.5
-      end
+        main_menu # Reload menu if invalid input
     end
   end
 
