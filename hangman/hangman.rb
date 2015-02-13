@@ -7,9 +7,19 @@ require_relative "gamedata.rb"
 
 class Game
 
-  def intialize
+  def initialize
     @data = GameData.new
+    @view = View.new
+    puts "1"
     @secret = @data.generate_word
+    puts "2"
+    main_menu
+  end
+
+  def main_menu
+    puts "3"
+    @view.show_intro_splash
+    puts "4"
     puts @secret
   end
 

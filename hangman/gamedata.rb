@@ -18,9 +18,5 @@ class GameData
 
     return secret
   end
-
-
-
-
   
 end
