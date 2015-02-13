@@ -10,17 +10,16 @@ class Game
   def initialize
     @data = GameData.new
     @view = View.new
-    puts "1"
     @secret = @data.generate_word
-    puts "2"
+    @view.show_intro_splash
+    gets
     main_menu
   end
 
   def main_menu
-    puts "3"
-    @view.show_intro_splash
-    puts "4"
-    puts @secret
+    
+    @view.show_main_menu
+
   end
 
 end

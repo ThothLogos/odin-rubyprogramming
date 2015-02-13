@@ -4,28 +4,35 @@
 
 class View
 
+  
+  
   def show_intro_splash
 
-      message = "Press Enter to begin..."
-      logo = "2015_ThothLogos"
+    logo = "2015_ThothLogos"
 
-      3.times do
-        intro_splash4
-        sleep 0.1
-        intro_splash3
-        sleep 0.1
-        intro_splash2
-        sleep 0.1
-        intro_splash1
-        sleep 0.1
-      end
+    3.times do
+      intro_splash4
+      sleep 0.1
+      intro_splash3
+      sleep 0.1
+      intro_splash2
+      sleep 0.1
+      intro_splash1
+      sleep 0.1
+    end
 
-      intro_splash_final(message, logo)
+    message = "Press Enter to begin..."
+    intro_splash_final(message, logo)
   end
 
 
   def show_main_menu
 
+    logo = "2015_ThothLogos"
+    one = "1) New Game"
+    two = "2) Load Saved Game"
+
+    main_menu(one, two, logo)
   end
 
   def show_how_to_play
@@ -161,6 +168,33 @@ class View
     puts "|                                                                             |"
     puts "|                                                                             |"
     puts "|                           #{message}                           |"
+    puts "|                                                                             |"
+    puts "|                                                                             |"
+    puts "|                                                                             |"
+    puts "|___________________________________________________________#{logo}___|"
+  end
+
+  def main_menu(option1, option2, logo)
+    puts "\e[H\e[2J"
+    puts " _____________________________________________________________________________"
+    puts "|                                                                             |"
+    puts "|   __    __                                                                  |"
+    puts "|  |  \\  |  \\                                                                 |"
+    puts "|  | $$  | $$  ______   _______    ______   ______ ____    ______   _______   |"
+    puts "|  | $$__| $$ |      \\ |       \\  /      \\ |      \\    \\  |      \\ |       \\  |"
+    puts "|  | $$    $$  \\$$$$$$\\| $$$$$$$\\|  $$$$$$\\| $$$$$$\\$$$$\\  \\$$$$$$\\| $$$$$$$\\ |"
+    puts "|  | $$$$$$$$ /      $$| $$  | $$| $$  | $$| $$ | $$ | $$ /      $$| $$  | $$ |"
+    puts "|  | $$  | $$|  $$$$$$$| $$  | $$| $$__| $$| $$ | $$ | $$|  $$$$$$$| $$  | $$ |"
+    puts "|  | $$  | $$ \\$$    $$| $$  | $$ \\$$    $$| $$ | $$ | $$ \\$$    $$| $$  | $$ |"
+    puts "|   \\$$   \\$$  \\$$$$$$$ \\$$   \\$$ _\\$$$$$$$ \\$$  \\$$  \\$$  \\$$$$$$$ \\$$   \\$$ |"
+    puts "|                                |  \\__| $$                                   |"
+    puts "|                                 \\$$    $$                                   |"
+    puts "|                                  \\$$$$$$                                    |"
+    puts "|                                                                             |"
+    puts "|                                                                             |"
+    puts "|                                                                             |"
+    puts "|                 #{option1}                 #{option2}              |"
+    puts "|                                                                             |"
     puts "|                                                                             |"
     puts "|                                                                             |"
     puts "|                                                                             |"
