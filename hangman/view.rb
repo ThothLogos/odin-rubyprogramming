@@ -19,18 +19,15 @@ class View
       sleep 0.1
     end
     message = "Press Enter to begin..."
-
     for i in 0...logo_i.length
       logo_i[i] = logo_f[i]
       sleep 0.04
       intro_splash_final(message, logo_i)
     end
-    
   end
 
 
   def show_main_menu_animate
-
     logo = "2015_ThothLogos"
 
     one_i = "           "
@@ -83,23 +80,112 @@ class View
 
 
   def show_main_menu
-    logo = "2015_ThothLogos"
-    
+    logo = "2015_ThothLogos"   
     one = "1. New Game"
     two = "2. Load Saved Game"
     three = "3. How to Play"
     four = "4. About this Game"
     quit = "X. Quit"
-
     main_menu(one, two, three, four, quit, logo)
   end
 
-  def show_game(solution, letters, turn, chances)
-    
-  end
-
-  def show_how_to_play
-
+  def show_game(difficulty, solution, letters, turn, chances, rerun = false)
+    if difficulty == 1
+      case chances
+        when 7
+          show_game_board1(solution, letters, turn, chances.to_s)
+        when 6
+          show_game_board2(solution, letters, turn, chances.to_s)
+        when 5
+          show_game_board3(solution, letters, turn, chances.to_s)
+        when 4
+          show_game_board4(solution, letters, turn, chances.to_s)
+        when 3
+          show_game_board5(solution, letters, turn, chances.to_s)
+        when 2
+          show_game_board6(solution, letters, turn, chances.to_s)
+        when 1
+          show_game_board7(solution, letters, turn, chances.to_s)
+        else
+          show_game_board8(solution, letters, turn, chances.to_s)
+          sleep 2.5; end
+    elsif difficulty == 2
+      case chances
+        when 5
+          show_game_board1(solution, letters, turn, chances.to_s)
+        when 4
+          if rerun == true
+            show_game_board3(solution, letters, turn, chances.to_s)
+          else
+            show_game_board2(solution, letters, turn, chances.to_s)
+            sleep 0.8
+            show_game_board3(solution, letters, turn, chances.to_s)
+          end
+        when 3
+          if rerun == true
+            show_game_board5(solution, letters, turn, chances.to_s)  
+          else
+            show_game_board4(solution, letters, turn, chances.to_s)
+            sleep 0.8
+            show_game_board5(solution, letters, turn, chances.to_s)
+          end
+        when 2
+          show_game_board6(solution, letters, turn, chances.to_s)
+        when 1
+          show_game_board7(solution, letters, turn, chances.to_s)
+        else
+          show_game_board8(solution, letters, turn, chances.to_s)
+          sleep 2.5;end
+    elsif difficulty == 3
+      case chances
+        when 3
+          show_game_board1(solution, letters, turn, chances.to_s)
+        when 2
+          if rerun == true  
+            show_game_board4(solution, letters, turn, chances.to_s)
+          else
+            show_game_board2(solution, letters, turn, chances.to_s)
+            sleep 0.6
+            show_game_board3(solution, letters, turn, chances.to_s)
+            sleep 0.6
+            show_game_board4(solution, letters, turn, chances.to_s)
+          end
+        when 1
+          if rerun == true
+            show_game_board7(solution, letters, turn, chances.to_s)
+          else
+            show_game_board5(solution, letters, turn, chances.to_s)
+            sleep 0.6
+            show_game_board6(solution, letters, turn, chances.to_s)
+            sleep 0.6
+            show_game_board7(solution, letters, turn, chances.to_s)
+          end
+        else
+          show_game_board8(solution, letters, turn, chances.to_s)
+          sleep 5; end
+    elsif difficulty == 4
+      case chances
+        when 1
+          show_game_board1(solution, letters, turn, chances.to_s)
+        else 0
+          show_game_board2(solution, letters, turn, chances.to_s)
+          sleep 0.3
+          show_game_board3(solution, letters, turn, chances.to_s)
+          sleep 0.3
+          show_game_board4(solution, letters, turn, chances.to_s)
+          sleep 0.3
+          show_game_board5(solution, letters, turn, chances.to_s)
+          sleep 0.3
+          show_game_board6(solution, letters, turn, chances.to_s)
+          sleep 0.3
+          show_game_board7(solution, letters, turn, chances.to_s)
+          sleep 0.3
+          show_game_board8(solution, letters, turn, chances.to_s)
+          sleep 5; end
+    else
+      puts "Something went wrong"
+      sleep 3
+    end
   end
 
   def intro_splash1
@@ -338,6 +424,34 @@ class View
     puts "|   / '-------------------------' \\                  \\                  ||    |"
     puts "|   \\                             /------------------'         +------+.||    |"
     puts "|    '---------------------------'                             |`.  TT ``|.   |"
+    puts "|        o                                                    '`. `+------+   |"
+    puts "|      /O\\_                                                 .'`. `.|      |   |"
+    puts "|      ,U_,`                                             ,.```. `.'|      |   |"
+    puts "|     ,__\\|                                              |``.,_`/| |      |   |"
+    puts "|     | |                                    .________________________________|"
+    puts "|____________________________________________| * to Save your game, ! to Quit |"
+  end 
+
+
+  def show_game_board2(solution, letters, turn, chances)
+    puts "\e[H\e[2J"
+    puts " _____________________________________________________________________________"
+    puts "|                                                                             |"
+    puts "|     ,_________________________________________________.                     |"
+    puts "|     \\ ___ ___ ___ ___ ___ ___ ___ ___ ___ ___ ___ ___ /                     |"
+    puts "|     {| #{solution[0]} | #{solution[1]} | #{solution[2]} | #{solution[3]} | #{solution[4]} | #{solution[5]} | #{solution[6]} | #{solution[7]} | #{solution[8]} | #{solution[9]} | #{solution[10]} | #{solution[11]} |}                     |"
+    puts "|     /`---'---'---'---'---'---'---'---'---'---'---'---'\\             _       |"
+    puts "|     `-------------------------------------------------'            /_\\      |"
+    puts "|                                                                   |/ \\\\     |"
+    puts "|    .---------------------------.                                  |   \\\\    |"
+    puts "|   /        Letters  Used        \\------------------.              |   ||    |"
+    puts "|   \\ ._________________________. /                  /              *   ||    |"
+    puts "|   { |#{letters[0]}.#{letters[1]}.#{letters[2]}.#{letters[3]}.#{letters[4]}.#{letters[5]}.#{letters[6]}.#{letters[7]}.#{letters[8]}.#{letters[9]}.#{letters[10]}.#{letters[11]}.#{letters[12]}| } Turn: #{turn}         \\              O   ||    |"
+    puts "|   < |-------------------------| |                  {                  ||    |"
+    puts "|   { |#{letters[13]}.#{letters[14]}.#{letters[15]}.#{letters[16]}.#{letters[17]}.#{letters[18]}.#{letters[19]}.#{letters[20]}.#{letters[21]}.#{letters[22]}.#{letters[23]}.#{letters[24]}.#{letters[25]}| } Chances Rem: #{chances}   /                  ||    |"
+    puts "|   / '-------------------------' \\                  \\                  ||    |"
+    puts "|   \\                             /------------------'         +------+.||    |"
+    puts "|    '---------------------------'                             |`.  TT ``|.   |"
     puts "|         o                                                   '`. `+------+   |"
     puts "|       _/O\\                                                .'`. `.|      |   |"
     puts "|      ,__U`                                             ,.```. `.'|      |   |"
@@ -346,7 +460,7 @@ class View
     puts "|____________________________________________| * to Save your game, ! to Quit |"
   end 
 
-  def show_game_board2(solution, letters, turn, chances)
+  def show_game_board3(solution, letters, turn, chances)
     puts "\e[H\e[2J"
     puts " _____________________________________________________________________________"
     puts "|                                                                             |"
@@ -373,7 +487,7 @@ class View
     puts "|____________________________________________| * to Save your game, ! to Quit |"
   end 
 
-  def show_game_board3(solution, letters, turn, chances)
+  def show_game_board4(solution, letters, turn, chances)
     puts "\e[H\e[2J"
     puts " _____________________________________________________________________________"
     puts "|                                                                             |"
@@ -400,7 +514,7 @@ class View
     puts "|____________________________________________| * to Save your game, ! to Quit |"
   end 
 
-  def show_game_board4(solution, letters, turn, chances)
+  def show_game_board5(solution, letters, turn, chances)
     puts "\e[H\e[2J"
     puts " _____________________________________________________________________________"
     puts "|                                                                             |"
@@ -427,7 +541,7 @@ class View
     puts "|____________________________________________| * to Save your game, ! to Quit |"
   end 
 
-  def show_game_board5(solution, letters, turn, chances)
+  def show_game_board6(solution, letters, turn, chances)
     puts "\e[H\e[2J"
     puts " _____________________________________________________________________________"
     puts "|                                                                             |"
@@ -454,7 +568,7 @@ class View
     puts "|____________________________________________| * to Save your game, ! to Quit |"
   end 
 
-  def show_game_board6(solution, letters, turn, chances)
+  def show_game_board7(solution, letters, turn, chances)
     puts "\e[H\e[2J"
     puts " _____________________________________________________________________________"
     puts "|                                                                             |"
@@ -470,8 +584,8 @@ class View
     puts "|   { |#{letters[0]}.#{letters[1]}.#{letters[2]}.#{letters[3]}.#{letters[4]}.#{letters[5]}.#{letters[6]}.#{letters[7]}.#{letters[8]}.#{letters[9]}.#{letters[10]}.#{letters[11]}.#{letters[12]}| } Turn: #{turn}         \\              o   ||    |"
     puts "|   < |-------------------------| |                  {             /O\\  ||    |"
     puts "|   { |#{letters[13]}.#{letters[14]}.#{letters[15]}.#{letters[16]}.#{letters[17]}.#{letters[18]}.#{letters[19]}.#{letters[20]}.#{letters[21]}.#{letters[22]}.#{letters[23]}.#{letters[24]}.#{letters[25]}| } Chances Rem: #{chances}   /              U   ||    |"
-    puts "|   / '-------------------------' \\                  \\            [     ||    |"
-    puts "|   \\                             /------------------'         +---[--+.||    |"
+    puts "|   / '-------------------------' \\                  \\              [   ||    |"
+    puts "|   \\                             /------------------'         +----[-+.||    |"
     puts "|    '---------------------------'                             |`.  TT ``|.   |"
     puts "|                                                             '`. `+------+   |"
     puts "|                                                           .'`. `.|      |   |"
@@ -481,7 +595,7 @@ class View
     puts "|____________________________________________| * to Save your game, ! to Quit |"
   end 
 
-  def show_game_board7(solution, letters, turn, chances)
+  def show_game_board8(solution, letters, turn, chances)
     puts "\e[H\e[2J"
     puts " _____________________________________________________________________________"
     puts "|                                                                             |"
@@ -497,8 +611,8 @@ class View
     puts "|   { |#{letters[0]}.#{letters[1]}.#{letters[2]}.#{letters[3]}.#{letters[4]}.#{letters[5]}.#{letters[6]}.#{letters[7]}.#{letters[8]}.#{letters[9]}.#{letters[10]}.#{letters[11]}.#{letters[12]}| } Turn: #{turn}         \\              *   ||    |"
     puts "|   < |-------------------------| |                  {              x   ||    |"
     puts "|   { |#{letters[13]}.#{letters[14]}.#{letters[15]}.#{letters[16]}.#{letters[17]}.#{letters[18]}.#{letters[19]}.#{letters[20]}.#{letters[21]}.#{letters[22]}.#{letters[23]}.#{letters[24]}.#{letters[25]}| } Chances Rem: #{chances}   /             |O|  ||    |"
-    puts "|   / '-------------------------' \\                  \\            U     ||    |"
-    puts "|   \\                             /------------------'         +---[--+.||    |"
+    puts "|   / '-------------------------' \\                  \\              U   ||    |"
+    puts "|   \\                             /------------------'         +----[-+.||    |"
     puts "|    '---------------------------'                             |`.  [  ``|.   |"
     puts "|                                                             '`. `+------+   |"
     puts "|                                                           .'`. `.|      |   |"
