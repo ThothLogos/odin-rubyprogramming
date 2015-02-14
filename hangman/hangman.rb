@@ -24,7 +24,7 @@ class Game
     menu_choice = gets.chomp
     case menu_choice
       when "1"
-        # new game
+        new_game
       when "2"
         # load saved game
       when "3"
@@ -41,6 +41,46 @@ class Game
         main_menu # Reload menu if invalid input
     end
   end
+
+  def new_game
+
+    @view.show_game_setup
+    print " Please enter a menu selection (1-4)"
+    difficulty = gets.chomp
+    case difficulty
+      when "1"
+        chances = "7"
+      when "2"
+        chances = "5"
+      when "3"
+        chances = "3"
+      when "4"
+        chances = "1"
+      else
+        puts " Invalid entry, please try again."
+        sleep 0.1
+        new_game
+    end
+
+    for i in (12 - @secret.length)..12
+      @secret[i] = " "
+    end
+    turn = " 1"
+    puts @data.letters
+
+    @view.show_game_board(@secret, @data.letters, turn, chances)
+    print " Please choose a letter: "
+    input = gets.chomp
+    case input
+      when "*"
+        #save
+      when "!"
+        abort("Thanks for playing!")
+    end
+
+
+  end
+
 
 end
 

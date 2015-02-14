@@ -3,6 +3,13 @@
 
 class GameData
 
+  def initialize
+    @letters = []
+    for i in 0..25
+      letters << " "
+    end
+  end
+
   def generate_word
     dictionary_file = File.open("5desk.txt", "r")
     dictionary = []
@@ -17,6 +24,10 @@ class GameData
     end
 
     return secret
+  end
+
+  def letters
+    @letters
   end
   
 end
