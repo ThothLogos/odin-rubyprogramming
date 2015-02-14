@@ -8,7 +8,7 @@ class View
   def show_intro_splash
     logo_i = "_______________"
     logo_f = "2015_ThothLogos"
-    3.times do
+    2.times do
       intro_splash4
       sleep 0.1
       intro_splash3
@@ -315,13 +315,13 @@ class View
     puts "|_____________________________________________________________________________|"
   end
 
-  def show_game_board(secret, letters, turn, chances)
+  def show_game_board(solution, letters, turn, chances)
     puts "\e[H\e[2J"
     puts " _____________________________________________________________________________"
     puts "|                                                                             |"
     puts "|     ,_________________________________________________.                     |"
     puts "|     \\ ___ ___ ___ ___ ___ ___ ___ ___ ___ ___ ___ ___ /                     |"
-    puts "|     {| #{secret[0]} | #{secret[1]} | #{secret[2]} | #{secret[3]} | #{secret[4]} | #{secret[5]} | #{secret[6]} | #{secret[7]} | #{secret[8]} | #{secret[9]} | #{secret[10]} | #{secret[11]} |}                     |"
+    puts "|     {| #{solution[0]} | #{solution[1]} | #{solution[2]} | #{solution[3]} | #{solution[4]} | #{solution[5]} | #{solution[6]} | #{solution[7]} | #{solution[8]} | #{solution[9]} | #{solution[10]} | #{solution[11]} |}                     |"
     puts "|     /`---'---'---'---'---'---'---'---'---'---'---'---'\\             _       |"
     puts "|     `-------------------------------------------------'            /_\\      |"
     puts "|                                                                   |/ \\\\     |"
