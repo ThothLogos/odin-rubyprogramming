@@ -15,6 +15,8 @@ class GameData
     @letters = []
     for i in 0..25
       letters << " "; end
+
+    @chances = 0
   end
 
   def generate_word
@@ -32,6 +34,14 @@ class GameData
     return secret
   end
 
+  def set_chances(chances)
+    @chances = chances
+  end
+
+  def remove_chance
+    @chances -= 1
+  end
+  
   def insert_letter(letter)
     # The input is already downcased, so we account for its ASCII value to
     # identify it then adjust accordingly for a more convenient 0-25 index
@@ -87,5 +97,8 @@ class GameData
     @solution
   end
 
+  def chances
+    @chances
+  end
 
 end

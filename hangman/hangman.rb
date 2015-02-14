@@ -13,6 +13,7 @@ class Game
     gets
     @view.show_main_menu_animate
     main_menu
+    @chances = 0
   end
 
   def main_menu
@@ -48,66 +49,79 @@ class Game
     difficulty = gets.chomp
     case difficulty
       when "1"
-        @chances = 7
+        @data.set_chances(7)
       when "2"
-        @chances = 5
+        @data.set_chances(5)
       when "3"
-        @chances = 3
+        @data.set_chances(3)
       when "4"
-        @chances = 1
+        @data.set_chances(1)
       else
         puts " Invalid entry, please try again."
         sleep 1
         setup_game
     end
     @turn = 1
-    do_turn
+    run_game
   end
 
-  def do_turn
-    if @turn < 10
-      @view.show_game_board(@data.solution, @data.letters, " " + @turn.to_s, @chances.to_s)
-    else
-      @view.show_game_board(@data.solution, @data.letters, @turn.to_s, @chances.to_s); end  
-    print " Please choose a letter: "
-    input = gets.chomp
+  def run_game
+    complete = false
+    until complete
+      if @turn < 10
+        @view.show_game_board(@data.solution, @data.letters, " " + @turn.to_s, @data.chances.to_s)
+      else
+        @view.show_game_board(@data.solution, @data.letters, @turn.to_s, @data.chances.to_s); end  
+      print " Please choose a letter: "
+      input = gets.chomp.downcase
+      if good_input?(input)
+        if @data.letter_match?(input)
+          @data.reveal_matches(input)
+        else
+          puts " Sorry! That wasn't a match. "
+          sleep 0.5
+          @data.remove_chance
+        end
+      else
+        puts " Please try again."
+        sleep 1
+      end
+
+      if @data.winning_match? || @data.chances < 1
+        if @data.chances < 1
+          @view.show_game_loss
+        else
+          @view.show_game_win; end
+        print " Enter Y/N: "
+        select = gets.chomp.downcase
+        if select == "y"
+          setup_game
+        else
+          main_menu; end
+      end
+      @turn += 1
+    end
+  end
+
+  def good_input?(input)
     if input == "*"
       #save
     elsif input == "!"
       abort(" Thanks for playing!")
     elsif input.length > 1
-      puts " Invalid entry, please try again."
-      sleep 1
-      do_turn
-    elsif input.ord.between?(65,90) || input.ord.between?(97,122)
-      input = input.downcase
+      return false
+    elsif input.ord.between?(97,122)
       if @data.letter_used?(input)
-        puts " You've used this letter previously. Try again. "
+        print " You've used this letter previously."
         sleep 1
-        do_turn
+        return false
       else
         @data.insert_letter(input); end
     else
-      puts " Invalid entry, please try again."
-      sleep 1
-      do_turn      
+      return false
     end
-
-    if @data.letter_match?(input)
-      @data.reveal_matches(input)
-    else
-      puts " Something went wrong."
-      sleep 1
-      do_turn
-    end
-
-    if @data.winning_match?
-      main_menu; end
-
-    @turn += 1
-    do_turn
+    return true
   end
-
 
 end
 
