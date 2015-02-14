@@ -85,9 +85,9 @@ class View
   def show_main_menu
     logo = "2015_ThothLogos"
     
-    one = "1) New Game"
-    two = "2) Load Saved Game"
-    three = "3) How to Play"
+    one = "1. New Game"
+    two = "2. Load Saved Game"
+    three = "3. How to Play"
     four = "4. About this Game"
     quit = "X. Quit"
 
@@ -258,6 +258,34 @@ class View
     puts "|       #{quit}                                                               |"
     puts "|                                                                             |"
     puts "|___________________________________________________________#{logo}___|"
+  end
+
+  def show_about_this_game
+    puts "\e[H\e[2J"
+    puts " _____________________________________________________________________________"
+    puts "|                                                                             |"
+    puts "|           __   __       ___    ___         __       __              ___     |"
+    puts "|      /\\  |__) /  \\ |  |  |      |  |__| | /__`     / _`  /\\   |\\/| |__      |"
+    puts "|     /~~\\ |__) \\__/ \\__/  |      |  |  | | .__/     \\__> /~~\\  |  | |___     |"
+    puts "|                                                                             |"
+    puts "|   All code and design/implementation done by ThothLogos. Project sourced    |"
+    puts "|      from The Odin Project collaborate development training community.      |"
+    puts "|                                                                             |"
+    puts "|                         --==|| ASCII Artwork ||==--                         |"
+    puts "|                                                                             |"
+    puts "|               \"Hangman\" Text Logo - patorjk.com/software/taag               |"
+    puts "|                           Noose Stand - ThothLogos                          |"
+    puts "|                 ___                      __      ___  __                    |"
+    puts "|                  |  |__|  /\\  |\\ | |__/ /__`      |  /  \\                   |"
+    puts "|                  |  |  | /~~\\ | \\| |  \\ .__/      |  \\__/                   |"
+    puts "|                                                                             |"
+    puts "|            www.chris.com/ascii - for cataloging great ASCII art.            |"
+    puts "|                                                                             |"
+    puts "|                       Anthony F & Josh K for testing!                       |"
+    puts "|                                                                             |"
+    puts "|                                                                             |"
+    puts "|___________________________________________________________2015_ThothLogos___|"
+    print " Press enter to return to the Main Menu..."
   end
 
 end

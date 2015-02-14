@@ -20,7 +20,7 @@ class Game
   def main_menu
     
     @view.show_main_menu
-    print " Please enter a menu selection (1-3): "
+    print " Please enter a menu selection (1-4): "
     menu_choice = gets.chomp
     case menu_choice
       when "1"
@@ -29,6 +29,11 @@ class Game
         # load saved game
       when "3"
         @view.show_how_to_play
+        gets
+        main_menu
+      when "4"
+        @view.show_about_this_game
+        gets
         main_menu
       when "X", "x", "Q", "q", "quit", "Quit", "exit", "Exit"
         abort("Thanks for playing!")
