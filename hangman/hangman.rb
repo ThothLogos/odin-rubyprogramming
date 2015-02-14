@@ -49,12 +49,16 @@ class Game
     difficulty = gets.chomp
     case difficulty
       when "1"
+        @data.set_difficulty(1)
         @data.set_chances(7)
       when "2"
+        @data.set_difficulty(2)
         @data.set_chances(5)
       when "3"
+        @data.set_difficulty(3)
         @data.set_chances(3)
       when "4"
+        @data.set_difficulty(4)
         @data.set_chances(1)
       else
         puts " Invalid entry, please try again."
@@ -66,26 +70,24 @@ class Game
   end
 
   def run_game
+    rerun = false
     complete = false
     until complete
       if @turn < 10
-        @view.show_game_board(@data.solution, @data.letters, " " + @turn.to_s, @data.chances.to_s)
-      else
-        @view.show_game_board(@data.solution, @data.letters, @turn.to_s, @data.chances.to_s); end  
-      print " Please choose a letter: "
-      input = gets.chomp.downcase
-      if good_input?(input)
-        if @data.letter_match?(input)
-          @data.reveal_matches(input)
+        if rerun == true
+          @view.show_game(@data.difficulty, @data.solution, @data.letters, " " + @turn.to_s, @data.chances, true)
+          rerun = false
         else
-          puts " Sorry! That wasn't a match. "
-          sleep 0.5
-          @data.remove_chance
+          @view.show_game(@data.difficulty, @data.solution, @data.letters, " " + @turn.to_s, @data.chances)
         end
       else
-        puts " Please try again."
-        sleep 1
-      end
+        if rerun == true
+          @view.show_game(@data.difficulty, @data.solution, @data.letters, @turn.to_s, @data.chances, true)
+          rerun = false
+        else  
+          @view.show_game(@data.difficulty, @data.solution, @data.letters, @turn.to_s, @data.chances)
+        end
+      end 
 
       if @data.winning_match? || @data.chances < 1
         if @data.chances < 1
@@ -98,6 +100,24 @@ class Game
           setup_game
         else
           main_menu; end
+      end
+
+      print " Please choose a letter: "
+      input = gets.chomp.downcase
+      if good_input?(input)
+        if @data.letter_match?(input)
+          rerun = true
+          @data.reveal_matches(input)
+        else
+          puts " Sorry! That wasn't a match. "
+          sleep 1
+          @data.remove_chance
+        end
+      else
+        puts " Please try again."
+        sleep 1
+        rerun = true
+        next
       end
       @turn += 1
     end

@@ -4,6 +4,7 @@
 class GameData
 
   def initialize
+    @difficulty = 0
     @solution = ""
     @secret = generate_word.downcase
     @secret.length.times do
@@ -16,7 +17,7 @@ class GameData
     for i in 0..25
       letters << " "; end
 
-    @chances = 0
+    @chances = 7
   end
 
   def generate_word
@@ -34,14 +35,6 @@ class GameData
     return secret
   end
 
-  def set_chances(chances)
-    @chances = chances
-  end
-
-  def remove_chance
-    @chances -= 1
-  end
-  
   def insert_letter(letter)
     # The input is already downcased, so we account for its ASCII value to
     # identify it then adjust accordingly for a more convenient 0-25 index
@@ -85,6 +78,14 @@ class GameData
       return false; end
   end
 
+  def difficulty
+    @difficulty
+  end
+
+  def set_difficulty(difficulty)
+    @difficulty = difficulty
+  end
+
   def letters
     @letters
   end
@@ -99,6 +100,14 @@ class GameData
 
   def chances
     @chances
+  end
+
+  def set_chances(chances)
+    @chances = chances
+  end
+
+  def remove_chance
+    @chances -= 1
   end
 
 end
