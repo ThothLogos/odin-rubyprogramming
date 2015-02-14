@@ -10,7 +10,7 @@ class Game
   def initialize
     @data = GameData.new
     @view = View.new
-    @secret = @data.generate_word
+    @secret = @data.generate_word.downcase
     @view.show_intro_splash
     gets
     @view.show_main_menu_animate
@@ -24,7 +24,7 @@ class Game
     menu_choice = gets.chomp
     case menu_choice
       when "1"
-        new_game
+        setup_game
       when "2"
         # load saved game
       when "3"
@@ -36,49 +36,64 @@ class Game
         gets
         main_menu
       when "X", "x", "Q", "q", "quit", "Quit", "exit", "Exit"
-        abort("Thanks for playing!")
+        abort(" Thanks for playing!")
       else
         main_menu # Reload menu if invalid input
     end
   end
 
-  def new_game
-
+  def setup_game
     @view.show_game_setup
-    print " Please enter a menu selection (1-4)"
+    print " Please enter a menu selection (1-4): "
     difficulty = gets.chomp
     case difficulty
       when "1"
-        chances = "7"
+        @chances = "7"
       when "2"
-        chances = "5"
+        @chances = "5"
       when "3"
-        chances = "3"
+        @chances = "3"
       when "4"
-        chances = "1"
+        @chances = "1"
       else
         puts " Invalid entry, please try again."
-        sleep 0.1
-        new_game
+        sleep 0.5
+        setup_game
     end
 
     for i in (12 - @secret.length)..12
       @secret[i] = " "
     end
-    turn = " 1"
-    puts @data.letters
+    @turn = 0
+    new_game
+  end
 
-    @view.show_game_board(@secret, @data.letters, turn, chances)
+  def do_turn
+
+    @view.show_game_board(@secret, @data.letters, " " + @turn.to_s, @chances)
     print " Please choose a letter: "
     input = gets.chomp
-    case input
-      when "*"
-        #save
-      when "!"
-        abort("Thanks for playing!")
+    
+    if input == "*"
+      #save
+    elsif input == "!"
+      abort(" Thanks for playing!")
+    elsif input.length > 1
+      puts " Invalid entry, please try again."
+      sleep 0.5
+      do_turn
+    elsif input.ord.between?(65,90) || input.ord.between?(97,122)
+      puts " Valid input"
+      input = input.downcase
+      @data.insert_letter(input)
+    else
+      puts " Invalid entry, please try again."
+      sleep 0.5
+      do_turn      
     end
 
-
+    @turn += 1
+    do_turn
   end
 
 

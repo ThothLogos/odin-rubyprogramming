@@ -26,6 +26,10 @@ class GameData
     return secret
   end
 
+  def insert_letter(letter)
+    letters[letter.ord - 97] = letter
+  end
+
   def letters
     @letters
   end
