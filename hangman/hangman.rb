@@ -74,17 +74,17 @@ class Game
     until complete
       if @data.turn < 10
         if rerun == true
-          @view.show_game(@data.difficulty, @data.solution, @data.letters, " " + @data.turn.to_s, @data.chances, true)
+          @view.show_game(@data.difficulty, @data.solution, @data.secret, @data.letters, " " + @data.turn.to_s, @data.chances, true)
           rerun = false
         else
-          @view.show_game(@data.difficulty, @data.solution, @data.letters, " " + @data.turn.to_s, @data.chances)
+          @view.show_game(@data.difficulty, @data.solution, @data.secret, @data.letters, " " + @data.turn.to_s, @data.chances)
         end
       else
         if rerun == true
-          @view.show_game(@data.difficulty, @data.solution, @data.letters, @data.turn.to_s, @data.chances, true)
+          @view.show_game(@data.difficulty, @data.solution, @data.secret, @data.letters, @data.turn.to_s, @data.chances, true)
           rerun = false
         else  
-          @view.show_game(@data.difficulty, @data.solution, @data.letters, @data.turn.to_s, @data.chances)
+          @view.show_game(@data.difficulty, @data.solution, @data.secret, @data.letters, @data.turn.to_s, @data.chances)
         end
       end 
 

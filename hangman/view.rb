@@ -102,7 +102,7 @@ class View
   # sequence has been played before "rerun", and if it is set, it stays on
   # the last frame of that sequence. This prevents the player from seeing odd
   # animation repeats.
-  def show_game(difficulty, solution, letters, turn, chances, rerun = false)
+  def show_game(difficulty, solution, secret, letters, turn, chances, rerun = false)
     if difficulty == 1
       case chances
         when 7
@@ -120,7 +120,7 @@ class View
         when 1
           show_game_board7(solution, letters, turn, chances.to_s)
         else
-          show_game_board8(solution, letters, turn, chances.to_s)
+          show_game_board8(secret, letters, turn, chances.to_s)
           sleep 2.5
       end
     elsif difficulty == 2
@@ -148,7 +148,7 @@ class View
         when 1
           show_game_board7(solution, letters, turn, chances.to_s)
         else
-          show_game_board8(solution, letters, turn, chances.to_s)
+          show_game_board8(secret, letters, turn, chances.to_s)
           sleep 2.5
       end
     elsif difficulty == 3
@@ -176,28 +176,28 @@ class View
             show_game_board7(solution, letters, turn, chances.to_s)
           end
         else
-          show_game_board8(solution, letters, turn, chances.to_s)
-          sleep 5
+          show_game_board8(secret, letters, turn, chances.to_s)
+          sleep 2.5
       end
     elsif difficulty == 4
       case chances
         when 1
           show_game_board1(solution, letters, turn, chances.to_s)
         else 0
-          show_game_board2(solution, letters, turn, chances.to_s)
+          show_game_board2(secret, letters, turn, chances.to_s)
           sleep 0.3
-          show_game_board3(solution, letters, turn, chances.to_s)
+          show_game_board3(secret, letters, turn, chances.to_s)
           sleep 0.3
-          show_game_board4(solution, letters, turn, chances.to_s)
+          show_game_board4(secret, letters, turn, chances.to_s)
           sleep 0.3
-          show_game_board5(solution, letters, turn, chances.to_s)
+          show_game_board5(secret, letters, turn, chances.to_s)
           sleep 0.3
-          show_game_board6(solution, letters, turn, chances.to_s)
+          show_game_board6(secret, letters, turn, chances.to_s)
           sleep 0.3
-          show_game_board7(solution, letters, turn, chances.to_s)
+          show_game_board7(secret, letters, turn, chances.to_s)
           sleep 0.3
-          show_game_board8(solution, letters, turn, chances.to_s)
-          sleep 5
+          show_game_board8(secret, letters, turn, chances.to_s)
+          sleep 2.5
       end
     end
   end
