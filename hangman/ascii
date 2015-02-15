@@ -313,6 +313,30 @@
 
  _____________________________________________________________________________
 |                                                                             |
+|                     __          ___  __      __                             |
+|               |__| /  \ |  |     |  /  \    |__) |     /\  \ /              |
+|               |  | \__/ |/\|     |  \__/    |    |___ /~~\  |               |
+|                                                                             |
+|                                               ,____________________   _     |
+|                                               \ ___ ___ ___ ___ ___  /_\    |
+|    Attempt to prevent stickman's death by     {| f | e |   | r | .  |/ \\   |
+|  revealing the hidden word! Each turn, you    /`---'---'---'---'--- |   \\  |
+|  can select a single letter to uncover if     `-------------------- |   ||  |
+|  it is present in the hidden word.                                  *   ||  |
+|    Be careful though! Each wrong guess will        Letters Used     O   ||  |
+|  reduce your "chances" by one, sending the                              ||  |
+|  stickman closer to death. The difficulty               ef              ||  |
+|  controls how many chances you start with.              r               ||  |
+|    You can save your game at any time by                       +------+.||  |
+|  entering the '*' command. You can also quit      o            |`.  TT ``|. |
+|  from within the game using '!'.                 /O\          '`. `+------+ |
+|                                                   U         .'`. `.|      | |
+|                                                   ]      ,.```. `.'|      | |
+|                                                  / \     |``.,_`/| |      | |
+|_____________________________________________________________________________|
+
+ _____________________________________________________________________________
+|                                                                             |
 |                                                                             |
 |                  __              ___     __        ___  __                  |
 |                 / _`  /\   |\/| |__     /  \ \  / |__  |__)                 |

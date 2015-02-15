@@ -43,6 +43,7 @@ class Game
   end
 
   def setup_game
+    @data = GameData.new
     @view.show_game_setup
     print " Please enter a menu selection (1-4): "
     difficulty = gets.chomp
