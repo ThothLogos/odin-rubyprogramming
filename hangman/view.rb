@@ -4,10 +4,11 @@
 
 class View
   
-
+  # Short into animation
   def show_intro_splash
     logo_i = "_______________"
     logo_f = "2015_ThothLogos"
+    # Rotate the Hangman logo
     2.times do
       intro_splash4
       sleep 0.1
@@ -18,49 +19,55 @@ class View
       intro_splash1
       sleep 0.1
     end
-    message = "Press Enter to begin..."
+    # Fill in ThothLogos logo
     for i in 0...logo_i.length
       logo_i[i] = logo_f[i]
       sleep 0.04
-      intro_splash_final(message, logo_i)
+      intro_splash_final("Press Enter to begin...", logo_i)
     end
   end
 
-
+  # Controls the fade-in effects for the text on the main menu
   def show_main_menu_animate
     logo = "2015_ThothLogos"
-
+    # Initial strings to be displayed
     one_i = "           "
     two_i = "                  "
     three_i = "              "
     four_i = "                  "
     quit_i = "       "
-
+    # End result
     one_f = "1. New Game"
     two_f = "2. Load Saved Game"
     three_f = "3. How to Play"
     four_f = "4. About this Game"
     quit_f = "X. Quit"
 
+    # These will track how many letters remain to be faded in
     one_remaining = []
     two_remaining = []
     three_remaining = []
     four_remaining = []
     quit_remaining = []
 
+    # Index the letters to be copied
     for i in 0...one_i.length do one_remaining << i end
     for i in 0...two_i.length do two_remaining << i end
     for i in 0...three_i.length do three_remaining << i end
     for i in 0...four_i.length do four_remaining << i end
     for i in 0...quit_i.length do quit_remaining << i end
 
+    # Count up the size of each string needed to be faded-in
     sizes = [one_i.length, two_i.length, three_i.length, quit_i.length]
-    max_cycles = sizes.max
+    max_cycles = sizes.max # Limit max animation cycles to the size of the longest string
 
+    # Limiting to max_cycles helps to cut down on frames needed to render the effect,
+    # which will help to reduce flickering effects on some consoles
     for i in 0...max_cycles
       if i < one_i.length
+        # Grab a random letter that hasn't been faded-in yet
         selected = one_remaining.slice!(one_remaining.index(one_remaining.sample))
-        one_i[selected] = one_f[selected]; end
+        one_i[selected] = one_f[selected]; end # Populate it for display
       if i < two_i.length
         selected = two_remaining.slice!(two_remaining.index(two_remaining.sample))
         two_i[selected] = two_f[selected]; end
@@ -89,6 +96,12 @@ class View
     main_menu(one, two, three, four, quit, logo)
   end
 
+  # This method is the primary conductor of what the player sees during each
+  # turn. Higher difficulties with fewer chances will see more animations per
+  # each wrong selection. This method also checks a flag to see if the frame
+  # sequence has been played before "rerun", and if it is set, it stays on
+  # the last frame of that sequence. This prevents the player from seeing odd
+  # animation repeats.
   def show_game(difficulty, solution, letters, turn, chances, rerun = false)
     if difficulty == 1
       case chances
@@ -108,7 +121,8 @@ class View
           show_game_board7(solution, letters, turn, chances.to_s)
         else
           show_game_board8(solution, letters, turn, chances.to_s)
-          sleep 2.5; end
+          sleep 2.5
+      end
     elsif difficulty == 2
       case chances
         when 5
@@ -135,7 +149,8 @@ class View
           show_game_board7(solution, letters, turn, chances.to_s)
         else
           show_game_board8(solution, letters, turn, chances.to_s)
-          sleep 2.5;end
+          sleep 2.5
+      end
     elsif difficulty == 3
       case chances
         when 3
@@ -162,7 +177,8 @@ class View
           end
         else
           show_game_board8(solution, letters, turn, chances.to_s)
-          sleep 5; end
+          sleep 5
+      end
     elsif difficulty == 4
       case chances
         when 1
@@ -181,10 +197,8 @@ class View
           show_game_board7(solution, letters, turn, chances.to_s)
           sleep 0.3
           show_game_board8(solution, letters, turn, chances.to_s)
-          sleep 5; end
-    else
-      puts "Something went wrong"
-      sleep 3
+          sleep 5
+      end
     end
   end
 
@@ -534,10 +548,10 @@ class View
     puts "|   \\                             /------------------'         +------+.||    |"
     puts "|    '---------------------------'            o                |`.  TT ``|.   |"
     puts "|                                            /O\\              '`. `+------+   |"
-    puts "|                                             U             .'`. `.|      |   |"
-    puts "|                                            / \\         ,.```. `.'|      |   |"
-    puts "|                                            |  \\        |``.,_`/| |      |   |"
-    puts "|                                            .________________________________|"
+    puts "|       _,_                                   U             .'`. `.|      |   |"
+    puts "|      ,__,`                                 / \\         ,.```. `.'|      |   |"
+    puts "|     ,__,|                                  |  \\        |``.,_`/| |      |   |"
+    puts "|     | |                                    .________________________________|"
     puts "|____________________________________________| * to Save your game, ! to Quit |"
   end 
 
@@ -561,10 +575,10 @@ class View
     puts "|   \\                             /------------------'         +------+.||    |"
     puts "|    '---------------------------'                          o  |`.  TT ``|.   |"
     puts "|                                                          O\\ '`. `+------+   |"
-    puts "|                                                          U_'`. `.|      |   |"
-    puts "|                                                        ,/``\\. `.'|      |   |"
-    puts "|                                                        /``.,_`/| |      |   |"
-    puts "|                                            .________________________________|"
+    puts "|       _,_                                                U_'`. `.|      |   |"
+    puts "|      ,__,`                                             ,/``\\. `.'|      |   |"
+    puts "|     ,__,|                                              /``.,_`/| |      |   |"
+    puts "|     | |                                    .________________________________|"
     puts "|____________________________________________| * to Save your game, ! to Quit |"
   end 
 
@@ -588,10 +602,10 @@ class View
     puts "|   \\                             /------------------'         +----[-+.||    |"
     puts "|    '---------------------------'                             |`.  TT ``|.   |"
     puts "|                                                             '`. `+------+   |"
-    puts "|                                                           .'`. `.|      |   |"
-    puts "|                                                        ,.```. `.'|      |   |"
-    puts "|                                                        |``.,_`/| |      |   |"
-    puts "|                                            .________________________________|"
+    puts "|       _,_                                                 .'`. `.|      |   |"
+    puts "|      ,__,`                                             ,.```. `.'|      |   |"
+    puts "|     ,__,|                                              |``.,_`/| |      |   |"
+    puts "|     | |                                    .________________________________|"
     puts "|____________________________________________| * to Save your game, ! to Quit |"
   end 
 
@@ -615,10 +629,10 @@ class View
     puts "|   \\                             /------------------'         +----[-+.||    |"
     puts "|    '---------------------------'                             |`.  [  ``|.   |"
     puts "|                                                             '`. `+------+   |"
-    puts "|                                                           .'`. `.|      |   |"
-    puts "|                                                        ,.```. `.'|      |   |"
-    puts "|                                                        |``.,_`/| |      |   |"
-    puts "|                                            .________________________________|"
+    puts "|       _,_                                                 .'`. `.|      |   |"
+    puts "|      ,__,`                                             ,.```. `.'|      |   |"
+    puts "|     ,__,|                                              |``.,_`/| |      |   |"
+    puts "|     | |                                    .________________________________|"
     puts "|____________________________________________| * to Save your game, ! to Quit |"
   end 
 
