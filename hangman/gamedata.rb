@@ -4,6 +4,7 @@
 class GameData
 
   def initialize
+    @turn = 1
     @difficulty = 0
     @solution = ""
     @secret = generate_word.downcase
@@ -18,6 +19,46 @@ class GameData
       letters << " "; end
 
     @chances = 7
+  end
+
+  def save_game(name)
+    Dir.mkdir("saves") unless Dir.exists?("saves")
+
+    save_file = "saves/#{name}.txt"
+    letters = ""
+    File.open(save_file, "w") do |file|
+      file.puts @difficulty.to_s
+      file.puts @solution
+      file.puts @secret
+      @letters.each do |letter|
+        letters << letter; end
+      file.puts letters
+      file.puts @chances.to_s
+      file.puts @turn.to_s
+    end
+  end
+
+  def save_exist?(name)
+    if File.exists?("saves/#{name}.txt")
+      return true
+    else
+      return false; end
+  end
+
+  def load_game(name)
+    load_file = File.open("saves/#{name}.txt", "r")
+    settings = []
+    load_file.each do |line|
+      settings << line.to_s; end
+    @difficulty = settings[0].to_i
+    @solution = settings[1]
+    @secret = settings[2]
+    letters = settings[3]
+    @letters = []
+    letters.split("").each do |letter|
+      @letters << letter; end
+    @chances = settings[4].to_i
+    @turn = settings[5].to_i
   end
 
   def generate_word
@@ -108,6 +149,14 @@ class GameData
 
   def remove_chance
     @chances -= 1
+  end
+
+  def turn
+    @turn
+  end
+
+  def add_turn
+    @turn += 1
   end
 
 end
