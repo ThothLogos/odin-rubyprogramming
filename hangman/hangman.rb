@@ -13,10 +13,10 @@ class Game
     gets
     @view.show_main_menu_animate
     main_menu
-    @chances = 0
   end
 
   def main_menu
+    @data = GameData.new
     @view.show_main_menu
     print " Please enter a menu selection (1-4): "
     menu_choice = gets.chomp
@@ -24,7 +24,7 @@ class Game
       when "1"
         setup_game
       when "2"
-        # load saved game
+        load_game
       when "3"
         @view.show_how_to_play
         gets
@@ -43,7 +43,6 @@ class Game
   end
 
   def setup_game
-    @data = GameData.new
     @view.show_game_setup
     print " Please enter a menu selection (1-4): "
     difficulty = gets.chomp
@@ -65,7 +64,6 @@ class Game
         sleep 1
         setup_game
     end
-    @turn = 1
     run_game
   end
 
@@ -73,19 +71,19 @@ class Game
     rerun = false
     complete = false
     until complete
-      if @turn < 10
+      if @data.turn < 10
         if rerun == true
-          @view.show_game(@data.difficulty, @data.solution, @data.letters, " " + @turn.to_s, @data.chances, true)
+          @view.show_game(@data.difficulty, @data.solution, @data.letters, " " + @data.turn.to_s, @data.chances, true)
           rerun = false
         else
-          @view.show_game(@data.difficulty, @data.solution, @data.letters, " " + @turn.to_s, @data.chances)
+          @view.show_game(@data.difficulty, @data.solution, @data.letters, " " + @data.turn.to_s, @data.chances)
         end
       else
         if rerun == true
-          @view.show_game(@data.difficulty, @data.solution, @data.letters, @turn.to_s, @data.chances, true)
+          @view.show_game(@data.difficulty, @data.solution, @data.letters, @data.turn.to_s, @data.chances, true)
           rerun = false
         else  
-          @view.show_game(@data.difficulty, @data.solution, @data.letters, @turn.to_s, @data.chances)
+          @view.show_game(@data.difficulty, @data.solution, @data.letters, @data.turn.to_s, @data.chances)
         end
       end 
 
@@ -119,13 +117,13 @@ class Game
         rerun = true
         next
       end
-      @turn += 1
+      @data.add_turn
     end
   end
 
   def good_input?(input)
     if input == "*"
-      #save
+      save_game
     elsif input == "!"
       abort(" Thanks for playing!")
     elsif input.length > 1
@@ -141,6 +139,48 @@ class Game
       return false
     end
     return true
+  end
+
+  def save_game
+      if @data.turn < 10
+        @view.show_game(@data.difficulty, @data.solution, @data.letters, " " + @data.turn.to_s, @data.chances)
+      else
+        @view.show_game(@data.difficulty, @data.solution, @data.letters, @data.turn.to_s, @data.chances)
+      end 
+      print " Enter the name to save as: "
+      name = gets.chomp.downcase
+      if name.length > 10
+        puts " Please no more than 10 characters, try again. "
+        sleep 1
+        save_game
+      elsif @data.save_exist?(name)
+        puts " A file with that name already exists, try again. "
+        sleep 1
+        save_game
+      else
+        name.split("").each do |c|
+          if !c.ord.between?(97,122) && !c.ord.between?(48,57)
+            puts " Contains illegal characters, try again. "
+            sleep 1
+            save_game; end
+        end
+      end
+        
+      @data.save_game(name)
+      main_menu
+  end
+
+  def load_game
+    print " Enter the name of the file to load: "
+    name = gets.chomp.downcase
+    if @data.save_exist?(name)
+      @data.load_game(name)
+      run_game
+    else
+      puts " No file by that name exists, returning to main menu. "
+      sleep 1
+      main_menu
+    end
   end
 
 end
