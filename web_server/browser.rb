@@ -1,6 +1,6 @@
 require 'socket'
 
-host = 'www.google.com'
+host = 'infiniteprops.io'
 port = 80
 path = "/index.html"
 
