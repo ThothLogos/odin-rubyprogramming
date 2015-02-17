@@ -1,7 +1,7 @@
 require 'socket'
 
-host = 'infiniteprops.io'
-port = 80
+host = 'localhost'
+port = 7680
 path = "/index.html"
 
 request = "GET #{path} HTTP/1.0\r\n\r\n"
