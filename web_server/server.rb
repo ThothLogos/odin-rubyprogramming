@@ -11,6 +11,7 @@ loop {
   resource = request[/\w+.html/]
   type = request[/(GET|POST|HEAD)/]
   version = request[/HTTP\/\d\.\d/]
+  incoming = request[/Content-Length: (\d+)/]
   message = ""
   status = ""
   body = ""
