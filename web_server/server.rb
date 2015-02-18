@@ -36,8 +36,6 @@ loop do
     else
       status = "404"
       message = "Not Found"
-      socket.puts(version + " " + status + " " + message)
-      socket.puts("Date: " + Time.now.ctime)
     end
   elsif method == "POST"
     if File.exists?("#{resource}")
@@ -47,22 +45,17 @@ loop do
       end
       status = "200"
       message = "OK"
-      socket.puts(version + " " + status + " " + message)
-      socket.puts("Date: " + Time.now.ctime)
     else
       status = "404"
       message = "Not Found"
-      socket.puts(version + " " + status + " " + message)
-      socket.puts("Date: " + Time.now.ctime)
     end
   else
     status = "400"
     message = "Bad Request"
-    socket.puts(version + " " + status + " " + message)
-    socket.puts("Date: " + Time.now.ctime)
   end
 
   socket.print "#{version} #{status} #{message}\r\n" +
+               "Date: " + Time.now.ctime + "\r\n" +
                "Content-Type: #{content_type[:html]}\r\n" +
                "Content-Length: #{body.bytesize}\r\n" +
                "Connection: close\r\n"
