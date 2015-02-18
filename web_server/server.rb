@@ -1,4 +1,5 @@
 require 'socket'
+require 'json'
 
 
 server = TCPServer.open(7680)
@@ -28,7 +29,17 @@ loop {
       message = "Not Found"
     end
   elsif type == "POST"
-    #POST
+    if File.exists?("#{resource}")
+      file = File.open(resource, "r")
+      file.each do |line|
+        #stuff
+      end
+      status = "200"
+      message = "OK"
+    else
+      status = "404"
+      message = "Not Found"
+    end
   else
     status = "400"
     message = "Bad Request"
