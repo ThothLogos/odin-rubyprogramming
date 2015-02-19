@@ -17,7 +17,7 @@ loop do
   resource = request[/\w+.html/]
   method = request[/(GET|POST)/]
   version = request[/HTTP\/\d\.\d/]
-  incoming = request[/Content-Length: (\d*)/]
+
   message = ""
   status = ""
   body = ""
@@ -41,10 +41,20 @@ loop do
       message = "Not Found"
     end
   elsif method == "POST"
+    type = socket.gets.scan(/Content-Type: (\S*)/)
+    size = socket.gets.scan(/Content-Length: (\d*)/)
+    socket.gets # Skip the blank line
+    data = socket.recv(size[0].first.to_i) # Receive incoming data by size
+    puts data
     if File.exists?(resource)
-      file = File.open(resource, "r")
-      file.each do |line|
-        #stuff
+      if resource == "thanks.html"
+
+        newdata = JSON.parse(data, :symbolize_names => true)
+        puts newdata
+        file = File.open(resource, "r")
+        file.each do |line|
+          body << line; end
+        type = :html
       end
       status = "200"
       message = "OK"
