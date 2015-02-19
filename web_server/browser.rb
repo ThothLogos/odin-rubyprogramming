@@ -1,3 +1,6 @@
+# The Odin Porject - Section 3: Ruby Programming
+# Project - Ruby on the Web, No. 2 Basic Web Server & Browser
+
 require 'socket'
 require 'json'
 
