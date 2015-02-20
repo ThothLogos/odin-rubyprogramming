@@ -1,5 +1,5 @@
-# The Odin Porject - Section 3: Ruby Programming
-# Project OOP With Ruby, No. 1 Tic Tac Toe
+# The Odin Project - Section 3: Ruby Programming
+# Intermediate Ruby: OOP With Ruby, No. 1 TicTacToe
 #
 # NOTE: Heavy use of comments intended for fellow students of The Odin
 # Project who may be seeking insight into another's thought process.
