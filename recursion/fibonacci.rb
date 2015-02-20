@@ -1,5 +1,5 @@
 # The Odin Porject - Section 3: Ruby Programming
-# Project File - Computer Science: No. 1, Recursion - Fibonacci
+# Computer Science: Recursion No. 1, Fibonacci
 
 
 # Implementation using iteration, prints the set of fibonacci numbers
