@@ -6,8 +6,7 @@
 # recombine using a merge comparison.
 
 def merge_sort(nums)
-  # Base case, if the recursion is being done on a single element, no sorting can be
-  # done and we can begin collapsing the recursion branch
+  # Base case, no sorting to do on a single element, collapses recursion branch
   return nums if nums.length <= 1
   # Divide
   a = nums[0..(nums.length/2)-1]
@@ -31,6 +30,24 @@ def merge(a, b)
   merged += a += b
 end
 
-array = [2, 8, 9, 1, 4, 0, 10, 100, 53, 12]
 
-print merge_sort(array)
+# Size of test array to sort
+size = 100
+
+full_set = []
+# Fill up a set to randomly sample unique values from
+for i in 0..size
+  full_set << i
+end
+
+big_array = []
+size.times do
+  # We select a random element remaining, return it, and remove it from the source
+  big_array << full_set.delete_at(rand(full_set.length))
+end
+
+# Show the scrambled array
+print big_array.to_s + "\n"
+
+# Sorted
+print merge_sort(big_array)
