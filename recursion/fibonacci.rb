@@ -1,4 +1,4 @@
-# The Odin Porject - Section 3: Ruby Programming
+# The Odin Project - Section 3: Ruby Programming
 # Computer Science: Recursion No. 1, Fibonacci
 
 

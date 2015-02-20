@@ -1,4 +1,4 @@
-# The Odin Porject - Section 3: Ruby Programming
+# The Odin Project - Section 3: Ruby Programming
 # Ruby on the Web, No. 2 Basic Web Server & Browser
 
 require 'socket'

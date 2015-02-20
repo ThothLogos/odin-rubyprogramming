@@ -1,4 +1,4 @@
-# The Odin Porject - Section 3: Ruby Programming
+# The Odin Project - Section 3: Ruby Programming
 # Computer Science: Recursion No. 2, Merge Sort
 
 # Implementation of recursive merge sorting. There are 3 basic steps: divide
