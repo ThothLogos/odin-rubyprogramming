@@ -4,24 +4,44 @@
 
 class Node
 
-  def initialize(value = nil, parent = nil, children = nil, tier = nil)
-    @value = value
-    @parent = parent
-    @children = children
-    @tier = tier
+  def initialize(key, parent = nil)
+    @key = key
+    @parent = parent # if nil, it must be a tree root
+    @left_child = nil
+    @right_child = nil
   end
 
 
-
-  def value() @value end
-  def set_value(value) @value = value end
+  def left_child
+    @left_child
+  end
   
-  def parent() @parent end
-  def set_parent(parent) @parent = parent end
-  
-  def children() @children end
-  def set_children(children) @children = children end
+  def set_left_child(arr)
+    @left_child = arr[arr.length/2]
+  end
 
-  def tier() @tier end
-  def set_tier(tier) @tier = tier end
+  def right_child
+    @right_child
+  end
+  
+  def set_right_child(arr)
+    @right_child = arr[arr.length/2]
+  end  
+
+  def key
+    @key
+  end
+  
+  def set_key(key)
+    @key = key
+  end
+  
+  def parent
+    @parent
+  end
+  
+  def set_parent(parent)
+    @parent = parent
+  end
+  
 end
