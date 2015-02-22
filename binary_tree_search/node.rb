@@ -11,37 +11,16 @@ class Node
     @right_child = nil
   end
 
+  def left_child() @left_child end
+  def set_left_child(arr) @left_child = arr[arr.length/2] end
 
-  def left_child
-    @left_child
-  end
-  
-  def set_left_child(arr)
-    @left_child = arr[arr.length/2]
-  end
+  def right_child() @right_child end
+  def set_right_child(arr) @right_child = arr[arr.length/2] end  
 
-  def right_child
-    @right_child
-  end
+  def key() @key end
+  def set_key(key) @key = key end
   
-  def set_right_child(arr)
-    @right_child = arr[arr.length/2]
-  end  
-
-  def key
-    @key
-  end
-  
-  def set_key(key)
-    @key = key
-  end
-  
-  def parent
-    @parent
-  end
-  
-  def set_parent(parent)
-    @parent = parent
-  end
+  def parent() @parent end
+  def set_parent(parent) @parent = parent end
   
 end
